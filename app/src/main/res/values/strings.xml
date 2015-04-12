@@ -4,5 +4,16 @@
     <string name="app_name">HomeMarket</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="create_table_query">
+         CREATE TABLE #TABLENAME (
+            _id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            done INTEGER NOT NULL
+    </string>
+     <string name="drop_table_query">
+        DROP TABLE IF EXISTS #TABLENAME;
+    </string>
+    <string name="count_tasks_query" />
+    <string name="insert_task_query" />
+    <string name="list_tasks_query" />
 </resources>
