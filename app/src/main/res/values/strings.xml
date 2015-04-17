@@ -44,5 +44,14 @@
     <string name="MercadoEnderecoItem">Endereço do Mercado</string>
     <string name="MercadoTelefoneItem">Telefone do Mercado</string>
     <string name="MercadoEmailItem">Email do supermercado</string>
-    >>>>>>> 4bfce1f451bac7cb41a747b43d647f362620f85a
+    <string name="title_activity_depensa_Detail">Detalhes do Produto</string>
+    <string name="title_activity_produto_detail">ProdutoDetail</string>
+    <string name="title_activity_produto_edit">ProdutoEdit</string>
+    <string name="title_activity_mercado_insert">Inserir Receitas</string>
+    <string name="MercadoNome">Nome</string>
+    <string name="MercadoEmail">E-mail:</string>
+    <string name="MercadoTelefone">Telefone</string>
+    <string name="MercadoEndereco">Endereço:</string>
+    <string name="insert_status_ok">Inserido com sucesso</string>
+    <string name="title_activity_mercado_edit">Editar</string>
 </resources>

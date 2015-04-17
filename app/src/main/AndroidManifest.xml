@@ -35,18 +35,34 @@
                 android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
         </activity>
         <activity
-            android:name=".DespensaListFragment"
-            android:label="@string/title_activity_despensa_list_fragment" >
+            android:name=".ProdutoInsert"
+            android:label="@string/title_activity_produto_insert"
+            android:parentActivityName=".Despensa" >
         </activity>
         <activity
             android:name=".MercadoMain"
             android:label="@string/title_activity_mercado_main" >
         </activity>
         <activity
-            android:name=".DespensaDetailFragment"
-            android:label="@string/title_activity_despensa_detail_fragment" >
+            android:name=".Despensa"
+            android:label="@string/title_activity_despensa" >
         </activity>
         <activity
+            android:name=".ReceitasMain"
+            android:label="@string/title_activity_receitas" >
+        </activity>
+        <activity
+            android:name=".DespensaDetailFragment"
+            android:label="Detail" />
+        <activity
+            android:name=".ProdutoDetail"
+            android:label="@string/title_activity_produto_detail"
+            android:parentActivityName=".Despensa" >
+        </activity>
+        <activity
+            android:name=".ProdutoEdit"
+            android:label="@string/title_activity_produto_edit"
+            android:parentActivityName=".ProdutoDetail" >
             android:name=".ProdutoInsert"
             android:label="@string/title_activity_produto_insert" >
         </activity>
@@ -61,6 +77,14 @@
         <activity
             android:name=".MercadoDetailFragment"
             android:label="@string/title_activity_mercado_detail_fragment" >
+        </activity>
+        <activity
+            android:name=".MercadoInsert"
+            android:label="@string/title_activity_mercado_insert" >
+        </activity>
+        <activity
+            android:name=".MercadoEdit"
+            android:label="@string/title_activity_mercado_edit" >
         </activity>
     </application>
 

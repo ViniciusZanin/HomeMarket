@@ -85,6 +85,9 @@ public class MercadoMain extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if(id == R.id.mercado_add){
+            startActivity((new Intent(this, MercadoInsert.class)));
+        }
 
         return super.onOptionsItemSelected(item);
     }

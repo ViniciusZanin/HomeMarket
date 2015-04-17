@@ -7,14 +7,10 @@
     <item android:icon="@android:drawable/ic_menu_add"
         android:id="@+id/receita_add"
         android:title="Adcionar"
-        app:showAsAction = "always"
-        android:orderInCategory="1"/>
+        app:showAsAction = "always"/>
     <item android:icon="@android:drawable/ic_menu_search"
         android:id="@+id/receita_search"
         android:title="Busca"
-        app:showAsAction = "always"
-        android:orderInCategory="2"/>
-    <item android:title="@string/receita"
-        android:orderInCategory="0"/>
+        app:showAsAction = "always"/>
 
 </menu>

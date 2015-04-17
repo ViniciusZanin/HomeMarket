@@ -28,6 +28,8 @@ public class MercadoDAO {
             m.setEndereco("Rua Teste");
             m.setTelefonee("123445");
 
+        mercados.add(m);
+
     }
 
     public static MercadoDAO newInstance(){
@@ -49,6 +51,11 @@ public class MercadoDAO {
             res = false;
         }
         return res;
+    }
+
+    public void edit(Mercados mercado){
+        mercados.remove(mercado);
+        mercados.add(mercado);
     }
 
     public Mercados[] list(Mercados mercado){

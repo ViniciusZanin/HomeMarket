@@ -1,12 +1,16 @@
 package com.ufabc.kleinzanin.homemarket;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 
@@ -48,7 +52,20 @@ public class ProdutoInsert extends ActionBarActivity {
     private void insert() {
         String nome = ((EditText ) findViewById(R.id.insert_produto_nome)).getText().toString();
         String quantidade = ((EditText )findViewById(R.id.insert_produto_quantidade)).getText().toString();
+        String preço = ((EditText )findViewById(R.id.insert_produto_preço)).getText().toString();
         String consumo = ((EditText )findViewById(R.id.insert_produto_consumo)).getText().toString();
         boolean check = ((CheckBox )findViewById(R.id.insert_produto_check)).isChecked();
+        Produtos produto = new Produtos();
+
+        produto.setNome(nome);
+        produto.setQuantidade(Integer.parseInt(quantidade));
+        produto.setPreço(preço);
+        if(check){
+            produto.setConsumo(Integer.parseInt(consumo));}
+        produto.setChecked(check);
+        dao.add(produto);
+        Toast.makeText(this,"Produto Adicionar",Toast.LENGTH_SHORT).show();
+        startActivity((new Intent(this,Despensa.class)));
+
     }
 }

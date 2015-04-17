@@ -71,9 +71,10 @@ public class ProdutoAdapter extends BaseAdapter {
         quantidade = (TextView ) convertView.findViewById(R.id.produto_quantidade);
         nome.setText(produto.getNome());
         if(produto.getChecked() == true){
-        quantidade.setText(produto.getQuantidade() + "/" + produto.getConsumo());}
+        quantidade.setText(Integer.toString(produto.getQuantidade()) + "/" +
+                Integer.toString(produto.getConsumo()));}
         else{
-            quantidade.setText(produto.getQuantidade());
+            quantidade.setText(Integer.toString(produto.getQuantidade()));
 
     }
         return convertView;

@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.ufabc.kleinzanin.homemarket.ProdutoEdit"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <EditText android:id="@+id/edit_produto_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <CheckBox android:id="@+id/edit_produto_check" android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+    <EditText android:id="@+id/edit_produto_consumo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Consumo Mensal"/>
+    <EditText android:id="@+id/edit_produto_quantidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/edit_produto_preço"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+    <ImageView android:id="@+id/edit_produto_imagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button android:id="@+id/edit_codigo_barra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar Codigo de Barra"/>
+    <Button android:id="@+id/edit_imagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar imagem"/>
+
+</LinearLayout>

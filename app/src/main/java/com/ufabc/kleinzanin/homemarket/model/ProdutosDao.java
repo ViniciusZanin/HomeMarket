@@ -3,6 +3,8 @@ package com.ufabc.kleinzanin.homemarket.model;
 /**
  * Created by Vinicius on 16/04/2015.
  */
+import com.ufabc.kleinzanin.homemarket.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,18 +27,13 @@ public class ProdutosDao {
 
         c.setNome("Manga");
         c.setPreço("4.99");
-        c.setQuantidade("200");
-        c.setConsumo("1000");
+        c.setQuantidade(200);
+        c.setConsumo(1000);
         c.setChecked(true);
+        c.setImagem(R.drawable.manga);
 
         produtos.add(c);
 
-        c.setNome("Caviar");
-        c.setPreço("500");
-        c.setQuantidade("1");
-        c.setChecked(false);
-
-        produtos.add(c);
     }
 
     public static ProdutosDao newInstance() {
@@ -51,6 +48,7 @@ public class ProdutosDao {
     public void add(Produtos produto) {
         produtos.add(produto);
     }
+    public void edit(Produtos produto){ produtos.remove(produto);produtos.add(produto);}
 
     public boolean remove(int position) {
         boolean res = true;
@@ -75,5 +73,6 @@ public class ProdutosDao {
     public Produtos getItemAt(int pos) {
         return produtos.get(pos);
     }
+
 
 }
