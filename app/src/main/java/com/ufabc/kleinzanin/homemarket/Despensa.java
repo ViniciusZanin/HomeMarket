@@ -1,18 +1,25 @@
 package com.ufabc.kleinzanin.homemarket;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.ufabc.kleinzanin.homemarket.model.HomeMarketDao;
+import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 
 public class Despensa extends ActionBarActivity {
     private ProdutosDao dao;
     private ListView listView;
+    private Button add;
+    private Button remove;
 
     private DespensaDetailFragment detailFragment;
     private DespensaListFragment listFragment;
@@ -41,6 +48,23 @@ public class Despensa extends ActionBarActivity {
         listView = (ListView )findViewById(R.id.list_despensa);
         final Despensa self = this;
         listView.setAdapter(new ProdutoAdapter(this));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (detailFragment == null) { // small screen
+                    Intent intent = null;
+
+                    intent = new Intent(parent.getContext(), ProdutoDetail.class);
+                    intent.putExtra("produtoPosition", position);
+                    startActivity(intent);
+                } else { // large screen
+                    Produtos produto = dao.getItemAt(position);
+
+                    detailFragment.showProdutos(produto);
+                }
+            }
+        });
+
     }
 
 
@@ -61,6 +85,9 @@ public class Despensa extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if(id == R.id.action_produto_add){
+            startActivity(new Intent(this,ProdutoInsert.class));
         }
 
         return super.onOptionsItemSelected(item);

@@ -9,10 +9,11 @@
         android:textStyle="bold"
         android:textSize="20dp"/>
     <TableRow>
-        <CheckBox android:id="@+id/produto_check" android:editable="false"/>
         <TextView android:text="@string/produto_check"
             android:textStyle="bold"/>
-        <TextView android:id="@+id/produto_consumo"/>
+        <TextView android:id="@+id/produto_consumo" android:layout_width="match_parent" android:visibility="invisible"/>
+        <CheckBox android:id="@+id/produto_check" android:clickable="false"/>
+
     </TableRow>
     <TableRow>
         <TextView android:text="@string/produto_quantidade"
@@ -39,5 +40,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </TableRow>
+
 
 </TableLayout>

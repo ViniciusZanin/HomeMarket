@@ -5,6 +5,7 @@
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.widget.Button;
         import android.widget.CheckBox;
         import android.widget.ImageView;
         import android.widget.TextView;
@@ -28,6 +29,7 @@
             private CheckBox produtoCheck;
 
 
+
             @Override
             public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                      Bundle savedInstanceState) {
@@ -40,7 +42,7 @@
                 quantidade = (TextView )getView().findViewById(R.id.produto_quantidade);
                 preço = (TextView )getView().findViewById(R.id.produto_preço);
                 consumo = (TextView )getView().findViewById(R.id.produto_consumo);
-                produtoimage = (ImageView ) getView().findViewById(R.id.produto_imagem);
+               produtoimage = (ImageView ) getView().findViewById(R.id.produto_imagem);
                 produtoCheck = (CheckBox ) getView().findViewById(R.id.produto_check);
 
             }
@@ -49,12 +51,13 @@
                 init();
 
                 nome.setText(produto.getNome());
-                quantidade.setText(produto.getQuantidade());
-                preço.setText(produto.getQuantidade());
-                //produtoimage.setImageBitmap(produto.getImagem());
+                quantidade.setText(Integer.toString(produto.getQuantidade()));
+                preço.setText(produto.getPreço());
+                produtoimage.setImageResource(produto.getImagem());
                 produtoCheck.setChecked(produto.getChecked());
                 if(produto.getChecked() == true){
-                    consumo.setText(produto.getConsumo());
+                    consumo.setText(Integer.toString(produto.getConsumo()));
+                    consumo.setVisibility(View.VISIBLE);
                 }
             }
 

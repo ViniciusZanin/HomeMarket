@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ufabc.kleinzanin.homemarket.ProdutoDetail">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_produto_edit" android:title="Edit"
+        app:showAsAction="always" android:icon="@android:drawable/ic_menu_edit"/>
+    <item android:id="@+id/action_produto_remove" android:title="Remove"
+        app:showAsAction="always" android:icon="@android:drawable/ic_menu_delete"/>
+</menu>

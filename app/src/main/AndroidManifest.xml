@@ -25,16 +25,22 @@
                 android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
         </activity>
         <activity
-            android:name=".DespensaListFragment"
-            android:label="@string/title_activity_despensa_list_fragment" >
+            android:name=".ProdutoInsert"
+            android:label="@string/title_activity_produto_insert"
+            android:parentActivityName=".Despensa">
         </activity>
         <activity
             android:name=".DespensaDetailFragment"
-            android:label="@string/title_activity_despensa_detail_fragment" >
+            android:label="Detail" />
+        <activity
+            android:name=".ProdutoDetail"
+            android:label="@string/title_activity_produto_detail"
+            android:parentActivityName=".Despensa">
         </activity>
         <activity
-            android:name=".ProdutoInsert"
-            android:label="@string/title_activity_produto_insert" >
+            android:name=".ProdutoEdit"
+            android:label="@string/title_activity_produto_edit"
+            android:parentActivityName=".ProdutoDetail">
         </activity>
     </application>
 
