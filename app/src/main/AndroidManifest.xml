@@ -32,6 +32,10 @@
             android:name=".DespensaDetailFragment"
             android:label="@string/title_activity_despensa_detail_fragment" >
         </activity>
+        <activity
+            android:name=".ProdutoInsert"
+            android:label="@string/title_activity_produto_insert" >
+        </activity>
     </application>
 
 </manifest>

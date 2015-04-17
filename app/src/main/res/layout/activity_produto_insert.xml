@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.ufabc.kleinzanin.homemarket.ProdutoInsert"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <EditText android:id="@+id/insert_produto_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Produto"
+        android:inputType="textPersonName"/>
+    <CheckBox android:id="@+id/insert_produto_check" android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+    <EditText android:id="@+id/insert_produto_consumo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Consumo Mensal"/>
+    <EditText android:id="@+id/insert_produto_quantidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Qunatidade atual" />
+    <EditText android:id="@+id/insert_produto_preço"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Preço(R$)"
+        android:inputType="phone"/>
+    <Button android:id="@+id/insert_codigo_barra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inserir Codigo de Barra"/>
+
+    <Button android:id="@+id/insert_imagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inserir imagem"/>
+
+</LinearLayout>
