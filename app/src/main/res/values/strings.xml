@@ -16,6 +16,22 @@
     <string name="count_tasks_query" />
     <string name="insert_task_query" />
     <string name="list_tasks_query" />
+<<<<<<< HEAD
+    <string name="title_activity_receitas">Receitas</string>
+    <string name="receita">Receitas</string>
+    <string name="title_activity_receitas_list_fragment">ReceitasListFragment</string>
+    <string name="title_activity_receitas_detail_fragment">ReceitasDetailFragment</string>
+    <string name="title_activity_receita_details">ReceitaDetails</string>
+    <string name="Ingredientes">Ingredientes</string>
+    <string name="ModPrep">Modo de Preparo</string>
+    <string name="title_activity_receitas_insert">ReceitasInsert</string>
+    <string name="Receita_nome">Nome</string>
+    <string name="Receita_nomebox">Digite o nome da receita</string>
+    <string name="Receita_igr">Ingredientes</string>
+    <string name="RemoveIng_button">-</string>
+    <string name="ModPrep_edit">Digite o modo de preparo</string>
+    <string name="title_activity_receitas_edit">ReceitasEdit</string>
+=======
     <string name="title_activity_despensa">Despensa</string>
     <string name="title_activity_despensa_list_fragment">DespensaListFragment</string>
     <string name="title_activity_despensa_detail_fragment">DespensaDetailFragment</string>
@@ -23,7 +39,11 @@
     <string name="produto_quantidade">Quantidade</string>
     <string name="produto_preço">Preço(R$)</string>
     <string name="title_activity_produto_insert">ProdutoInsert</string>
+<<<<<<< HEAD
     <string name="title_activity_depensa_Detail">Detalhes do Produto</string>
     <string name="title_activity_produto_detail">ProdutoDetail</string>
     <string name="title_activity_produto_edit">ProdutoEdit</string>
+=======
+>>>>>>> 4bfce1f451bac7cb41a747b43d647f362620f85a
+>>>>>>> 31192847192456622fb8e44534369cb495fe522e
 </resources>

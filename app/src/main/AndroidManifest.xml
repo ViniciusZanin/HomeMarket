@@ -17,6 +17,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ReceitasDetails"
+            android:label="@string/title_activity_receita_details" >
+        </activity>
+        <activity
+            android:name=".ReceitasInsert"
+            android:label="@string/title_activity_receitas_insert" >
+        </activity>
+        <activity
+            android:name=".model.ReceitasEdit"
+            android:label="@string/title_activity_receitas_edit" >
             android:name=".Despensa"
             android:label="@string/title_activity_despensa"
             android:parentActivityName=".MenuPrincipal" >
@@ -41,6 +51,8 @@
             android:name=".ProdutoEdit"
             android:label="@string/title_activity_produto_edit"
             android:parentActivityName=".ProdutoDetail">
+            android:name=".ProdutoInsert"
+            android:label="@string/title_activity_produto_insert" >
         </activity>
     </application>
 
