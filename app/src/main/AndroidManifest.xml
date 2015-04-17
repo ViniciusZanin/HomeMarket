@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Despensa"
+            android:label="@string/title_activity_despensa"
+            android:parentActivityName=".MenuPrincipal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
+        </activity>
+        <activity
+            android:name=".DespensaListFragment"
+            android:label="@string/title_activity_despensa_list_fragment" >
+        </activity>
+        <activity
+            android:name=".DespensaDetailFragment"
+            android:label="@string/title_activity_despensa_detail_fragment" >
+        </activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.util.Log;
 import com.ufabc.kleinzanin.homemarket.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Lucas on 05/04/2015.
@@ -19,6 +20,7 @@ public class HomeMarketDao extends SQLiteOpenHelper {
     private static HomeMarketDao dao;
     private Context context;
     private SQLiteDatabase db;
+    private List<Produtos> produtos;
 
     private static final String DB_NAME = "tasks.db";
     private static final int DB_VERSION = 1;
