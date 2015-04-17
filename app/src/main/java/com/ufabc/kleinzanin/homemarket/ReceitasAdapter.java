@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ufabc.kleinzanin.homemarket.model.HomeMarketDao;
+import com.ufabc.kleinzanin.homemarket.model.Mercados;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
@@ -38,14 +39,16 @@ public class ReceitasAdapter extends BaseAdapter {
 
     }
 
+    public Receitas getItemAt(int position) { return dao.getItemAt(position);}
+
     @Override
     public int getCount() {
-        return 0;
+        return dao.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return getItemAt(position);
     }
 
     @Override
