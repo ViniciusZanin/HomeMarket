@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ufabc.kleinzanin.homemarket.ReceitasMain">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:icon="@android:drawable/ic_menu_add"
+        android:id="@+id/receita_add"
+        android:title="Adcionar"
+        app:showAsAction = "always"
+        android:orderInCategory="1"/>
+    <item android:icon="@android:drawable/ic_menu_search"
+        android:id="@+id/receita_search"
+        android:title="Busca"
+        app:showAsAction = "always"
+        android:orderInCategory="2"/>
+    <item android:title="@string/receita"
+        android:orderInCategory="0"/>
+
+</menu>

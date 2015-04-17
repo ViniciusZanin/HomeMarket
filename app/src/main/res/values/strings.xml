@@ -16,4 +16,18 @@
     <string name="count_tasks_query" />
     <string name="insert_task_query" />
     <string name="list_tasks_query" />
+    <string name="title_activity_receitas">Receitas</string>
+    <string name="receita">Receitas</string>
+    <string name="title_activity_receitas_list_fragment">ReceitasListFragment</string>
+    <string name="title_activity_receitas_detail_fragment">ReceitasDetailFragment</string>
+    <string name="title_activity_receita_details">ReceitaDetails</string>
+    <string name="Ingredientes">Ingredientes</string>
+    <string name="ModPrep">Modo de Preparo</string>
+    <string name="title_activity_receitas_insert">ReceitasInsert</string>
+    <string name="Receita_nome">Nome</string>
+    <string name="Receita_nomebox">Digite o nome da receita</string>
+    <string name="Receita_igr">Ingredientes</string>
+    <string name="RemoveIng_button">-</string>
+    <string name="ModPrep_edit">Digite o modo de preparo</string>
+    <string name="title_activity_receitas_edit">ReceitasEdit</string>
 </resources>

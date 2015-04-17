@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ReceitasDetails"
+            android:label="@string/title_activity_receita_details" >
+        </activity>
+        <activity
+            android:name=".ReceitasInsert"
+            android:label="@string/title_activity_receitas_insert" >
+        </activity>
+        <activity
+            android:name=".model.ReceitasEdit"
+            android:label="@string/title_activity_receitas_edit" >
+        </activity>
     </application>
 
 </manifest>
