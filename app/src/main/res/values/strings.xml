@@ -16,6 +16,7 @@
     <string name="count_tasks_query" />
     <string name="insert_task_query" />
     <string name="list_tasks_query" />
+<<<<<<< HEAD
     <string name="title_activity_receitas">Receitas</string>
     <string name="receita">Receitas</string>
     <string name="title_activity_receitas_list_fragment">ReceitasListFragment</string>
@@ -30,4 +31,13 @@
     <string name="RemoveIng_button">-</string>
     <string name="ModPrep_edit">Digite o modo de preparo</string>
     <string name="title_activity_receitas_edit">ReceitasEdit</string>
+=======
+    <string name="title_activity_despensa">Despensa</string>
+    <string name="title_activity_despensa_list_fragment">DespensaListFragment</string>
+    <string name="title_activity_despensa_detail_fragment">DespensaDetailFragment</string>
+    <string name="produto_check">Consumo Mensal</string>
+    <string name="produto_quantidade">Quantidade</string>
+    <string name="produto_preço">Preço(R$)</string>
+    <string name="title_activity_produto_insert">ProdutoInsert</string>
+>>>>>>> 4bfce1f451bac7cb41a747b43d647f362620f85a
 </resources>
