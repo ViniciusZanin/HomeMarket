@@ -17,16 +17,33 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ReceitasMain"
+            android:label="Receitas"
+            android:parentActivityName=".MenuPrincipal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" /></activity>
+        <activity
             android:name=".ReceitasDetails"
-            android:label="@string/title_activity_receita_details" >
+            android:label="@string/title_activity_receita_details"
+            android:parentActivityName=".ReceitasMain" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.ReceitasMain" />
         </activity>
         <activity
             android:name=".ReceitasInsert"
-            android:label="@string/title_activity_receitas_insert" >
+            android:label="@string/title_activity_receitas_insert"
+            android:parentActivityName=".ReceitasDetails" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.ReceitasDetails" />
         </activity>
         <activity
-            android:name=".model.ReceitasEdit"
+            android:name=".ReceitasEdit"
             android:label="@string/title_activity_receitas_edit" >
+        </activity>
+        <activity
             android:name=".Despensa"
             android:label="@string/title_activity_despensa"
             android:parentActivityName=".MenuPrincipal" >
@@ -37,7 +54,7 @@
         <activity
             android:name=".ProdutoInsert"
             android:label="@string/title_activity_produto_insert"
-            android:parentActivityName=".Despensa">
+            android:parentActivityName=".Despensa" >
         </activity>
         <activity
             android:name=".DespensaDetailFragment"
@@ -45,14 +62,12 @@
         <activity
             android:name=".ProdutoDetail"
             android:label="@string/title_activity_produto_detail"
-            android:parentActivityName=".Despensa">
+            android:parentActivityName=".Despensa" >
         </activity>
         <activity
             android:name=".ProdutoEdit"
             android:label="@string/title_activity_produto_edit"
-            android:parentActivityName=".ProdutoDetail">
-            android:name=".ProdutoInsert"
-            android:label="@string/title_activity_produto_insert" >
+            android:parentActivityName=".ProdutoDetail" >
         </activity>
     </application>
 

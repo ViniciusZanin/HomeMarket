@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.ufabc.kleinzanin.homemarket.model.Receitas;
 
 
 public class MenuPrincipal extends ActionBarActivity {
@@ -29,7 +30,7 @@ public class MenuPrincipal extends ActionBarActivity {
     }
 
     private void initDespensa() {
-        startActivity((new Intent(this,Despensa.class)));
+        startActivity((new Intent(this,ReceitasMain.class)));
     }
 
 

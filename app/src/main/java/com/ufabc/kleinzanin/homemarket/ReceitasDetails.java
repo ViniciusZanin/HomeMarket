@@ -1,10 +1,13 @@
 package com.ufabc.kleinzanin.homemarket;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ufabc.kleinzanin.homemarket.model.Produtos;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
@@ -52,11 +55,18 @@ public class ReceitasDetails extends ActionBarActivity {
         }
 
         else if(id == R.id.receita_remove){
-            return true;
+            ReceitasDAO dao = ReceitasDAO.newInstance();
+            int pos = getIntent().getExtras().getInt("receitaPosition");
+            dao.remove(pos);
+            Intent intent = new Intent(this, ReceitasMain.class);
+            startActivity(intent);
         }
 
         else if(id == R.id.receita_edit){
-            return true;
+            int pos = getIntent().getExtras().getInt("receitaPosition");
+            Intent intent = new Intent(this, ReceitasEdit.class);
+            intent.putExtra("receitaPosition", pos);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
