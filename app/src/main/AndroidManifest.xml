@@ -22,7 +22,8 @@
             android:parentActivityName=".MenuPrincipal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" /></activity>
+                android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
+        </activity>
         <activity
             android:name=".ReceitasDetails"
             android:label="@string/title_activity_receita_details"
@@ -94,6 +95,10 @@
         <activity
             android:name=".MercadoEdit"
             android:label="@string/title_activity_mercado_edit" >
+        </activity>
+        <activity
+            android:name=".ListadeCompras"
+            android:label="@string/title_activity_listade_compras" >
         </activity>
     </application>
 

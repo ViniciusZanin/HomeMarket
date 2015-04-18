@@ -73,8 +73,8 @@ public class MenuPrincipal extends ActionBarActivity {
             mDrawerList.setAdapter(adapter);
 
             // enabling action bar app icon and behaving it as toggle button
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-            getActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
 
             mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                     R.drawable.ic_drawer, //nav menu toggle icon
@@ -202,7 +202,7 @@ public class MenuPrincipal extends ActionBarActivity {
         @Override
         public void setTitle(CharSequence title) {
             mTitle = title;
-            getActionBar().setTitle(mTitle);
+            getSupportActionBar().setTitle(mTitle);
         }
 
         /**

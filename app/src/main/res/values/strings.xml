@@ -71,4 +71,5 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_listade_compras">ListadeCompras</string>
 </resources>
