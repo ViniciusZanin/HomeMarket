@@ -17,6 +17,8 @@ public class ListadeCompras extends ActionBarActivity {
     private TextView listprod;
     private TextView pr;
     private Button enviar;
+    String produtos = "";
+    double preço = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +30,18 @@ public class ListadeCompras extends ActionBarActivity {
 
     private void init() {
         this.dao = ProdutosDao.newInstance();
-        String produtos = "";
-        double preço = 0;
         for (int i = 0; i < dao.size(); i++) {
             if (dao.getItemAt(i).getChecked()) {
                 if (dao.getItemAt(i).getConsumo() < dao.getItemAt(i).getQuantidade()) {
                     produtos = produtos + "/n" + Integer.toString(dao.getItemAt(i).getConsumo() - dao.getItemAt(i).getQuantidade()) + "x " + dao.getItemAt(i).getNome();
-                    preço = preço + Double.parseDouble(dao.getItemAt(i).getPreço());
+                    preço = preço + (Double.parseDouble(dao.getItemAt(i).getPreço()))*(dao.getItemAt(i).getConsumo() - dao.getItemAt(i).getQuantidade());
                 }
             }
         }
         listprod = ((TextView )findViewById(R.id.list_listacompra));
-        listprod.setText(produtos);
+        listprod.setText("Manga x 800");
         pr = ((TextView )findViewById(R.id.preço_lista));
-        pr.setText(String.valueOf(preço));
+        pr.setText("3.99");
     }
 
 
