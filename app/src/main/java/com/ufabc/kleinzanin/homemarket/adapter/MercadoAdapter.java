@@ -1,4 +1,4 @@
-package com.ufabc.kleinzanin.homemarket;
+package com.ufabc.kleinzanin.homemarket.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.MercadoDAO;
 import com.ufabc.kleinzanin.homemarket.model.Mercados;
 

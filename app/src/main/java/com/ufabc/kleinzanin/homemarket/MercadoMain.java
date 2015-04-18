@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.ufabc.kleinzanin.homemarket.adapter.MercadoAdapter;
 import com.ufabc.kleinzanin.homemarket.model.MercadoDAO;
 import com.ufabc.kleinzanin.homemarket.model.Mercados;
 

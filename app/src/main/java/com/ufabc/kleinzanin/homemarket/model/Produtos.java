@@ -10,7 +10,15 @@ public class Produtos {
     private int imagem;
     private int consumo;
     private boolean checked;
+    private String unidade;
 
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
+    }
 
     public String getNome() {
         return nome;

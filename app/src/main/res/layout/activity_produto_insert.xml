@@ -22,7 +22,12 @@
     <EditText android:id="@+id/insert_produto_quantidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Qunatidade atual" />
+        android:hint="Quantidade atual" />
+    <EditText
+        android:id="@+id/insert_unidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Unidade (g, kg, l)"/>
     <EditText android:id="@+id/insert_produto_preço"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

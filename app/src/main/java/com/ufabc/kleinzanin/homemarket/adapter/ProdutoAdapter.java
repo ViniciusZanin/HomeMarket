@@ -1,4 +1,4 @@
-package com.ufabc.kleinzanin.homemarket;
+package com.ufabc.kleinzanin.homemarket.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,17 +9,18 @@ import android.widget.CheckBox;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 /**
  * Created by Vinicius on 17/04/2015.
  */
-public class ListaDeCompraAdapter extends BaseAdapter {
+public class ProdutoAdapter extends BaseAdapter {
     private ProdutosDao dao;
     private Context context;
 
-    public  ListaDeCompraAdapter(Context c){
+    public  ProdutoAdapter(Context c){
         this.context = c;
         this.dao = ProdutosDao.newInstance();
     }
@@ -59,8 +60,10 @@ public class ListaDeCompraAdapter extends BaseAdapter {
         Produtos produto = null;
         TextView nome = null;
         TextView quantidade = null;
+        TextView preço = null;
+        CheckBox checked = null;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
-                Context.LAYOUT_INFLATER_SERVICE);
+         Context.LAYOUT_INFLATER_SERVICE);
         if(convertView == null){
             convertView = inflater.inflate(R.layout.despensa_list_item,null);
         }
@@ -69,12 +72,12 @@ public class ListaDeCompraAdapter extends BaseAdapter {
         quantidade = (TextView ) convertView.findViewById(R.id.produto_quantidade);
         nome.setText(produto.getNome());
         if(produto.getChecked() == true){
-            quantidade.setText(Integer.toString(produto.getQuantidade()) + "/" +
-                    Integer.toString(produto.getConsumo()));}
+        quantidade.setText(Integer.toString(produto.getQuantidade()) + "/" +
+                Integer.toString(produto.getConsumo()) + " " + produto.getUnidade());}
         else{
             quantidade.setText(Integer.toString(produto.getQuantidade()));
 
-        }
+    }
         return convertView;
     }
 }

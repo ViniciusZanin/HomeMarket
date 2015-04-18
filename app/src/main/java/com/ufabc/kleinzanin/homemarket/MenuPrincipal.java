@@ -75,7 +75,7 @@ public class MenuPrincipal extends ActionBarActivity {
         };
 
 
-        private void initDespensa() {
+    private void initDespensa() {
         startActivity((new Intent(this,Despensa.class)));
     }
 
@@ -87,9 +87,10 @@ public class MenuPrincipal extends ActionBarActivity {
         startActivity((new Intent(this,MercadoMain.class)));
     }
 
-      private void initCompras() {
+    private void initCompras() {
         startActivity((new Intent(this,ListadeCompras.class)));
     }
+
     @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             // toggle nav drawer on selecting action bar app icon/title

@@ -31,7 +31,7 @@ public class ProdutosDao {
         c.setConsumo(1000);
         c.setChecked(true);
         c.setImagem(R.drawable.manga);
-
+        c.setUnidade("g");
         produtos.add(c);
 
     }

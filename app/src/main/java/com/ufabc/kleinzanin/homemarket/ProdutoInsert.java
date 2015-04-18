@@ -54,6 +54,7 @@ public class ProdutoInsert extends ActionBarActivity {
         String quantidade = ((EditText )findViewById(R.id.insert_produto_quantidade)).getText().toString();
         String preço = ((EditText )findViewById(R.id.insert_produto_preço)).getText().toString();
         String consumo = ((EditText )findViewById(R.id.insert_produto_consumo)).getText().toString();
+        String unidade = ((EditText)findViewById(R.id.insert_unidade)).getText().toString();
         boolean check = ((CheckBox )findViewById(R.id.insert_produto_check)).isChecked();
         Produtos produto = new Produtos();
 
@@ -63,6 +64,7 @@ public class ProdutoInsert extends ActionBarActivity {
         if(check){
             produto.setConsumo(Integer.parseInt(consumo));}
         produto.setChecked(check);
+        produto.setUnidade(unidade);
         dao.add(produto);
         Toast.makeText(this,"Produto Adicionar",Toast.LENGTH_SHORT).show();
         startActivity((new Intent(this,Despensa.class)));

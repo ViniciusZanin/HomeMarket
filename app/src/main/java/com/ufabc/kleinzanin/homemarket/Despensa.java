@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.ufabc.kleinzanin.homemarket.model.HomeMarketDao;
+import com.ufabc.kleinzanin.homemarket.adapter.ProdutoAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
@@ -51,6 +51,7 @@ public class Despensa extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 if (detailFragment == null) { // small screen
                     Intent intent = null;
 

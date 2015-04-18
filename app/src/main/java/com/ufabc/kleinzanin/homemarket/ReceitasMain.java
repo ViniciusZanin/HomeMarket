@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.ufabc.kleinzanin.homemarket.model.HomeMarketDao;
+import com.ufabc.kleinzanin.homemarket.adapter.ReceitasAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
