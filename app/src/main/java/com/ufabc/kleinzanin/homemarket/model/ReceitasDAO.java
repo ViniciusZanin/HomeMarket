@@ -21,14 +21,24 @@ public class ReceitasDAO {
         Receitas r;
 
         r = new Receitas();
+        String ingredientes = "Leite" + "\n" + "Ovo" + "\n" + "Farinha" + "\n";
 
         r.setReceita("Teste 1");
-        r.setIngredientes("Ingrediente 1");
-        r.setModopreparo("Modo preparo");
+        r.setIngredientes(ingredientes);
+        r.setModopreparo("Bata as claras em neve\n" +
+                "Reserve\n" +
+                "Bata bem as gemas com a margarina e o açúcar\n" +
+                "Acrescente o leite e farinha aos poucos sem parar de bater\n" +
+                "Por último agregue as claras em neve e o fermento\n" +
+                "Coloque em forma grande de furo central untada e enfarinhada\n" +
+                "Asse em forno médio, pré - aquecido, por aproximadamente 40 minutos\n" +
+                "Quando espetar um palito e sair limpo estará assado \n ");
 
         receitas.add(r);
 
     }
+    public void edit(Receitas receita){ receitas.remove(receita);receitas.add(receita);}
+
 
     public static ReceitasDAO newInstance() {
         if(dao == null) {

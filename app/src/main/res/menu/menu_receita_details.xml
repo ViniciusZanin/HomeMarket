@@ -4,4 +4,12 @@
     tools:context="com.ufabc.kleinzanin.homemarket.ReceitasDetails">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:title="Remover"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:id="@+id/receita_remove"
+        app:showAsAction="always"/>
+    <item android:id="@+id/receita_edit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Edit"
+        app:showAsAction="always"/>
 </menu>

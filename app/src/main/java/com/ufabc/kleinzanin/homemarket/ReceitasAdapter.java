@@ -38,13 +38,14 @@ public class ReceitasAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
 
     }
-
     public Receitas getItemAt(int position) { return dao.getItemAt(position);}
+
 
     @Override
     public int getCount() {
         return dao.size();
     }
+
 
     @Override
     public Object getItem(int position) {

@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/receita_fragmentdetails"
-        android:name="com.ufabc.kleinzanin.homemarket.ReceitasListFragment"
+        android:name="com.ufabc.kleinzanin.homemarket.ReceitasDetailFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2">

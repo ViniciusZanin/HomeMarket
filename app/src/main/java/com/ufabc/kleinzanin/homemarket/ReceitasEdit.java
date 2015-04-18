@@ -7,20 +7,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
-
-public class ReceitasInsert extends ActionBarActivity {
+public class ReceitasEdit extends ActionBarActivity {
 
     private ReceitasDAO dao =  ReceitasDAO.newInstance();
     private TextView ingredientes;
+    private EditText nome;
+    private EditText modprep;
     private Button save;
     private Button add;
     String ingrediente = "";
@@ -28,19 +30,28 @@ public class ReceitasInsert extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receitas_insert);
+        setContentView(R.layout.activity_receitas_edit);
         init();
     }
 
-
     private void init() {
+        ReceitasDAO dao = ReceitasDAO.newInstance();
+        int pos = getIntent().getExtras().getInt("receitaPosition");
+        Receitas receita = dao.getItemAt(pos);
         ingredientes = (TextView )findViewById(R.id.ingredientes_list);
+
+        modprep = (EditText) findViewById(R.id.Mod_prepedit);
+        nome =  ((EditText) findViewById(R.id.Nome_editText));
         save = (Button )findViewById(R.id.ReceitaInsert_button);
         add = (Button ) findViewById(R.id.Add_button);
+        nome.setText(receita.getReceita());
+        modprep.setText(receita.getModopreparo());
+        ingredientes.setText(receita.getIngredientes());
+        ((EditText) findViewById(R.id.insert_ingrediente)).setText(receita.getIngredientes());
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insert();
+                edit();
             }
         });
         add.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +70,7 @@ public class ReceitasInsert extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_receitas_insert, menu);
+        getMenuInflater().inflate(R.menu.menu_receitas_edit, menu);
         return true;
     }
 
@@ -77,17 +88,19 @@ public class ReceitasInsert extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    private void insert() {
-        String nome = ((EditText) findViewById(R.id.Nome_editText)).getText().toString();
-        String modepreparo = ((EditText)findViewById(R.id.Mod_prepedit)).getText().toString();
+    private void edit(){
+        ReceitasDAO dao = ReceitasDAO.newInstance();
+        int pos = getIntent().getExtras().getInt("receitaPosition");
+        Receitas receita = dao.getItemAt(pos);
+        String nnome = ((EditText) findViewById(R.id.Nome_editText)).getText().toString();
+        String nmodepreparo = ((EditText)findViewById(R.id.Mod_prepedit)).getText().toString();
 
-        Receitas receita = new Receitas();
-        receita.setModopreparo(modepreparo);
+        receita.setModopreparo(nmodepreparo);
         receita.setIngredientes(ingrediente);
-        receita.setReceita(nome);
+        receita.setReceita(nnome);
 
-        dao.add(receita);
-        Toast.makeText(this, "Redceita Adicionada", Toast.LENGTH_SHORT).show();
+        dao.edit(receita);
+        Toast.makeText(this, "Redceita Editada", Toast.LENGTH_SHORT).show();
         startActivity((new Intent(this,ReceitasMain.class)));
 
     }

@@ -37,6 +37,9 @@
     <string name="produto_quantidade">Quantidade</string>
     <string name="produto_preço">Preço(R$)</string>
     <string name="title_activity_produto_insert">ProdutoInsert</string>
+    <string name="title_activity_depensa_Detail">Detalhes do Produto</string>
+    <string name="title_activity_produto_detail">ProdutoDetail</string>
+    <string name="title_activity_produto_edit">ProdutoEdit</string>
     <string name="title_activity_mercado_main">Lista de Mercados</string>
     <string name="title_activity_mercado_list_fragment">MercadoListFragment</string>
     <string name="title_activity_mercado_details">MercadoDetails</string>
@@ -44,9 +47,6 @@
     <string name="MercadoEnderecoItem">Endereço do Mercado</string>
     <string name="MercadoTelefoneItem">Telefone do Mercado</string>
     <string name="MercadoEmailItem">Email do supermercado</string>
-    <string name="title_activity_depensa_Detail">Detalhes do Produto</string>
-    <string name="title_activity_produto_detail">ProdutoDetail</string>
-    <string name="title_activity_produto_edit">ProdutoEdit</string>
     <string name="title_activity_mercado_insert">Inserir Receitas</string>
     <string name="MercadoNome">Nome</string>
     <string name="MercadoEmail">E-mail:</string>
