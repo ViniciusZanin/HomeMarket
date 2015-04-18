@@ -61,7 +61,7 @@ public class ProdutoInsert extends ActionBarActivity {
         produto.setQuantidade(Integer.parseInt(quantidade));
         produto.setPreço(preço);
         if(check){
-        produto.setConsumo(Integer.parseInt(consumo));}
+            produto.setConsumo(Integer.parseInt(consumo));}
         produto.setChecked(check);
         dao.add(produto);
         Toast.makeText(this,"Produto Adicionar",Toast.LENGTH_SHORT).show();
