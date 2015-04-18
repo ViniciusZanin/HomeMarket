@@ -22,6 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/teste_button"
-        android:onClick="testeDespensa"/>
+        android:onClick="testeDespensa"
+        android:text="Teste de Dados"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

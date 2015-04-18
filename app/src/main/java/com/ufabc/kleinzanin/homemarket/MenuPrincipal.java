@@ -3,6 +3,7 @@ package com.ufabc.kleinzanin.homemarket;
     import android.app.Activity;
     import android.app.Fragment;
     import android.app.FragmentManager;
+    import android.content.Context;
     import android.content.Intent;
     import android.content.res.Configuration;
     import android.content.res.TypedArray;
@@ -20,11 +21,13 @@ package com.ufabc.kleinzanin.homemarket;
 
     import com.ufabc.kleinzanin.homemarket.adapter.NavDrawerListAdapter;
     import com.ufabc.kleinzanin.homemarket.model.NavDrawerItem;
+    import com.ufabc.kleinzanin.homemarket.model.Receitas;
 
     import java.util.ArrayList;
 
 
 public class MenuPrincipal extends ActionBarActivity {
+
         private DrawerLayout mDrawerLayout;
         private ListView mDrawerList;
         private ActionBarDrawerToggle mDrawerToggle;
@@ -47,60 +50,8 @@ public class MenuPrincipal extends ActionBarActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_menu_principal);
 
-            // load slide menu items
-            navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+            createMenu(savedInstanceState);
 
-            // nav drawer icons from resources
-            navMenuIcons = getResources()
-                    .obtainTypedArray(R.array.nav_drawer_icons);
-
-            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-            mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-
-            navDrawerItems = new ArrayList<NavDrawerItem>();
-
-            // adding nav drawer items to array
-            // Home
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1), true, "+3"));
-
-            // Recycle the typed array
-            navMenuIcons.recycle();
-
-            mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
-            // setting the nav drawer list adapter
-            adapter = new NavDrawerListAdapter(getApplicationContext(), navDrawerItems);
-            mDrawerList.setAdapter(adapter);
-
-            // enabling action bar app icon and behaving it as toggle button
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-            getActionBar().setHomeButtonEnabled(true);
-
-            mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                    R.drawable.ic_drawer, //nav menu toggle icon
-                    R.string.app_name, // nav drawer open - description for accessibility
-                    R.string.app_name // nav drawer close - description for accessibility
-            ) {
-                public void onDrawerClosed(View view) {
-                    getActionBar().setTitle(mTitle);
-                    // calling onPrepareOptionsMenu() to show action bar icons
-                    invalidateOptionsMenu();
-                }
-
-                public void onDrawerOpened(View drawerView) {
-                    getActionBar().setTitle(mDrawerTitle);
-                    // calling onPrepareOptionsMenu() to hide action bar icons
-                    invalidateOptionsMenu();
-                }
-
-
-            };
-            mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-            if (savedInstanceState == null) {
-                // on first time display view for first nav item
-                displayView(0);
-            }
         }
 
         /**
@@ -123,11 +74,27 @@ public class MenuPrincipal extends ActionBarActivity {
         };
 
 
-    private void initDespensa() {
+        private void initDespensa() {
+        startActivity((new Intent(this,Despensa.class)));
+    }
+
+    private void initReceitas() {
         startActivity((new Intent(this,ReceitasMain.class)));
     }
 
-        @Override
+    private void initMercados() {
+        startActivity((new Intent(this,MercadoMain.class)));
+    }
+
+/*        private void initCompras() {
+        startActivity((new Intent(this,Compras.class)));
+    }
+
+        private void initConfig() {
+        startActivity((new Intent(this,Configuracoes.class)));
+    }
+*/
+    @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             // toggle nav drawer on selecting action bar app icon/title
             if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -163,22 +130,37 @@ public class MenuPrincipal extends ActionBarActivity {
                case 0:
                     fragment = new HomeFragment();
                     break;
-               /* case 1:
-                    fragment = new FindPeopleFragment();
+                case 1:
+                    initDespensa();
                     break;
                 case 2:
-                    fragment = new PhotosFragment();
+                    fragment = new DespensaListFragment();
                     break;
                 case 3:
-                    fragment = new CommunityFragment();
+                    initReceitas();
                     break;
                 case 4:
-                    fragment = new PagesFragment();
+                    fragment = new ReceitasDetailFragment();
                     break;
                 case 5:
-                    fragment = new WhatsHotFragment();
+                    fragment = new ReceitasListFragment();
                     break;
-                */
+                case 6:
+                    //initCompras();
+                case 7:
+                    //fragment = new ComprasListFragment();
+                case 8:
+                    fragment = new MercadoDetailFragment();
+                    break;
+                case 9:
+                    initMercados();
+                    break;
+                case 10:
+                    //fragment = new VariacaoPrecoFragment();
+                case 11:
+                    fragment = new ConfigFragment();
+                    break;
+
                 default:
                     break;
             }
@@ -202,7 +184,7 @@ public class MenuPrincipal extends ActionBarActivity {
         @Override
         public void setTitle(CharSequence title) {
             mTitle = title;
-            getActionBar().setTitle(mTitle);
+            getSupportActionBar().setTitle(mTitle);
         }
 
         /**
@@ -224,4 +206,82 @@ public class MenuPrincipal extends ActionBarActivity {
             mDrawerToggle.onConfigurationChanged(newConfig);
         }
 
+        public void createMenu(Bundle savedInstanceState){
+            // load slide menu items
+            navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+
+            // nav drawer icons from resources
+            navMenuIcons = getResources()
+                    .obtainTypedArray(R.array.nav_drawer_icons);
+
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+
+            navDrawerItems = new ArrayList<NavDrawerItem>();
+
+            // adding nav drawer items to array
+            // Home
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+            // Despensa
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+            // Editar Despensa
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[2],11));
+            // Receitas
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(2, -1)));
+            // Receitas Possiveis
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], 11));
+            // Visualizar todos
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], 11));
+            // Compras
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], 11));
+            // Lista de Compras
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], 11));
+            // Localizar Mercados
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], 11));
+            // Merc. Cadastrados
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[9], 11));
+            // Variação de Preços
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[10], 11));
+            // Config
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[11], navMenuIcons.getResourceId(4, -1)));
+
+            // Recycle the typed array
+            navMenuIcons.recycle();
+
+            mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+
+            // setting the nav drawer list adapter
+            adapter = new NavDrawerListAdapter(getApplicationContext(), navDrawerItems);
+            mDrawerList.setAdapter(adapter);
+
+            // enabling action bar app icon and behaving it as toggle button
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+
+            mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                    R.drawable.ic_drawer, //nav menu toggle icon
+                    R.string.app_name, // nav drawer open - description for accessibility
+                    R.string.app_name // nav drawer close - description for accessibility
+            ) {
+                public void onDrawerClosed(View view) {
+                    getSupportActionBar().setTitle(mTitle);
+                    // calling onPrepareOptionsMenu() to show action bar icons
+                    invalidateOptionsMenu();
+                }
+
+                public void onDrawerOpened(View drawerView) {
+                    getSupportActionBar().setTitle(mDrawerTitle);
+                    // calling onPrepareOptionsMenu() to hide action bar icons
+                    invalidateOptionsMenu();
+                }
+
+
+            };
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+            if (savedInstanceState == null) {
+                // on first time display view for first nav item
+                displayView(0);
+            }
+        }
 }
