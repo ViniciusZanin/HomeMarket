@@ -13,7 +13,7 @@
         android:layout_above="@+id/button_send_lista" />
 
     <TextView
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Valor Estimado:"
@@ -28,7 +28,7 @@
     <Button android:id="@+id/button_send_lista"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="Eviar Lista"
+        android:text="Enviar Lista"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

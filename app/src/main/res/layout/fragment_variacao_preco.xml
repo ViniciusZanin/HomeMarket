@@ -5,7 +5,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="Lista (17/04/2015)"  android:layout_marginTop="10dp"/>
+        android:text="Lista (17/04/2015)"  android:layout_marginTop="10dp" android:layout_marginLeft="5dp" android:textSize="17dp"/>
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
         android:text="R$32,50 - 0%" android:layout_marginTop="40dp"/>
 </FrameLayout>

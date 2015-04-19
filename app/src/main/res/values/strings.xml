@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">HomeMarket</string>
+    <string name="app_name">Home Market</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="create_table_query">
@@ -78,6 +78,10 @@
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
         <item>@drawable/ic_home</item>
+        <item>@drawable/ic_despensa</item>
+        <item>@drawable/ic_receitas</item>
+        <item>@drawable/ic_compras</item>
+        <item>@drawable/ic_config</item>
     </array>
 
     <!-- Content Description -->

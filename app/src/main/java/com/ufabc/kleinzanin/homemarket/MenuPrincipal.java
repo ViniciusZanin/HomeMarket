@@ -223,17 +223,17 @@ public class MenuPrincipal extends ActionBarActivity {
             // Home
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
             // Despensa
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(0, -1)));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
             // Editar Despensa
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[2],11));
             // Receitas
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(0, -1)));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(2, -1)));
             // Receitas Possiveis
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], 11));
             // Visualizar todos
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], 11));
             // Compras
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(0, -1)));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(3, -1)));
             // Lista de Compras
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], 11));
             // Localizar Mercados
@@ -243,7 +243,7 @@ public class MenuPrincipal extends ActionBarActivity {
             // Variação de Preços
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[10], 11));
             // Config
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[11], navMenuIcons.getResourceId(0, -1)));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[11], navMenuIcons.getResourceId(4, -1)));
 
             // Recycle the typed array
             navMenuIcons.recycle();

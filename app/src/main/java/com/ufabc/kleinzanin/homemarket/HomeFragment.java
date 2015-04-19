@@ -47,13 +47,13 @@ public class HomeFragment extends Fragment {
         String date;
         Calendar c = Calendar.getInstance();
         date = String.valueOf(c.get(Calendar.DAY_OF_MONTH) + "/" + c.get(Calendar.MONTH)+1 + "/" + c.get(Calendar.YEAR));
-        statusDespensa.setText("Status despensa " + date);
+        statusDespensa.setText("Status da Despensa em " + date);
         vStatusDespensa.setText("65%");
 
         statusCompraAtual.setText("Preço da Lista de Compra Atual");
         vStatusCompraAtual.setText("R$32,50"); //TODO:Implements method to get lista de compra value
 
-        statusUltimaCompra.setText("Gasto ultima compra");
+        statusUltimaCompra.setText("Gasto na Ultima Compra");
         vStatusUltimaCompra.setText("R$100,30"); //TODO:Implements method to get LAST lista de compra value
 
         statusDespensa.setOnClickListener(new View.OnClickListener() {
