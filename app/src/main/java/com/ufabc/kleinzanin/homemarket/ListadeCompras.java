@@ -25,7 +25,6 @@ public class ListadeCompras extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listade_compras);
         init();
-        getActionBar().setTitle("Lista de Compras");
     }
 
 
