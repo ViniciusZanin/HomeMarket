@@ -12,11 +12,11 @@ import android.widget.ListView;
 
 import com.ufabc.kleinzanin.homemarket.adapter.ProdutoAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
 
 
 public class Despensa extends ActionBarActivity {
-    private ProdutosDao dao;
+    private ProdutosDAO dao;
     private ListView listView;
     private Button add;
     private Button remove;
@@ -33,7 +33,7 @@ public class Despensa extends ActionBarActivity {
     }
 
     private void init(){
-        this.dao = ProdutosDao.newInstance();
+        this.dao = ProdutosDAO.newInstance();
 
         listFragment = (DespensaListFragment )getFragmentManager().findFragmentById(R.id.fragment_list);
         detailFragment = (DespensaDetailFragment ) getFragmentManager().findFragmentById(R.id.fragment_detail);

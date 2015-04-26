@@ -6,6 +6,7 @@ import java.util.List;
  * Created by Felippe on 16/04/2015.
  */
 public class Receitas {
+    private int ID;
     private String receita;
     private String ingredientes;
     private String modopreparo;
@@ -36,5 +37,13 @@ public class Receitas {
 
     public String toString() {
         return receita;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

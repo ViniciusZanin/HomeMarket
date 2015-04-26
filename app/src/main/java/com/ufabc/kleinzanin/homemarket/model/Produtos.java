@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.media.Image;
 
 public class Produtos {
+    private int ID;
     private String nome;
     private int quantidade;
     private String preço;
@@ -61,5 +62,16 @@ public class Produtos {
 
     public void setImagem(int imagem) { this.imagem = imagem;}
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
 }
 

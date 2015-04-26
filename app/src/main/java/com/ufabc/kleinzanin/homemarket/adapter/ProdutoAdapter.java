@@ -6,23 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
 
 /**
  * Created by Vinicius on 17/04/2015.
  */
 public class ProdutoAdapter extends BaseAdapter {
-    private ProdutosDao dao;
+    private ProdutosDAO dao;
     private Context context;
 
     public  ProdutoAdapter(Context c){
         this.context = c;
-        this.dao = ProdutosDao.newInstance();
+        this.dao = ProdutosDAO.newInstance();
     }
 
     public boolean remove(int position){

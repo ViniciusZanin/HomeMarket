@@ -230,8 +230,6 @@ public class MenuPrincipal extends ActionBarActivity {
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(2, -1)));
             // Receitas Possiveis
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], 11));
-            // Visualizar todos
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], 11));
             // Compras
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(3, -1)));
             // Lista de Compras

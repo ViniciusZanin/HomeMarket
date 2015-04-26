@@ -1,28 +1,22 @@
 package com.ufabc.kleinzanin.homemarket;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
-
-import org.w3c.dom.Text;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class HomeFragment extends Fragment {
     private TextView statusDespensa, vStatusDespensa;
     private TextView statusCompraAtual, vStatusCompraAtual;
     private TextView statusUltimaCompra, vStatusUltimaCompra;
-    ProdutosDao produtosDao;
+    ProdutosDAO produtosDAO;
 
 
 	public HomeFragment(){}

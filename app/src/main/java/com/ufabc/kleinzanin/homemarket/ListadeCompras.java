@@ -5,15 +5,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ufabc.kleinzanin.homemarket.model.Produtos;
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
 
 
 public class ListadeCompras extends ActionBarActivity {
-    private ProdutosDao dao;
+    private ProdutosDAO dao;
     private TextView listprod;
     private TextView pr;
     private Button enviar;
@@ -29,7 +27,7 @@ public class ListadeCompras extends ActionBarActivity {
 
 
     private void init() {
-        this.dao = ProdutosDao.newInstance();
+        this.dao = ProdutosDAO.newInstance();
         for (int i = 0; i < dao.size(); i++) {
             if (dao.getItemAt(i).getChecked()) {
                 if (dao.getItemAt(i).getConsumo() < dao.getItemAt(i).getQuantidade()) {

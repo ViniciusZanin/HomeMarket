@@ -19,7 +19,7 @@ public class Mercados {
 
     public String getTelefone(){ return telefone; }
 
-    public void setTelefonee(String telefone) { this.telefone = telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
 
     public String getEndereco(){ return endereco; }
 

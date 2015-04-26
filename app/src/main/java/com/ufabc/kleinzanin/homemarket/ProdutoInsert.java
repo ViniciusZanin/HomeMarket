@@ -5,18 +5,17 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
 
 
 public class ProdutoInsert extends ActionBarActivity {
 
-    private ProdutosDao dao = ProdutosDao.newInstance();
+    private ProdutosDAO dao = ProdutosDAO.newInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
 
 
 public class ProdutoDetail extends ActionBarActivity {
@@ -22,7 +22,7 @@ public class ProdutoDetail extends ActionBarActivity {
     }
 
     private void showProduto() {
-        ProdutosDao dao = ProdutosDao.newInstance();
+        ProdutosDAO dao = ProdutosDAO.newInstance();
         int pos = getIntent().getExtras().getInt("produtoPosition");
         Produtos produto = dao.getItemAt(pos);
         detail.showProdutos(produto);
@@ -54,7 +54,7 @@ public class ProdutoDetail extends ActionBarActivity {
             startActivity(intent);
         }
         if(id == R.id.action_produto_remove){
-            ProdutosDao dao = ProdutosDao.newInstance();
+            ProdutosDAO dao = ProdutosDAO.newInstance();
             int pos = getIntent().getExtras().getInt("produtoPosition");
             dao.remove(pos);
             Intent intent = new Intent(this, Despensa.class);

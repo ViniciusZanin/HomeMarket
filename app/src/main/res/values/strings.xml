@@ -2,20 +2,105 @@
 <resources>
 
     <string name="app_name">Home Market</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="create_table_query">
-         CREATE TABLE #TABLENAME (
+
+    <!-- PRODUTOS -->
+    <string name="create_table_produtos_query">
+         CREATE TABLE produtos (
             _id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
-            done INTEGER NOT NULL
+            unity TEXT NOT NULL,
+            quantNow INTEGER NOT NULL,
+            quantMonth INTEGER,
+            monthly INTEGER NOT NULL,
+            value TEXT NOT NULL,
+            image BLOB)
     </string>
-     <string name="drop_table_query">
-        DROP TABLE IF EXISTS #TABLENAME;
+     <string name="drop_table_produtos_query">
+        DROP TABLE IF EXISTS produtos;
     </string>
-    <string name="count_tasks_query" />
-    <string name="insert_task_query" />
-    <string name="list_tasks_query" />
+    <string name="count_produtos_query" >
+        SELECT COUNT(*) AS count FROM produtos;
+    </string>
+    <string name="list_produtos_query" >
+        SELECT * FROM produtos;
+    </string>
+     <string name="insert_produtos_query">
+         INSERT INTO produtos (title, unity, quantNow, quantMonth, monthly, image) VALUES(?,?,?,?,?,?)
+    </string>
+     <string name="edit_produtos_query">
+         UPDATE produtos SET (title, unity, quantNow, quantMonth, monthly, image) VALUES(?,?,?,?,?,?) WHERE _id = ?
+    </string>
+     <string name="remove_produtos_query">
+         DELETE FROM produtos WHERE _id = ?
+    </string>
+    <string name="get_product_query">
+         SELECT * FROM produtos WHERE _id = ?
+    </string>
+
+    <!-- RECEITAS -->
+        <string name="create_table_receitas_query">
+         CREATE TABLE receitas (
+            _id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            ingredientes TEXT NOT NULL,
+            mododefazer TEXT NOT NULL
+            )
+    </string>
+     <string name="drop_table_receitas_query">
+        DROP TABLE IF EXISTS receitas;
+    </string>
+    <string name="count_receitas_query" >
+        SELECT COUNT(*) AS count FROM receitas;
+    </string>
+    <string name="list_receitas_query" >
+        SELECT * FROM receitas;
+    </string>
+     <string name="insert_receitas_query">
+         INSERT INTO receitas (title, ingredientes, mododefazer) VALUES(?,?,?)
+    </string>
+     <string name="edit_receitas_query">
+         UPDATE receitas SET (title, ingredientes, mododefazer) VALUES(?,?,?) WHERE _id = ?
+    </string>
+     <string name="remove_receitas_query">
+         DELETE FROM receitas WHERE _id = ?
+    </string>
+    <string name="get_receitas_query">
+         SELECT * FROM receitas WHERE _id = ?
+    </string>
+
+    <!-- MERCADOS -->
+        <string name="create_table_mercados_query">
+         CREATE TABLE mercados (
+            _id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL,
+            email TEXT NOT NULL,
+            telefone TEXT NOT NULL,
+            receitas TEXT NOT NULL
+            )
+    </string>
+     <string name="drop_table_mercados_query">
+        DROP TABLE IF EXISTS mercados;
+    </string>
+    <string name="count_mercados_query" >
+        SELECT COUNT(*) AS count FROM mercados;
+    </string>
+    <string name="list_mercados_query" >
+        SELECT * FROM mercados;
+    </string>
+     <string name="insert_mercados_query">
+         INSERT INTO mercados (nome, email, telefone, receitas) VALUES(?,?,?,?)
+    </string>
+     <string name="edit_mercados_query">
+         UPDATE mercados SET (nome, email, telefone, receitas) VALUES(?,?,?,?) WHERE _id = ?
+    </string>
+     <string name="remove_mercados_query">
+         DELETE FROM mercados WHERE _id = ?
+    </string>
+    <string name="get_mercados_query">
+         SELECT * FROM mercados WHERE _id = ?
+    </string>
+
     <string name="title_activity_receitas">Receitas</string>
     <string name="receita">Receitas</string>
     <string name="title_activity_receitas_list_fragment">Lista de Receitas</string>
