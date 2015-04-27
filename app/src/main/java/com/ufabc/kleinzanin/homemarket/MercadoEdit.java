@@ -29,7 +29,7 @@ public class MercadoEdit extends ActionBarActivity {
     }
 
     private void ini() {
-        MercadoDAO dao = MercadoDAO.newInstance();
+        MercadoDAO dao = MercadoDAO.newInstance(this);
         int pos = getIntent().getExtras().getInt("mercadoPosition");
         Mercados mercado = dao.getItemAt(pos);
         nome = (EditText ) findViewById(R.id.editmercado_name);
@@ -43,7 +43,7 @@ public class MercadoEdit extends ActionBarActivity {
     }
 
     private void insert() {
-        MercadoDAO dao = MercadoDAO.newInstance();
+        MercadoDAO dao = MercadoDAO.newInstance(this);
         int pos = getIntent().getExtras().getInt("mercadoPosition");
         Mercados mercado = dao.getItemAt(pos);
         String nnome = ((EditText)findViewById(R.id.editmercado_name)).getText().toString();
@@ -55,7 +55,7 @@ public class MercadoEdit extends ActionBarActivity {
 
         mercado.setNome(nnome);
         mercado.setEmail(nemail);
-        mercado.setTelefonee(ntelefone);
+        mercado.setTelefone(ntelefone);
         mercado.setEndereco(nendereco);
         dao.edit(mercado);
 

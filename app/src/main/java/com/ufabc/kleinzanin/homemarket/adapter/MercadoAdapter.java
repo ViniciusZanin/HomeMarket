@@ -20,7 +20,7 @@ public class MercadoAdapter extends BaseAdapter {
 
     public MercadoAdapter(Context c){
         this.context = c;
-        this.dao = MercadoDAO.newInstance();
+        this.dao = MercadoDAO.newInstance(c);
     }
 
     public boolean remove(int position){

@@ -14,7 +14,7 @@ import com.ufabc.kleinzanin.homemarket.model.Mercados;
 
 public class MercadoInsert extends ActionBarActivity {
 
-    private MercadoDAO dao = MercadoDAO.newInstance();
+    private MercadoDAO dao = MercadoDAO.newInstance(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MercadoInsert extends ActionBarActivity {
 
             mercado.setNome(nome);
             mercado.setEmail(email);
-            mercado.setTelefonee(telefone);
+            mercado.setTelefone(telefone);
             mercado.setEndereco(endereco);
             dao.add(mercado);
 

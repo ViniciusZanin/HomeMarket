@@ -16,7 +16,7 @@ import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
 public class ReceitasEdit extends ActionBarActivity {
 
-    private ReceitasDAO dao =  ReceitasDAO.newInstance();
+    private ReceitasDAO dao =  ReceitasDAO.newInstance(this);
     private TextView ingredientes;
     private EditText nome;
     private EditText modprep;
@@ -32,7 +32,7 @@ public class ReceitasEdit extends ActionBarActivity {
     }
 
     private void init() {
-        ReceitasDAO dao = ReceitasDAO.newInstance();
+        ReceitasDAO dao = ReceitasDAO.newInstance(this);
         int pos = getIntent().getExtras().getInt("receitaPosition");
         Receitas receita = dao.getItemAt(pos);
         ingredientes = (TextView )findViewById(R.id.ingredientes_list);
@@ -86,7 +86,7 @@ public class ReceitasEdit extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
     private void edit(){
-        ReceitasDAO dao = ReceitasDAO.newInstance();
+        ReceitasDAO dao = ReceitasDAO.newInstance(this);
         int pos = getIntent().getExtras().getInt("receitaPosition");
         Receitas receita = dao.getItemAt(pos);
         String nnome = ((EditText) findViewById(R.id.Nome_editText)).getText().toString();

@@ -20,7 +20,7 @@ public class ListaDeCompraAdapter extends BaseAdapter {
 
     public  ListaDeCompraAdapter(Context c){
         this.context = c;
-        this.dao = ProdutosDAO.newInstance();
+        this.dao = ProdutosDAO.newInstance(c);
     }
 
     public boolean remove(int position){

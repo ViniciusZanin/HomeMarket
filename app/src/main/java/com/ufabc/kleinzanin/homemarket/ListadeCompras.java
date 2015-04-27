@@ -27,7 +27,7 @@ public class ListadeCompras extends ActionBarActivity {
 
 
     private void init() {
-        this.dao = ProdutosDAO.newInstance();
+        this.dao = ProdutosDAO.newInstance(this);
         for (int i = 0; i < dao.size(); i++) {
             if (dao.getItemAt(i).getChecked()) {
                 if (dao.getItemAt(i).getConsumo() < dao.getItemAt(i).getQuantidade()) {

@@ -19,7 +19,7 @@ import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
 public class ReceitasInsert extends ActionBarActivity {
 
-    private ReceitasDAO dao =  ReceitasDAO.newInstance();
+    private ReceitasDAO dao =  ReceitasDAO.newInstance(this);
     private TextView ingredientes;
     private Button save;
     private Button add;

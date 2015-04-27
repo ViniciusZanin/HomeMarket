@@ -24,7 +24,7 @@ public class MercadoDetails extends ActionBarActivity {
     }
 
     private void showMercado() {
-        MercadoDAO dao = MercadoDAO.newInstance();
+        MercadoDAO dao = MercadoDAO.newInstance(this);
         int pos = getIntent().getExtras().getInt("mercadoPosition");
         Mercados mercados = dao.getItemAt(pos);
         detail.showMercado(mercados);
@@ -56,7 +56,7 @@ public class MercadoDetails extends ActionBarActivity {
                 startActivity(intent);
             }
         else if(id == R.id.mercadodelete_button) {
-            MercadoDAO dao = MercadoDAO.newInstance();
+            MercadoDAO dao = MercadoDAO.newInstance(this);
             int pos = getIntent().getExtras().getInt("mercadoPosition");
             dao.remove(pos);
             Intent intent = new Intent(this, MercadoMain.class);

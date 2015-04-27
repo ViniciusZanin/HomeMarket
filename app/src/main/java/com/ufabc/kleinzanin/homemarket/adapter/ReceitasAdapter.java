@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.ReceitasDetailFragment;
-import com.ufabc.kleinzanin.homemarket.model.HomeMarketDao;
-import com.ufabc.kleinzanin.homemarket.model.Mercados;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
@@ -23,11 +21,11 @@ public class ReceitasAdapter extends BaseAdapter {
 
     public ReceitasAdapter(Context c){
         this.context = c;
-        this.dao = ReceitasDAO.newInstance();
+        this.dao = ReceitasDAO.newInstance(c);
     }
 
     public ReceitasAdapter(ReceitasDetailFragment receitasDetailFragment) {
-        this.dao = ReceitasDAO.newInstance();
+        this.dao = ReceitasDAO.newInstance(context);
     }
 
 

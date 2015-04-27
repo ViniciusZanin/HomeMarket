@@ -34,7 +34,7 @@ public class ProdutoEdit extends ActionBarActivity {
 
 
     private void init() {
-        ProdutosDAO dao = ProdutosDAO.newInstance();
+        ProdutosDAO dao = ProdutosDAO.newInstance(this);
         int pos = getIntent().getExtras().getInt("produtoPosition");
         Produtos produto = dao.getItemAt(pos);
         nome = (EditText) findViewById(R.id.edit_produto_nome);
@@ -55,7 +55,7 @@ public class ProdutoEdit extends ActionBarActivity {
     }
 
     private void editProduto(){
-        ProdutosDAO dao = ProdutosDAO.newInstance();
+        ProdutosDAO dao = ProdutosDAO.newInstance(this);
         int pos = getIntent().getExtras().getInt("produtoPosition");
         Produtos produto = dao.getItemAt(pos);
         String nnome = ((EditText ) findViewById(R.id.edit_produto_nome)).getText().toString();

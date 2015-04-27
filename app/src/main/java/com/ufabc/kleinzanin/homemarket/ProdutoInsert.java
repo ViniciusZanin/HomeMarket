@@ -15,7 +15,7 @@ import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
 
 public class ProdutoInsert extends ActionBarActivity {
 
-    private ProdutosDAO dao = ProdutosDAO.newInstance();
+    private ProdutosDAO dao = ProdutosDAO.newInstance(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class ProdutoInsert extends ActionBarActivity {
         produto.setChecked(check);
         produto.setUnidade(unidade);
         dao.add(produto);
-        Toast.makeText(this,"Produto Adicionar",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Produto Adicionado",Toast.LENGTH_SHORT).show();
         startActivity((new Intent(this,Despensa.class)));
 
     }

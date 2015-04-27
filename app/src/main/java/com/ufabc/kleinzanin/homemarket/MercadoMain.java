@@ -32,7 +32,7 @@ public class MercadoMain extends ActionBarActivity {
     }
 
     private void init() {
-        this.dao = MercadoDAO.newInstance();
+        this.dao = MercadoDAO.newInstance(this);
 
         listFragment = (MercadoListFragment )getFragmentManager().findFragmentById(R.id.mercadofragment_list);
 

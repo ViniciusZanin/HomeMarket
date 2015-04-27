@@ -30,7 +30,7 @@ public class ReceitasMain extends ActionBarActivity {
     }
 
     private void init() {
-        this.dao = ReceitasDAO.newInstance();
+        this.dao = ReceitasDAO.newInstance(this);
 
         listFragment = (ReceitasListFragment )getFragmentManager().findFragmentById(R.id.receitalist_fragment);
         detailFragment = (ReceitasDetailFragment )getFragmentManager().findFragmentById(R.id.receita_fragmentdetails);

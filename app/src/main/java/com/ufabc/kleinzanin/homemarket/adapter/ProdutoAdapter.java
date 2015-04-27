@@ -21,7 +21,7 @@ public class ProdutoAdapter extends BaseAdapter {
 
     public  ProdutoAdapter(Context c){
         this.context = c;
-        this.dao = ProdutosDAO.newInstance();
+        this.dao = ProdutosDAO.newInstance(c);
     }
 
     public boolean remove(int position){

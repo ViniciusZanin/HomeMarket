@@ -33,7 +33,7 @@ public class Despensa extends ActionBarActivity {
     }
 
     private void init(){
-        this.dao = ProdutosDAO.newInstance();
+        this.dao = ProdutosDAO.newInstance(this);
 
         listFragment = (DespensaListFragment )getFragmentManager().findFragmentById(R.id.fragment_list);
         detailFragment = (DespensaDetailFragment ) getFragmentManager().findFragmentById(R.id.fragment_detail);
@@ -54,9 +54,10 @@ public class Despensa extends ActionBarActivity {
 
                 if (detailFragment == null) { // small screen
                     Intent intent = null;
+                    Produtos p = new Produtos();
 
                     intent = new Intent(parent.getContext(), ProdutoDetail.class);
-                    intent.putExtra("produtoPosition", position);
+                    intent.putExtra("produtoPosition", ((int)(id))+1);
                     startActivity(intent);
                 } else { // large screen
                     Produtos produto = dao.getItemAt(position);

@@ -24,7 +24,7 @@ public class ReceitasDetails extends ActionBarActivity {
     }
 
     private void showReceita() {
-        ReceitasDAO dao = ReceitasDAO.newInstance();
+        ReceitasDAO dao = ReceitasDAO.newInstance(this);
         int pos = getIntent().getExtras().getInt("receitaPosition");
         Receitas receitas = dao.getItemAt(pos);
 
@@ -53,7 +53,7 @@ public class ReceitasDetails extends ActionBarActivity {
         }
 
         else if(id == R.id.receita_remove){
-            ReceitasDAO dao = ReceitasDAO.newInstance();
+            ReceitasDAO dao = ReceitasDAO.newInstance(this);
             int pos = getIntent().getExtras().getInt("receitaPosition");
             dao.remove(pos);
             Intent intent = new Intent(this, ReceitasMain.class);

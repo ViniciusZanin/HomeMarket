@@ -26,10 +26,10 @@
         SELECT * FROM produtos;
     </string>
      <string name="insert_produtos_query">
-         INSERT INTO produtos (title, unity, quantNow, quantMonth, monthly, image) VALUES(?,?,?,?,?,?)
+         INSERT INTO produtos (title, unity, quantNow, quantMonth, monthly, value) VALUES(?,?,?,?,?,?)
     </string>
      <string name="edit_produtos_query">
-         UPDATE produtos SET (title, unity, quantNow, quantMonth, monthly, image) VALUES(?,?,?,?,?,?) WHERE _id = ?
+         UPDATE produtos SET (title, unity, quantNow, quantMonth, monthly, value) VALUES(?,?,?,?,?,?) WHERE _id = ?
     </string>
      <string name="remove_produtos_query">
          DELETE FROM produtos WHERE _id = ?

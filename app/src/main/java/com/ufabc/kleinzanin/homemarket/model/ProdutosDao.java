@@ -114,7 +114,7 @@ public class ProdutosDAO extends SQLiteOpenHelper {
 
         return status;
     }
-    public boolean edit(Produtos p, String s){
+    public boolean edit(Produtos p){
         String queryStr = context.getString(R.string.edit_produtos_query);
         boolean status = true;
 
