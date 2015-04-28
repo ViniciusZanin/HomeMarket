@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 
 public class ProdutoEdit extends ActionBarActivity {
@@ -34,7 +34,7 @@ public class ProdutoEdit extends ActionBarActivity {
 
 
     private void init() {
-        ProdutosDAO dao = ProdutosDAO.newInstance(this);
+        ProdutosDao dao = ProdutosDao.newInstance(this);
         int pos = getIntent().getExtras().getInt("produtoPosition");
         Produtos produto = dao.getItemAt(pos);
         nome = (EditText) findViewById(R.id.edit_produto_nome);
@@ -55,7 +55,7 @@ public class ProdutoEdit extends ActionBarActivity {
     }
 
     private void editProduto(){
-        ProdutosDAO dao = ProdutosDAO.newInstance(this);
+        ProdutosDao dao = ProdutosDao.newInstance(this);
         int pos = getIntent().getExtras().getInt("produtoPosition");
         Produtos produto = dao.getItemAt(pos);
         String nnome = ((EditText ) findViewById(R.id.edit_produto_nome)).getText().toString();

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 import java.util.Calendar;
 
@@ -16,7 +16,7 @@ public class HomeFragment extends Fragment {
     private TextView statusDespensa, vStatusDespensa;
     private TextView statusCompraAtual, vStatusCompraAtual;
     private TextView statusUltimaCompra, vStatusUltimaCompra;
-    ProdutosDAO produtosDAO;
+    ProdutosDao produtosDAO;
 
 
 	public HomeFragment(){}

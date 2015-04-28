@@ -16,27 +16,27 @@ import com.ufabc.kleinzanin.homemarket.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutosDAO extends SQLiteOpenHelper {
-    private static ProdutosDAO dao;
+public class ProdutosDao extends SQLiteOpenHelper {
+    private static ProdutosDao dao;
     private List<Produtos> produtos;
     private Context context;
     private SQLiteDatabase db;
 
     private static final String DB_NAME = "HomeMarket.db";
     private static final int DB_VERSION = 1;
-    private static final String LOGTAG = ProdutosDAO.class.getSimpleName();
+    private static final String LOGTAG = ProdutosDao.class.getSimpleName();
 
 
 
-    public ProdutosDAO(Context context) {
+    public ProdutosDao(Context context) {
         super(context,DB_NAME,null,DB_VERSION);
         this.context = context;
         this.db = getWritableDatabase();
     }
 
-    public static ProdutosDAO newInstance(Context c) {
+    public static ProdutosDao newInstance(Context c) {
         if (dao == null) {
-            dao = new ProdutosDAO(c);
+            dao = new ProdutosDao(c);
             dao.init();
         }
 

@@ -10,12 +10,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 
 public class ProdutoInsert extends ActionBarActivity {
 
-    private ProdutosDAO dao = ProdutosDAO.newInstance(this);
+    private ProdutosDao dao = ProdutosDao.newInstance(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

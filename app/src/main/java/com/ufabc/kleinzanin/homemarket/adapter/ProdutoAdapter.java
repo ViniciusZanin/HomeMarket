@@ -10,18 +10,18 @@ import android.widget.TextView;
 
 import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
-import com.ufabc.kleinzanin.homemarket.model.ProdutosDAO;
+import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 /**
  * Created by Vinicius on 17/04/2015.
  */
 public class ProdutoAdapter extends BaseAdapter {
-    private ProdutosDAO dao;
+    private ProdutosDao dao;
     private Context context;
 
     public  ProdutoAdapter(Context c){
         this.context = c;
-        this.dao = ProdutosDAO.newInstance(c);
+        this.dao = ProdutosDao.newInstance(c);
     }
 
     public boolean remove(int position){
