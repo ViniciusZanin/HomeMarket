@@ -12,16 +12,22 @@ import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
+import java.util.ArrayList;
+
 /**
  * Created by Vinicius on 17/04/2015.
  */
 public class ProdutoAdapter extends BaseAdapter {
     private ProdutosDao dao;
     private Context context;
+    LayoutInflater inflater;
+    ArrayList<Produtos> produtos;
 
     public  ProdutoAdapter(Context c){
         this.context = c;
         this.dao = ProdutosDao.newInstance(c);
+        inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        produtos = dao.list();
     }
 
     public boolean remove(int position){
@@ -37,36 +43,33 @@ public class ProdutoAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
-    public Produtos getItemAt(int position) { return dao.getItemAt(position);}
+    public Produtos getItemAt(int position) { return produtos.get(position);}
 
     @Override
     public int getCount() {
-        return dao.size();
+        return produtos.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return dao.getItemAt(position);
+        return getItemAt(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return produtos.get(position).getID();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Produtos produto = null;
+        Produtos produto = produtos.get(position);
         TextView nome = null;
         TextView quantidade = null;
         TextView preço = null;
-        CheckBox checked = null;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(
-         Context.LAYOUT_INFLATER_SERVICE);
+        CheckBox checked = null;;
         if(convertView == null){
             convertView = inflater.inflate(R.layout.despensa_list_item,null);
         }
-        produto = dao.getItemAt(position);
         nome = (TextView )convertView.findViewById(R.id.produto_nome);
         quantidade = (TextView ) convertView.findViewById(R.id.produto_quantidade);
         nome.setText(produto.getNome());

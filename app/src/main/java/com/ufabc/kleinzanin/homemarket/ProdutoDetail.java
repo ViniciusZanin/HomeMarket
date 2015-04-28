@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
+import java.util.ArrayList;
+
 
 public class ProdutoDetail extends ActionBarActivity {
     private DespensaDetailFragment detail;
@@ -22,9 +24,11 @@ public class ProdutoDetail extends ActionBarActivity {
     }
 
     private void showProduto() {
+        ArrayList<Produtos>produtos;
         ProdutosDao dao = ProdutosDao.newInstance(this);
+        produtos = dao.list();
         int pos = getIntent().getExtras().getInt("produtoPosition");
-        Produtos produto = dao.getItemAt(pos);
+        Produtos produto = produtos.get(pos-2);
         detail.showProdutos(produto);
     }
 
