@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
+import java.util.ArrayList;
+
 
 public class ProdutoEdit extends ActionBarActivity {
 
@@ -34,23 +36,20 @@ public class ProdutoEdit extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produto_edit);
         init();
-        addListenerOnSpinnerItemSelection();
     }
 
-    public void addListenerOnSpinnerItemSelection() {
+
+    private void init() {
         units = (Spinner) findViewById(R.id.edit_unit);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.unitis_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         units.setAdapter(adapter);
-        units.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-    }
-
-    private void init() {
-
+        ArrayList<Produtos> produtos;
         ProdutosDao dao = ProdutosDao.newInstance(this);
+        produtos = dao.list();
         int pos = getIntent().getExtras().getInt("produtoPosition");
-        Produtos produto = dao.getItemAt(pos+1);
+        Produtos produto = produtos.get(pos);
         nome = (EditText) findViewById(R.id.edit_produto_nome);
         quantidade = (EditText ) findViewById(R.id.edit_produto_quantidade);
         preço = (EditText ) findViewById(R.id.edit_produto_preço);
@@ -67,13 +66,17 @@ public class ProdutoEdit extends ActionBarActivity {
             consumo.setVisibility(View.VISIBLE);
             consumo.setText(Integer.toString(produto.getConsumo()));
         }
-        units = (Spinner )findViewById(R.id.edit_unit);
+        int selectionPosition= adapter.getPosition(produto.getUnidade());
+        units.setSelection(selectionPosition);
+
     }
 
     private void editProduto(){
+        ArrayList<Produtos> produtos;
         ProdutosDao dao = ProdutosDao.newInstance(this);
+        produtos = dao.list();
         int pos = getIntent().getExtras().getInt("produtoPosition");
-        Produtos produto = new Produtos();
+        Produtos produto = produtos.get(pos);
         String nnome = ((EditText ) findViewById(R.id.edit_produto_nome)).getText().toString();
         String nquantidade = ((EditText )findViewById(R.id.edit_produto_quantidade)).getText().toString();
         String npreço = ((EditText )findViewById(R.id.edit_produto_preço)).getText().toString();
@@ -84,11 +87,14 @@ public class ProdutoEdit extends ActionBarActivity {
         produto.setQuantidade(Integer.parseInt(nquantidade));
         produto.setPreço(npreço);
         produto.setUnidade(unidade);
+        if(produto.getImagem() == null) {
+            produto.setImagem("_!_");
+        }
         if(ncheck){
             consumo.setVisibility(View.VISIBLE);
             produto.setConsumo(Integer.parseInt(nconsumo));}
         produto.setChecked(ncheck);
-        dao.edit(produto, pos+1);
+        dao.edit(produto, produto.getID());
         Toast.makeText(this, "Produto Editado", Toast.LENGTH_SHORT).show();
         startActivity((new Intent(this,Produto.class)));
 

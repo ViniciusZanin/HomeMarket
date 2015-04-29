@@ -89,7 +89,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
             statement.bindLong(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);
             statement.bindString(6, p.getPreço());
-           //statement.bindBlob(7, p.getImagem()); RESOLVER IMAGEM COMO BYTE ARRAY OU SALVAR NA MEMORIA INTERNA.
+           statement.bindString(7, p.getImagem());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to add products in the database", e);
@@ -111,9 +111,9 @@ public class ProdutosDao extends SQLiteOpenHelper {
             statement.bindLong(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);
             statement.bindString(6, p.getPreço());
-            //statement.bindBlob(7, p.getImagem()); RESOLVER IMAGEM COMO BYTE ARRAY OU SALVAR NA MEMORIA INTERNA.
+            statement.bindString(7, p.getImagem());
 
-            statement.bindLong(7, position); //ID of the product to change.
+            statement.bindLong(8, p.getID()); //ID of the product to change.
 
             statement.execute();
         } catch (SQLiteException e) {
@@ -127,11 +127,15 @@ public class ProdutosDao extends SQLiteOpenHelper {
     public boolean remove(int position) {
         String queryStr = context.getString(R.string.remove_produtos_query);
         boolean status = true;
+        ArrayList<Produtos>produtos;
+        dao = ProdutosDao.newInstance(context);
+        produtos = dao.list();
+        Produtos produto = produtos.get(position);
 
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
-            statement.bindLong(1,position);
+            statement.bindLong(1,produto.getID());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to remove products in the database", e);
@@ -206,7 +210,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
                 produto.setConsumo(cursor.getInt(4));
                 produto.setChecked((cursor.getInt(5) == 0 ? false:true));
                 produto.setPreço(cursor.getString(6));
-                //produto.setImagem(cursor.getBlob(7));
+                produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
                 cursor.moveToNext();
             }

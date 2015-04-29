@@ -55,7 +55,6 @@ public class Produto extends ActionBarActivity {
                 if (detailFragment == null) { // small screen
                     Intent intent = null;
                     Produtos p = new Produtos();
-
                     intent = new Intent(parent.getContext(), ProdutoDetail.class);
                     intent.putExtra("produtoPosition", ((int)(position)));
                     startActivity(intent);
