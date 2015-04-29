@@ -45,7 +45,7 @@ public class Produto extends ActionBarActivity {
     }
 
     private void setupProdutoList(){
-        listView = (ListView )findViewById(R.id.list_despensa);
+        listView = (ListView )findViewById(R.id.list_produto);
         final Produto self = this;
         listView.setAdapter(new ProdutoAdapter(this));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,7 +72,7 @@ public class Produto extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_despensa, menu);
+        getMenuInflater().inflate(R.menu.menu_produto, menu);
         return true;
     }
 

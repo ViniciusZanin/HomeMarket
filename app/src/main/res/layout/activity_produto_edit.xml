@@ -15,7 +15,8 @@
             android:layout_height="wrap_content" />
         <EditText android:id="@+id/edit_produto_nome"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="Nome do Produto"/>
         </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -30,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Consumo Mensal"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:inputType="number"/>
         </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -40,7 +42,9 @@
             android:layout_height="wrap_content" />
         <EditText android:id="@+id/edit_produto_quantidade"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="Quantidade atual"
+            android:inputType="number"/>
         </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -63,7 +67,8 @@
         <EditText android:id="@+id/edit_produto_preço"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"/>
+            android:inputType="numberDecimal"
+            android:hint="Preço por unidade(Kg,g,L,etc)"/>
         </LinearLayout>
     <LinearLayout android:layout_gravity="center"
         android:layout_width="wrap_content"

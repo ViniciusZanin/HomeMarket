@@ -49,7 +49,7 @@
         </activity>
         <activity
             android:name=".Produto"
-            android:label="@string/title_activity_despensa"
+            android:label="Produtos"
             android:parentActivityName=".MenuPrincipal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -45,7 +45,7 @@ public class Despensa extends ActionBarActivity {
     }
 
     private void setupProdutoList(){
-        listView = (ListView )findViewById(R.id.list_despensa);
+        listView = (ListView )findViewById(R.id.list_produto);
         final Despensa self = this;
         listView.setAdapter(new ProdutoAdapter(this));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

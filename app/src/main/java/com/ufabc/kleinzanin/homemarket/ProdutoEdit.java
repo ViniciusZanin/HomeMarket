@@ -203,19 +203,39 @@ public class ProdutoEdit extends ActionBarActivity {
         String unidade = String.valueOf(units.getSelectedItem());
         String nconsumo = ((EditText )findViewById(R.id.edit_produto_consumo)).getText().toString();
         boolean ncheck = ((CheckBox )findViewById(R.id.edit_produto_check)).isChecked();
-        produto.setNome(nnome);
-        produto.setQuantidade(Integer.parseInt(nquantidade));
-        produto.setPreço(npreço);
-        produto.setUnidade(unidade);
-        if(image_uri != null) {
-            produto.setImagem(image_uri);
+        boolean error = false;
+        if(nnome.equalsIgnoreCase("")){
+            ((EditText) findViewById(R.id.edit_produto_nome)).setError("Campo Obrigatorio");
+            error = true;
         }
-        if(ncheck){
-            produto.setConsumo(Integer.parseInt(nconsumo));}
-        produto.setChecked(ncheck);
-        dao.edit(produto, produto.getID());
-        Toast.makeText(this, "Produto Editado", Toast.LENGTH_SHORT).show();
-        startActivity((new Intent(this,Produto.class)));
+        if(nquantidade.equalsIgnoreCase("")){
+            ((EditText) findViewById(R.id.edit_produto_quantidade)).setError("Campo Obrigatorio");
+            error = true;
+        }
+        if(npreço.equalsIgnoreCase("")){
+            ((EditText) findViewById(R.id.edit_produto_preço)).setError("Campo Obrigatorio");
+            error = true;
+        }
+        if(ncheck && nconsumo.equalsIgnoreCase("")){
+            ((EditText) findViewById(R.id.edit_produto_consumo)).setError("Campo Obrigatorio");
+            error = true;
+        }
+        if(error == false) {
+            produto.setNome(nnome);
+            produto.setQuantidade(Integer.parseInt(nquantidade));
+            produto.setPreço(npreço);
+            produto.setUnidade(unidade);
+            if (image_uri != null) {
+                produto.setImagem(image_uri);
+            }
+            if (ncheck) {
+                produto.setConsumo(Integer.parseInt(nconsumo));
+            }
+            produto.setChecked(ncheck);
+            dao.edit(produto, produto.getID());
+            Toast.makeText(this, "Produto Editado", Toast.LENGTH_SHORT).show();
+            startActivity((new Intent(this, Produto.class)));
+        }
 
     }
 
