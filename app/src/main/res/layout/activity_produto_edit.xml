@@ -5,40 +5,87 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.ufabc.kleinzanin.homemarket.ProdutoEdit"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:orientation="vertical">
 
-    <EditText android:id="@+id/edit_produto_nome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <CheckBox android:id="@+id/edit_produto_check" android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
-    <EditText android:id="@+id/edit_produto_consumo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Consumo Mensal"/>
-    <EditText android:id="@+id/edit_produto_quantidade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Spinner android:id="@+id/edit_unit"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <EditText android:id="@+id/edit_produto_preço"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"/>
-    <ImageView android:id="@+id/edit_produto_imagem"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button android:id="@+id/edit_codigo_barra"
+        android:layout_height="wrap_content">
+        <TextView android:text="Nome do Produto:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edit_produto_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nome do Produto"/>
+        </LinearLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar Codigo de Barra"/>
-    <Button android:id="@+id/edit_imagem"
+        android:layout_height="wrap_content">
+        <TextView android:text="Consumo mensal:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox android:id="@+id/edit_produto_check" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <EditText android:id="@+id/edit_produto_consumo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Consumo Mensal"
+            android:visibility="invisible"
+            android:inputType="number"/>
+        </LinearLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar imagem"/>
+        android:layout_height="wrap_content">
+        <TextView android:text="Quantidade atual do produto:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edit_produto_quantidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantidade atual"
+            android:inputType="number"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView android:text="Unidade do produto(Kg,g,L,etc):"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Spinner android:id="@+id/edit_unit"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView android:text="Preço(R$)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText android:id="@+id/edit_produto_preço"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Preço por unidade(Kg,g,L,etc)"/>
+        </LinearLayout>
+    <LinearLayout android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button android:id="@+id/edit_imagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar imagem"
+            />
+        </LinearLayout>
+    <LinearLayout android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView android:id="@+id/edit_produto_imagem"
+            android:layout_width="@android:dimen/thumbnail_width"
+            android:layout_height="@android:dimen/thumbnail_height" />
+        </LinearLayout>
+
 
 </LinearLayout>

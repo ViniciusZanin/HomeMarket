@@ -47,15 +47,17 @@
 
             public void showProdutos(Produtos produto) {
                 init();
-                Bitmap bitmap = BitmapFactory.decodeFile(produto.getImagem());
+
                 nome.setText(produto.getNome());
-                quantidade.setText(Integer.toString(produto.getQuantidade()));
+                quantidade.setText(Integer.toString(produto.getQuantidade())+" " + produto.getUnidade());
                 preço.setText(produto.getPreço());
-                produtoimage.setImageBitmap(bitmap);
+                if(produto.getImagem() != null) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(produto.getImagem());
+                    produtoimage.setImageBitmap(bitmap);
+                }
                 produtoCheck.setChecked(produto.getChecked());
-                if(produto.getChecked() == true){
-                    consumo.setText(Integer.toString(produto.getConsumo()));
-                    consumo.setVisibility(View.VISIBLE);
+                if(produto.getChecked()){
+                    consumo.setText(Integer.toString(produto.getConsumo())+" " + produto.getUnidade());
                 }
             }
 

@@ -4,7 +4,7 @@
     tools:context="com.ufabc.kleinzanin.homemarket.Produto">
 
     <ListView
-        android:id="@+id/list_despensa"
+        android:id="@+id/list_produto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         </ListView>

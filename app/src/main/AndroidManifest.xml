@@ -49,7 +49,7 @@
         </activity>
         <activity
             android:name=".Produto"
-            android:label="@string/title_activity_despensa"
+            android:label="Produtos"
             android:parentActivityName=".MenuPrincipal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -69,7 +69,6 @@
             android:label="Detail" />
         <activity
             android:name=".ProdutoDetail"
-            android:label="@string/title_activity_produto_detail"
             android:parentActivityName=".Produto" >
         </activity>
         <activity

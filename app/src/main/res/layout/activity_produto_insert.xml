@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Nome do Produto" />
+            android:text="Nome do Produto:" />
         <EditText android:id="@+id/insert_produto_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,9 +23,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <TextView android:text="Consumo Mensal"
+        <TextView android:text="Consumo Mensal:"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
         <CheckBox android:id="@+id/insert_produto_check" android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
         <EditText android:id="@+id/insert_produto_consumo"
@@ -41,7 +42,8 @@
         android:layout_height="wrap_content">
         <TextView android:text="Quantidade atual do Produto:"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
         <EditText android:id="@+id/insert_produto_quantidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,9 +54,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <TextView android:text="Unidade do produto(Kg,g,L,etc)"
+        <TextView android:text="Unidade do produto(Kg,g,L,etc):"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
         <Spinner android:id="@+id/insert_unit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
@@ -62,23 +65,20 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <TextView android:text="Preço por unidade(g,kg,etc)"
+        <TextView android:text="Preço(R$):"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"  />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
 
         <EditText android:id="@+id/insert_produto_preço"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Preço(R$)"
+            android:hint="Preço por unidade(Kg,g,etc)"
             android:inputType="numberDecimal"/>
         </LinearLayout>
     <LinearLayout android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <Button android:id="@+id/insert_codigo_barra"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Inserir Codigo de Barra"/>
 
         <Button android:id="@+id/insert_produto_imagem"
             android:layout_width="wrap_content"
