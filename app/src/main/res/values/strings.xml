@@ -35,7 +35,7 @@
          DELETE FROM produtos WHERE _id = ?
     </string>
     <string name="get_product_query">
-         SELECT * FROM produtos WHERE _id = ?
+         SELECT * FROM produtos WHERE _id =
     </string>
 
     <!-- RECEITAS -->

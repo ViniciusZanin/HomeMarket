@@ -36,7 +36,7 @@ public class ProdutoEdit extends ActionBarActivity {
     private void init() {
         ProdutosDao dao = ProdutosDao.newInstance(this);
         int pos = getIntent().getExtras().getInt("produtoPosition");
-        Produtos produto = dao.getItemAt(pos);
+        Produtos produto = dao.getItemAt(pos-1);
         nome = (EditText) findViewById(R.id.edit_produto_nome);
         quantidade = (EditText ) findViewById(R.id.edit_produto_quantidade);
         preço = (EditText ) findViewById(R.id.edit_produto_preço);
