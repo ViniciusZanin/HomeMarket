@@ -205,8 +205,7 @@ public class ProdutoInsert extends ActionBarActivity {
             error = true;
         }
         if(quantidade.equalsIgnoreCase("")){
-            ((EditText) findViewById(R.id.insert_produto_quantidade)).setError("Campo Obrigatorio");
-            error = true;
+            quantidade = "0";
         }
         if(preço.equalsIgnoreCase("")){
             ((EditText) findViewById(R.id.insert_produto_preço)).setError("Campo Obrigatorio");

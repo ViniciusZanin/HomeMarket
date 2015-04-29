@@ -1,6 +1,11 @@
 package com.ufabc.kleinzanin.homemarket;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.ufabc.kleinzanin.homemarket.adapter.DespensaAdapter;
 import com.ufabc.kleinzanin.homemarket.adapter.ProdutoAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
@@ -45,28 +51,9 @@ public class Despensa extends ActionBarActivity {
     }
 
     private void setupProdutoList(){
-        listView = (ListView )findViewById(R.id.list_produto);
+        listView = (ListView )findViewById(R.id.list_despensa);
         final Despensa self = this;
-        listView.setAdapter(new ProdutoAdapter(this));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (detailFragment == null) { // small screen
-                    Intent intent = null;
-                    Produtos p = new Produtos();
-
-                    intent = new Intent(parent.getContext(), ProdutoDetail.class);
-                    intent.putExtra("produtoPosition", ((int)(position)));
-                    startActivity(intent);
-                } else { // large screen
-                    Produtos produto = dao.getItemAt(position);
-
-                    detailFragment.showProdutos(produto);
-                }
-            }
-        });
-
+        listView.setAdapter(new DespensaAdapter(this));
     }
 
 
@@ -88,10 +75,36 @@ public class Despensa extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if(id == R.id.action_produto_add){
-            startActivity(new Intent(this,ProdutoInsert.class));
+        if(id == R.id.action_despensa_add){
+            confirmFireMissiles();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void confirmFireMissiles() {
+        DialogFragment newFragment = new FireMissilesDialogFragment();
+        newFragment.show(getSupportFragmentManager(), "missiles");
+    }
+
+    public class FireMissilesDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Fire?")
+                    .setPositiveButton("FIRE", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // FIRE ZE MISSILES!
+                        }
+                    })
+                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            return builder.create();
+        }
     }
 }

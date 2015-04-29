@@ -71,12 +71,16 @@ public class MenuPrincipal extends ActionBarActivity {
         };
 
 
-    private void initDespensa() {
+    private void initProdutos() {
         startActivity((new Intent(this,Produto.class)));
     }
 
     private void initReceitas() {
         startActivity((new Intent(this,ReceitasMain.class)));
+    }
+
+    private void initDespensa(){
+        startActivity((new Intent(this,Despensa.class)));
     }
 
     private void initMercados() {
@@ -124,10 +128,10 @@ public class MenuPrincipal extends ActionBarActivity {
                     fragment = new HomeFragment();
                     break;
                 case 1:
-                    initDespensa();
+                    initProdutos();
                     break;
                 case 2:
-                    fragment = new ProdutoListFragment();
+                    initDespensa();
                     break;
                 case 3:
                     initReceitas();

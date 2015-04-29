@@ -16,17 +16,4 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_below="@id/produto_nome"/>
-    <ImageButton android:id="@+id/add_quanti_despensa"
-        android:src="@android:drawable/ic_menu_add"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/produto_quantidade"
-        android:layout_alignRight="@+id/produto_nome"
-        android:layout_alignEnd="@+id/produto_nome" />
-    <ImageButton android:src="@android:drawable/ic_notification_clear_all"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/add_quanti_despensa"
-        android:layout_toLeftOf="@+id/add_quanti_despensa"
-        android:layout_toStartOf="@+id/add_quanti_despensa" />
 </RelativeLayout>

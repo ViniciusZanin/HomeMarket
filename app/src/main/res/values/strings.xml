@@ -25,6 +25,9 @@
     <string name="list_produtos_query" >
         SELECT * FROM produtos;
     </string>
+        <string name="list_despensa_query" >
+        SELECT * FROM produtos WHERE quantNow > 0;
+    </string>
      <string name="insert_produtos_query">
          INSERT INTO produtos (title, unity, quantNow, quantMonth, monthly, value, image) VALUES(?,?,?,?,?,?,?)
     </string>

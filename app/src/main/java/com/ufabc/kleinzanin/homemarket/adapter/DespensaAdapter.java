@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.ufabc.kleinzanin.homemarket.Produto;
 import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
@@ -15,19 +16,19 @@ import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 import java.util.ArrayList;
 
 /**
- * Created by Vinicius on 17/04/2015.
+ * Created by Vinicius on 29/04/2015.
  */
-public class ProdutoAdapter extends BaseAdapter {
+public class DespensaAdapter extends BaseAdapter {
     private ProdutosDao dao;
     private Context context;
     LayoutInflater inflater;
     ArrayList<Produtos> produtos;
 
-    public  ProdutoAdapter(Context c){
+    public  DespensaAdapter(Context c){
         this.context = c;
         this.dao = ProdutosDao.newInstance(c);
         inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        produtos = dao.list();
+        produtos = dao.despensa();
     }
 
     public boolean remove(int position){
@@ -44,6 +45,7 @@ public class ProdutoAdapter extends BaseAdapter {
     }
 
     public Produtos getItemAt(int position) { return produtos.get(position);}
+
 
     @Override
     public int getCount() {
@@ -65,21 +67,19 @@ public class ProdutoAdapter extends BaseAdapter {
         Produtos produto = produtos.get(position);
         TextView nome = null;
         TextView quantidade = null;
-        TextView preço = null;
-        CheckBox checked = null;;
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.produto_list_item,null);
+            convertView = inflater.inflate(R.layout.despensa_list_item,null);
         }
         nome = (TextView )convertView.findViewById(R.id.produto_nome);
         quantidade = (TextView ) convertView.findViewById(R.id.produto_quantidade);
         nome.setText(produto.getNome());
         if(produto.getChecked() == true){
-        quantidade.setText(Integer.toString(produto.getQuantidade()) + "/" +
-                Integer.toString(produto.getConsumo()) + " " + produto.getUnidade());}
+            quantidade.setText(Integer.toString(produto.getQuantidade()) + "/" +
+                    Integer.toString(produto.getConsumo()) + " " + produto.getUnidade());}
         else{
-            quantidade.setText(Integer.toString(produto.getQuantidade()));
+            quantidade.setText(Integer.toString(produto.getQuantidade()) + " " + produto.getUnidade());
 
-    }
+        }
         return convertView;
     }
 }

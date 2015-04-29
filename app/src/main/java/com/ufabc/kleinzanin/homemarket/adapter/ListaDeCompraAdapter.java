@@ -61,7 +61,7 @@ public class ListaDeCompraAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.despensa_list_item,null);
+            convertView = inflater.inflate(R.layout.produto_list_item,null);
         }
         produto = dao.getItemAt(position);
         nome = (TextView )convertView.findViewById(R.id.produto_nome);
