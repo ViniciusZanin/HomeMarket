@@ -69,7 +69,6 @@
             android:label="Detail" />
         <activity
             android:name=".ProdutoDetail"
-            android:label="@string/title_activity_produto_detail"
             android:parentActivityName=".Produto" >
         </activity>
         <activity

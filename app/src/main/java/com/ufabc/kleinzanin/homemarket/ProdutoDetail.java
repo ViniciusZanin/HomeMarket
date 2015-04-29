@@ -32,6 +32,7 @@ public class ProdutoDetail extends ActionBarActivity {
         int pos = getIntent().getExtras().getInt("produtoPosition");
         Log.e(LOGTAG, String.valueOf(pos));
         Produtos produto = produtos.get(pos);
+        setTitle(produto.getNome());
         detail.showProdutos(produto);
     }
 

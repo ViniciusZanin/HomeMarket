@@ -184,10 +184,10 @@
 
     <!-- SpinnerInsertArray -->
     <string-array name="unitis_array">
-        <item>Kilograma</item>
-        <item>Grama</item>
+        <item>Kilogramas</item>
+        <item>Gramas</item>
         <item>Litros</item>
         <item>Mililitros</item>
-        <item>Unidade</item>
+        <item>Unidades</item>
     </string-array>
 </resources>

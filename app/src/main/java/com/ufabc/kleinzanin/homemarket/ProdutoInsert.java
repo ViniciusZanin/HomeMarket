@@ -64,7 +64,6 @@ public class ProdutoInsert extends ActionBarActivity {
                 R.array.unitis_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         units.setAdapter(adapter);
-        //units.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
     private void Handled() {
