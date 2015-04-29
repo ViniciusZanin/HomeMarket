@@ -16,6 +16,9 @@ import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 
 public class ReceitasInsert extends ActionBarActivity {
 
@@ -24,6 +27,9 @@ public class ReceitasInsert extends ActionBarActivity {
     private Button save;
     private Button add;
     String ingrediente = "";
+    String ind;
+    ArrayList<String> ingr;
+    private int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +49,19 @@ public class ReceitasInsert extends ActionBarActivity {
                 insert();
             }
         });
+        ingr = new ArrayList<>();
+        i = 0;
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ind = ((EditText) findViewById(R.id.insert_ingrediente)).getText().toString();
-                ingrediente = ingrediente + ind;
-                ingrediente = ingrediente + "\n";
+                ind = ((EditText) findViewById(R.id.insert_ingrediente)).getText().toString();
+                ingr.add(ind);
+                /*ingrediente = ingrediente + ind;
+                ingrediente = ingrediente + "\n";*/
+                while (i != ingr.size()){
+                    ingrediente = ingrediente + ingr.get(i).toString() + "\n";
+                    i++;
+                }
                 ingredientes.setText(ingrediente);
                 ((EditText) findViewById(R.id.insert_ingrediente)).setText(null);
             }
@@ -83,7 +96,7 @@ public class ReceitasInsert extends ActionBarActivity {
 
         Receitas receita = new Receitas();
         receita.setModopreparo(modepreparo);
-        receita.setIngredientes(ingrediente);
+        receita.setIngredientes(ingr.toString());
         receita.setReceita(nome);
 
         dao.add(receita);

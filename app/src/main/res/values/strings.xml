@@ -43,7 +43,6 @@
          CREATE TABLE receitas (
             _id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
-            ingredientes TEXT NOT NULL,
             mododefazer TEXT NOT NULL
             )
     </string>
@@ -60,7 +59,7 @@
          INSERT INTO receitas (title, ingredientes, mododefazer) VALUES(?,?,?)
     </string>
      <string name="edit_receitas_query">
-         UPDATE receitas SET (title, ingredientes, mododefazer) VALUES(?,?,?) WHERE _id = ?
+         UPDATE receitas SET title = ?, ingredientes = ?, mododefazer = ? WHERE _id = ?
     </string>
      <string name="remove_receitas_query">
          DELETE FROM receitas WHERE _id = ?
@@ -181,6 +180,22 @@
     <string name="image_pick_abort">Cancelado</string>
     <string name="photo_capture_error">Erro ao carregar</string>
     <string name="photo_capture_abort">Erro ao tirar foto</string>
+    <string name="Ing_remove_button">-</string>
+
+   <!-- DB Ingredientes !-->
+    <string name="create_table_ingredientes_query">
+    CREATE TABLE ingredientes (
+    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    unity TEXT NOT NULL,
+    quantidade INTEGER NOT NULL,
+    receita_id INTEGER,
+    FOREIGN KEY (receita_id) REFERENCES receitas(_id) )
+    </string>
+    <string name="insert_ingredientes_query">INSERT INTO ingredientes (title, unity, quantidade, receita_id) VALUES(?,?,?,?)</string>
+    <string name="remove_ingredientes_query">DELETE FROM ingredientes WHERE _id = ?</string>
+    <string name="count_ingredientes_query" > SELECT COUNT(*) AS count FROM ingredientes;</string>
+    <string name="list_ingredientes_query" > SELECT * FROM ingredientes;</string>
 
     <!-- SpinnerInsertArray -->
     <string-array name="unitis_array">

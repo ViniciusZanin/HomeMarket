@@ -122,6 +122,7 @@ public class ReceitasDAO extends SQLiteOpenHelper {
             statement.bindString(1, receita.getReceita());
             statement.bindString(2, receita.getIngredientes());
             statement.bindString(3, receita.getModopreparo());
+            statement.bindLong(4, receita.getID());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to edit receita in the database", e);
@@ -132,13 +133,17 @@ public class ReceitasDAO extends SQLiteOpenHelper {
     }
 
     public boolean remove(int position){
+        ArrayList<Receitas> receitas;
+        dao = ReceitasDAO.newInstance(context);
+        receitas = dao.list();
+        Receitas receita = receitas.get(position);
         String queryStr = context.getString(R.string.remove_receitas_query);
         boolean status = true;
 
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
-            statement.bindLong(1,position);
+            statement.bindLong(1,receita.getID());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to remove receita from the database", e);

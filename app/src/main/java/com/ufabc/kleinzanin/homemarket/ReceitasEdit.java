@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
+import java.util.ArrayList;
+
 public class ReceitasEdit extends ActionBarActivity {
 
     private ReceitasDAO dao =  ReceitasDAO.newInstance(this);
@@ -23,6 +25,7 @@ public class ReceitasEdit extends ActionBarActivity {
     private Button save;
     private Button add;
     String ingrediente = "";
+    String ind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +35,12 @@ public class ReceitasEdit extends ActionBarActivity {
     }
 
     private void init() {
+        ArrayList<Receitas> receitas;
         ReceitasDAO dao = ReceitasDAO.newInstance(this);
+        receitas = dao.list();
         int pos = getIntent().getExtras().getInt("receitaPosition");
-        Receitas receita = dao.getItemAt(pos);
+        Receitas receita = receitas.get(pos);
         ingredientes = (TextView )findViewById(R.id.ingredientes_list);
-
         modprep = (EditText) findViewById(R.id.Mod_prepedit);
         nome =  ((EditText) findViewById(R.id.Nome_editText));
         save = (Button )findViewById(R.id.ReceitaInsert_button);
@@ -86,9 +90,11 @@ public class ReceitasEdit extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
     private void edit(){
+        ArrayList<Receitas> receitas;
         ReceitasDAO dao = ReceitasDAO.newInstance(this);
+        receitas = dao.list();
         int pos = getIntent().getExtras().getInt("receitaPosition");
-        Receitas receita = dao.getItemAt(pos);
+        Receitas receita = receitas.get(pos);
         String nnome = ((EditText) findViewById(R.id.Nome_editText)).getText().toString();
         String nmodepreparo = ((EditText)findViewById(R.id.Mod_prepedit)).getText().toString();
 
