@@ -45,10 +45,13 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String queryStr = context.getString(R.string.create_table_produtos_query);
-
+        String queryStr1 = context.getString(R.string.create_table_produtos_query);
+        String queryStr2 = context.getString(R.string.create_table_mercados_query);
+        String queryStr3 = context.getString(R.string.create_table_receitas_query);
         try {
-            db.execSQL(queryStr);
+            db.execSQL(queryStr1);
+            db.execSQL(queryStr2);
+            db.execSQL(queryStr3);
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to create database", e);
         }
@@ -69,26 +72,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
     private void init() {
         produtos = new ArrayList<>();
-        // TODO: remove when "insert" operation is implemented in the app
-        //loadTestData();
     }
-
-    /*private void loadTestData() {
-        Produtos c;
-
-        c = new Produtos();
-
-        c.setNome("Manga");
-        c.setPreço("4.99");
-        c.setQuantidade(200);
-        c.setConsumo(1000);
-        c.setChecked(true);
-        c.setImagem(R.drawable.manga);
-        c.setUnidade("g");
-        produtos.add(c);
-
-    }*/
-
 
     //ADD ORDER
     //title TEXT NOT NULL, unity TEXT NOT NULL, quantNow INTEGER NOT NULL, quantMonth INTEGER, monthly INTEGER NOT NULL, value TEXT NOT NULL, image BLOB
@@ -114,7 +98,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
         return status;
     }
-    public boolean edit(Produtos p){
+    public boolean edit(Produtos p, int position){
         String queryStr = context.getString(R.string.edit_produtos_query);
         boolean status = true;
 
@@ -122,14 +106,14 @@ public class ProdutosDao extends SQLiteOpenHelper {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
             statement.bindString(1, p.getNome());
-            statement.bindString(2, p.getUnidade());
+            //statement.bindString(2, p.getUnidade());
             statement.bindLong(3, p.getQuantidade());
             statement.bindLong(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);
             statement.bindString(6, p.getPreço());
             //statement.bindBlob(7, p.getImagem()); RESOLVER IMAGEM COMO BYTE ARRAY OU SALVAR NA MEMORIA INTERNA.
 
-            statement.bindLong(8,p.getID()); //ID of the product to change.
+            statement.bindLong(7, position); //ID of the product to change.
 
             statement.execute();
         } catch (SQLiteException e) {
@@ -184,23 +168,20 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
 
         try {
-            SQLiteStatement statement = db.compileStatement(queryStr);
+            Cursor cursor = db.rawQuery(queryStr + position, null);
+            if(cursor.getCount() > 0) {
+                cursor.moveToFirst();
 
-            statement.bindLong(1, position);
-
-            Cursor cursor = db.rawQuery(statement.simpleQueryForString(), new String[]{});
-            cursor.moveToFirst();
-
-            produto.setID(cursor.getInt(0));
-            produto.setNome(cursor.getString(1));
-            produto.setUnidade(cursor.getString(2));
-            produto.setQuantidade(cursor.getInt(3));
-            produto.setConsumo(cursor.getInt(4));
-            produto.setChecked((cursor.getInt(5) == 0 ? false:true));
-            produto.setPreço(cursor.getString(6));
-            //produto.setImagem(cursor.getBlob(7));
-            cursor.close();
-
+                produto.setID(cursor.getInt(0));
+                produto.setNome(cursor.getString(1));
+                produto.setUnidade(cursor.getString(2));
+                produto.setQuantidade(cursor.getInt(3));
+                produto.setConsumo(cursor.getInt(4));
+                produto.setChecked((cursor.getInt(5) == 0 ? false : true));
+                produto.setPreço(cursor.getString(6));
+                //produto.setImagem(cursor.getBlob(7));
+                cursor.close();
+            }
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to get product in the database", e);
         }

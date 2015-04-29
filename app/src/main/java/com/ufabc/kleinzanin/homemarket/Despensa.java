@@ -57,7 +57,7 @@ public class Despensa extends ActionBarActivity {
                     Produtos p = new Produtos();
 
                     intent = new Intent(parent.getContext(), ProdutoDetail.class);
-                    intent.putExtra("produtoPosition", ((int)(id))+1);
+                    intent.putExtra("produtoPosition", ((int)(position))+1);
                     startActivity(intent);
                 } else { // large screen
                     Produtos produto = dao.getItemAt(position);

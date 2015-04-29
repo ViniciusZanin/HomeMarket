@@ -136,27 +136,23 @@ public class MenuPrincipal extends ActionBarActivity {
                     fragment = new ReceitasDetailFragment();
                     break;
                 case 5:
-                    fragment = new ReceitasListFragment();
+                    initCompras();
                     break;
                 case 6:
                     initCompras();
                     break;
                 case 7:
-                    initCompras();
+                    fragment = new MercadoDetailFragment();
                     break;
                 case 8:
                     fragment = new MercadoListFragment();
                     break;
                 case 9:
-                    initMercados();
+                    fragment = new VariacaoPrecoFragment();
                     break;
                 case 10:
-                   fragment = new VariacaoPrecoFragment();
-                    break;
-                case 11:
                     fragment = new ConfigFragment();
                     break;
-
                 default:
                     break;
             }

@@ -30,8 +30,12 @@ public class ProdutoDetail extends ActionBarActivity {
         ProdutosDao dao = ProdutosDao.newInstance(this);
         produtos = dao.list();
         int pos = getIntent().getExtras().getInt("produtoPosition");
+<<<<<<< HEAD
         Log.e(LOGTAG, String.valueOf(pos));
         Produtos produto = produtos.get(pos);
+=======
+        Produtos produto = produtos.get(pos-1);
+>>>>>>> 0ef35b0db5eecec3464a0d6a358143aa8b365157
         detail.showProdutos(produto);
     }
 
