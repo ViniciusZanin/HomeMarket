@@ -27,7 +27,6 @@ import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -145,31 +144,28 @@ public class ProdutoInsert extends ActionBarActivity {
                         .decodeFile(image_uri));
 
             }
+        }else if (requestCode == CAPTURE_IMAGE_REQCODE) {
+                if (resultCode == RESULT_OK) {
+                    Toast.makeText(this, getString(R.string.photo_capture_success),
+                            Toast.LENGTH_SHORT).show();
+
+                    Bitmap bitmap = BitmapFactory.decodeFile(fileUri.getPath());
+                    image_uri = fileUri.getPath();
+                    photoContainer.setVisibility(View.VISIBLE);
+                    photoContainer.setImageBitmap(bitmap);
+                    photoContainer.setAdjustViewBounds(true);
+                }
+
+
         } else if (resultCode == RESULT_CANCELED) {
             Toast.makeText(this, getString(R.string.image_pick_abort),
                     Toast.LENGTH_SHORT).show();
-        } else {
+        } else{
             Toast.makeText(this, getString(R.string.photo_capture_error),
                     Toast.LENGTH_SHORT).show();
         }
 
-        if (requestCode == CAPTURE_IMAGE_REQCODE) {
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(this, getString(R.string.photo_capture_success),
-                        Toast.LENGTH_SHORT).show();
 
-                Bitmap bitmap = BitmapFactory.decodeFile(fileUri.getPath());
-                image_uri = fileUri.getPath();
-                photoContainer.setImageBitmap(bitmap);
-                photoContainer.setAdjustViewBounds(true);
-            } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, getString(R.string.photo_capture_abort),
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, getString(R.string.photo_capture_error),
-                        Toast.LENGTH_SHORT).show();
-            }
-        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -216,7 +212,7 @@ public class ProdutoInsert extends ActionBarActivity {
         produto.setImagem(image_uri);
         dao.add(produto);
         Toast.makeText(this,"Produto Adicionado",Toast.LENGTH_SHORT).show();
-        startActivity((new Intent(this,Despensa.class)));
+        startActivity((new Intent(this,Produto.class)));
 
     }
     /**

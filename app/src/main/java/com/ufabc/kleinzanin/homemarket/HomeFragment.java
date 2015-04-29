@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
         String date;
         Calendar c = Calendar.getInstance();
         date = String.valueOf(c.get(Calendar.DAY_OF_MONTH) + "/" + c.get(Calendar.MONTH)+1 + "/" + c.get(Calendar.YEAR));
-        statusDespensa.setText("Status da Despensa em " + date);
+        statusDespensa.setText("Status da Produto em " + date);
         vStatusDespensa.setText("65%");
 
         statusCompraAtual.setText("Preço da Lista de Compra Atual");
@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
         statusDespensa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Despensa.class);
+                Intent intent = new Intent(getActivity(), Produto.class);
                 startActivity(intent);
             }
         });
@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
         vStatusDespensa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Despensa.class);
+                Intent intent = new Intent(getActivity(), Produto.class);
                 startActivity(intent);
             }
         });

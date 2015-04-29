@@ -48,7 +48,7 @@
             android:label="@string/title_activity_receitas_edit" >
         </activity>
         <activity
-            android:name=".Despensa"
+            android:name=".Produto"
             android:label="@string/title_activity_despensa"
             android:parentActivityName=".MenuPrincipal" >
             <meta-data
@@ -58,19 +58,19 @@
         <activity
             android:name=".ProdutoInsert"
             android:label="@string/title_activity_produto_insert"
-            android:parentActivityName=".Despensa" >
+            android:parentActivityName=".Produto" >
         </activity>
         <activity
             android:name=".MercadoMain"
             android:label="@string/title_activity_mercado_main" >
         </activity>
         <activity
-            android:name=".DespensaDetailFragment"
+            android:name=".ProdutoDetailFragment"
             android:label="Detail" />
         <activity
             android:name=".ProdutoDetail"
             android:label="@string/title_activity_produto_detail"
-            android:parentActivityName=".Despensa" >
+            android:parentActivityName=".Produto" >
         </activity>
         <activity
             android:name=".ProdutoEdit"

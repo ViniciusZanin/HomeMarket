@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+    <TextView android:id="@+id/produto_nome"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <TableRow>
+        <TextView android:text="@string/produto_check"
+            android:textStyle="bold"/>
+        <TextView android:id="@+id/produto_consumo" android:layout_width="match_parent" android:visibility="invisible"/>
+        <CheckBox android:id="@+id/produto_check" android:clickable="false"/>
+
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/produto_quantidade"
+            android:textStyle="bold"/>
+        <TextView android:id="@+id/produto_quantidade"/>
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/produto_preço"
+            android:textStyle="bold"/>
+        <TextView android:id="@+id/produto_preço"/>
+    </TableRow>
+    <TableRow>
+        <Button android:id="@+id/visualizar_preço"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="right"
+            android:text="Visualizar Varição de Preço"
+            android:backgroundTint="#ff00aeff"
+            android:textColor="#ffffffff"/>
+    </TableRow>
+    <TableRow>
+        <ImageView android:id="@+id/produto_imagem"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+
+
+</TableLayout>

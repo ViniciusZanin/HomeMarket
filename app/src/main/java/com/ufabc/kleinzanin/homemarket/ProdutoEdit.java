@@ -76,7 +76,7 @@ public class ProdutoEdit extends ActionBarActivity {
         produto.setChecked(ncheck);
         dao.edit(produto);
         Toast.makeText(this, "Produto Editado", Toast.LENGTH_SHORT).show();
-        startActivity((new Intent(this,Despensa.class)));
+        startActivity((new Intent(this,Produto.class)));
 
     }
 

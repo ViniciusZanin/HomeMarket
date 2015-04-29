@@ -1,9 +1,7 @@
 package com.ufabc.kleinzanin.homemarket;
 
-    import android.app.Activity;
     import android.app.Fragment;
     import android.app.FragmentManager;
-    import android.content.Context;
     import android.content.Intent;
     import android.content.res.Configuration;
     import android.content.res.TypedArray;
@@ -16,12 +14,10 @@ package com.ufabc.kleinzanin.homemarket;
     import android.view.MenuItem;
     import android.view.View;
     import android.widget.AdapterView;
-    import android.widget.Button;
     import android.widget.ListView;
 
     import com.ufabc.kleinzanin.homemarket.adapter.NavDrawerListAdapter;
     import com.ufabc.kleinzanin.homemarket.model.NavDrawerItem;
-    import com.ufabc.kleinzanin.homemarket.model.Receitas;
 
     import java.util.ArrayList;
 
@@ -76,7 +72,7 @@ public class MenuPrincipal extends ActionBarActivity {
 
 
     private void initDespensa() {
-        startActivity((new Intent(this,Despensa.class)));
+        startActivity((new Intent(this,Produto.class)));
     }
 
     private void initReceitas() {
@@ -131,7 +127,7 @@ public class MenuPrincipal extends ActionBarActivity {
                     initDespensa();
                     break;
                 case 2:
-                    fragment = new DespensaListFragment();
+                    fragment = new ProdutoListFragment();
                     break;
                 case 3:
                     initReceitas();
@@ -222,9 +218,9 @@ public class MenuPrincipal extends ActionBarActivity {
             // adding nav drawer items to array
             // Home
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-            // Despensa
+            // Produto
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-            // Editar Despensa
+            // Editar Produto
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[2],11));
             // Receitas
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(2, -1)));

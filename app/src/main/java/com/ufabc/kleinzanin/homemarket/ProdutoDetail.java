@@ -3,6 +3,7 @@ package com.ufabc.kleinzanin.homemarket;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -13,13 +14,14 @@ import java.util.ArrayList;
 
 
 public class ProdutoDetail extends ActionBarActivity {
-    private DespensaDetailFragment detail;
+    private static final String LOGTAG = ProdutoDetail.class.getSimpleName() ;
+    private ProdutoDetailFragment detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produto_show);
-        detail = (DespensaDetailFragment ) getFragmentManager().findFragmentById(R.id.fragment_detail);
+        detail = (ProdutoDetailFragment) getFragmentManager().findFragmentById(R.id.fragment_detail);
         showProduto();
     }
 
@@ -28,7 +30,8 @@ public class ProdutoDetail extends ActionBarActivity {
         ProdutosDao dao = ProdutosDao.newInstance(this);
         produtos = dao.list();
         int pos = getIntent().getExtras().getInt("produtoPosition");
-        Produtos produto = produtos.get(pos-3);
+        Log.e(LOGTAG, String.valueOf(pos));
+        Produtos produto = produtos.get(pos);
         detail.showProdutos(produto);
     }
 
@@ -61,7 +64,7 @@ public class ProdutoDetail extends ActionBarActivity {
             ProdutosDao dao = ProdutosDao.newInstance(this);
             int pos = getIntent().getExtras().getInt("produtoPosition");
             dao.remove(pos);
-            Intent intent = new Intent(this, Despensa.class);
+            Intent intent = new Intent(this, Produto.class);
             startActivity(intent);
         }
 
