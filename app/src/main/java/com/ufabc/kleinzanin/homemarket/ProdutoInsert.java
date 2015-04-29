@@ -200,8 +200,25 @@ public class ProdutoInsert extends ActionBarActivity {
         String consumo = ((EditText )findViewById(R.id.insert_produto_consumo)).getText().toString();
         String unidade = String.valueOf(units.getSelectedItem());
         boolean check = ((CheckBox )findViewById(R.id.insert_produto_check)).isChecked();
+        boolean error = false;
+        if(nome.equalsIgnoreCase("")){
+            ((EditText) findViewById(R.id.insert_produto_nome)).setError("Campo Obrigatorio");
+            error = true;
+        }
+        if(quantidade.equalsIgnoreCase("")){
+            ((EditText) findViewById(R.id.insert_produto_quantidade)).setError("Campo Obrigatorio");
+            error = true;
+        }
+        if(preço.equalsIgnoreCase("")){
+            ((EditText) findViewById(R.id.insert_produto_preço)).setError("Campo Obrigatorio");
+            error = true;
+        }
+        if(check && consumo.equalsIgnoreCase("")){
+            ((EditText) findViewById(R.id.insert_produto_consumo)).setError("Campo Obrigatorio");
+            error = true;
+        }
         Produtos produto = new Produtos();
-
+        if(error == false){
         produto.setNome(nome);
         produto.setQuantidade(Integer.parseInt(quantidade));
         produto.setPreço(preço);
@@ -210,9 +227,10 @@ public class ProdutoInsert extends ActionBarActivity {
         produto.setChecked(check);
         produto.setUnidade(unidade);
         produto.setImagem(image_uri);
+
         dao.add(produto);
         Toast.makeText(this,"Produto Adicionado",Toast.LENGTH_SHORT).show();
-        startActivity((new Intent(this,Produto.class)));
+        startActivity((new Intent(this,Produto.class)));}
 
     }
     /**
