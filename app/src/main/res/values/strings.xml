@@ -14,7 +14,7 @@
             quantMonth INTEGER,
             monthly INTEGER NOT NULL,
             value TEXT NOT NULL,
-            image BLOB)
+            image TEXT)
     </string>
      <string name="drop_table_produtos_query">
         DROP TABLE IF EXISTS produtos;
@@ -176,4 +176,18 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="storage_error">Falha ao salvar</string>
+    <string name="photo_capture_success">Foto Capturada com Sucesso</string>
+    <string name="image_pick_abort">Cancelado</string>
+    <string name="photo_capture_error">Erro ao carregar</string>
+    <string name="photo_capture_abort">Erro ao tirar foto</string>
+
+    <!-- SpinnerInsertArray -->
+    <string-array name="unitis_array">
+        <item>Kilograma</item>
+        <item>Grama</item>
+        <item>Litros</item>
+        <item>Mililitros</item>
+        <item>Unidade</item>
+    </string-array>
 </resources>

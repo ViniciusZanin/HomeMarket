@@ -1,6 +1,8 @@
 package com.ufabc.kleinzanin.homemarket;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,6 +36,7 @@ public class ProdutoEdit extends ActionBarActivity {
 
 
     private void init() {
+
         ProdutosDao dao = ProdutosDao.newInstance(this);
         int pos = getIntent().getExtras().getInt("produtoPosition");
         Produtos produto = dao.getItemAt(pos);
@@ -46,7 +49,8 @@ public class ProdutoEdit extends ActionBarActivity {
         nome.setText(produto.getNome());
         quantidade.setText(Integer.toString(produto.getQuantidade()));
         preço.setText(produto.getPreço());
-        produtoimage.setImageResource(produto.getImagem());
+        Bitmap bitmap = BitmapFactory.decodeFile(produto.getImagem());
+        produtoimage.setImageBitmap(bitmap);
         produtoCheck.setChecked(produto.getChecked());
         if(produtoCheck.isChecked()){
             consumo.setVisibility(View.VISIBLE);

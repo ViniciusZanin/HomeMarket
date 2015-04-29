@@ -149,7 +149,7 @@ public class MenuPrincipal extends ActionBarActivity {
                     initCompras();
                     break;
                 case 8:
-                    fragment = new MercadoDetailFragment();
+                    fragment = new MercadoListFragment();
                     break;
                 case 9:
                     initMercados();

@@ -1,5 +1,7 @@
         package com.ufabc.kleinzanin.homemarket;
 
+        import android.graphics.Bitmap;
+        import android.graphics.BitmapFactory;
         import android.os.Bundle;
         import android.app.Fragment;
         import android.view.LayoutInflater;
@@ -49,11 +51,11 @@
 
             public void showProdutos(Produtos produto) {
                 init();
-
+                Bitmap bitmap = BitmapFactory.decodeFile(produto.getImagem());
                 nome.setText(produto.getNome());
                 quantidade.setText(Integer.toString(produto.getQuantidade()));
                 preço.setText(produto.getPreço());
-                produtoimage.setImageResource(produto.getImagem());
+                produtoimage.setImageBitmap(bitmap);
                 produtoCheck.setChecked(produto.getChecked());
                 if(produto.getChecked() == true){
                     consumo.setText(Integer.toString(produto.getConsumo()));
