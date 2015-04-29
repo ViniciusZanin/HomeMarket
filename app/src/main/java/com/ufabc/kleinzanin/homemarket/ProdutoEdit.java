@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
@@ -25,15 +27,24 @@ public class ProdutoEdit extends ActionBarActivity {
     private EditText consumo;
     private ImageView produtoimage;
     private CheckBox produtoCheck;
-
+    private Spinner units;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produto_edit);
         init();
+        addListenerOnSpinnerItemSelection();
     }
 
+    public void addListenerOnSpinnerItemSelection() {
+        units = (Spinner) findViewById(R.id.edit_unit);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.unitis_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        units.setAdapter(adapter);
+        units.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+    }
 
     private void init() {
 
@@ -56,6 +67,7 @@ public class ProdutoEdit extends ActionBarActivity {
             consumo.setVisibility(View.VISIBLE);
             consumo.setText(Integer.toString(produto.getConsumo()));
         }
+        units = (Spinner )findViewById(R.id.edit_unit);
     }
 
     private void editProduto(){
@@ -65,11 +77,13 @@ public class ProdutoEdit extends ActionBarActivity {
         String nnome = ((EditText ) findViewById(R.id.edit_produto_nome)).getText().toString();
         String nquantidade = ((EditText )findViewById(R.id.edit_produto_quantidade)).getText().toString();
         String npreço = ((EditText )findViewById(R.id.edit_produto_preço)).getText().toString();
+        String unidade = String.valueOf(units.getSelectedItem());
         String nconsumo = ((EditText )findViewById(R.id.edit_produto_consumo)).getText().toString();
         boolean ncheck = ((CheckBox )findViewById(R.id.edit_produto_check)).isChecked();
         produto.setNome(nnome);
         produto.setQuantidade(Integer.parseInt(nquantidade));
         produto.setPreço(npreço);
+        produto.setUnidade(unidade);
         if(ncheck){
             consumo.setVisibility(View.VISIBLE);
             produto.setConsumo(Integer.parseInt(nconsumo));}
@@ -104,4 +118,7 @@ public class ProdutoEdit extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
+

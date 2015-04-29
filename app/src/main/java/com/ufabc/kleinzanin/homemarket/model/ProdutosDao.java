@@ -106,7 +106,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
             statement.bindString(1, p.getNome());
-            //statement.bindString(2, p.getUnidade());
+            statement.bindString(2, p.getUnidade());
             statement.bindLong(3, p.getQuantidade());
             statement.bindLong(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);

@@ -20,6 +20,11 @@
     <EditText android:id="@+id/edit_produto_quantidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Spinner android:id="@+id/edit_unit"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <EditText android:id="@+id/edit_produto_preço"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
