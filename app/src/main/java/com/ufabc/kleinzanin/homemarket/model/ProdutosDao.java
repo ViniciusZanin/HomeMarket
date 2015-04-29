@@ -72,26 +72,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
     private void init() {
         produtos = new ArrayList<>();
-        // TODO: remove when "insert" operation is implemented in the app
-        //loadTestData();
     }
-
-    /*private void loadTestData() {
-        Produtos c;
-
-        c = new Produtos();
-
-        c.setNome("Manga");
-        c.setPreço("4.99");
-        c.setQuantidade(200);
-        c.setConsumo(1000);
-        c.setChecked(true);
-        c.setImagem(R.drawable.manga);
-        c.setUnidade("g");
-        produtos.add(c);
-
-    }*/
-
 
     //ADD ORDER
     //title TEXT NOT NULL, unity TEXT NOT NULL, quantNow INTEGER NOT NULL, quantMonth INTEGER, monthly INTEGER NOT NULL, value TEXT NOT NULL, image BLOB
@@ -117,7 +98,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
         return status;
     }
-    public boolean edit(Produtos p){
+    public boolean edit(Produtos p, int position){
         String queryStr = context.getString(R.string.edit_produtos_query);
         boolean status = true;
 
@@ -125,14 +106,14 @@ public class ProdutosDao extends SQLiteOpenHelper {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
             statement.bindString(1, p.getNome());
-            statement.bindString(2, p.getUnidade());
+            //statement.bindString(2, p.getUnidade());
             statement.bindLong(3, p.getQuantidade());
             statement.bindLong(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);
             statement.bindString(6, p.getPreço());
             //statement.bindBlob(7, p.getImagem()); RESOLVER IMAGEM COMO BYTE ARRAY OU SALVAR NA MEMORIA INTERNA.
 
-            statement.bindLong(8,p.getID()); //ID of the product to change.
+            statement.bindLong(7, position); //ID of the product to change.
 
             statement.execute();
         } catch (SQLiteException e) {
@@ -192,7 +173,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
                 cursor.moveToFirst();
 
                 produto.setID(cursor.getInt(0));
-                produto.setNome(cursor.g    etString(1));
+                produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
                 produto.setQuantidade(cursor.getInt(3));
                 produto.setConsumo(cursor.getInt(4));

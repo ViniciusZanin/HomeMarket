@@ -39,7 +39,7 @@ public class ProdutoEdit extends ActionBarActivity {
 
         ProdutosDao dao = ProdutosDao.newInstance(this);
         int pos = getIntent().getExtras().getInt("produtoPosition");
-        Produtos produto = dao.getItemAt(pos-1);
+        Produtos produto = dao.getItemAt(pos);
         nome = (EditText) findViewById(R.id.edit_produto_nome);
         quantidade = (EditText ) findViewById(R.id.edit_produto_quantidade);
         preço = (EditText ) findViewById(R.id.edit_produto_preço);
@@ -61,7 +61,7 @@ public class ProdutoEdit extends ActionBarActivity {
     private void editProduto(){
         ProdutosDao dao = ProdutosDao.newInstance(this);
         int pos = getIntent().getExtras().getInt("produtoPosition");
-        Produtos produto = dao.getItemAt(pos);
+        Produtos produto = new Produtos();
         String nnome = ((EditText ) findViewById(R.id.edit_produto_nome)).getText().toString();
         String nquantidade = ((EditText )findViewById(R.id.edit_produto_quantidade)).getText().toString();
         String npreço = ((EditText )findViewById(R.id.edit_produto_preço)).getText().toString();
@@ -74,7 +74,7 @@ public class ProdutoEdit extends ActionBarActivity {
             consumo.setVisibility(View.VISIBLE);
             produto.setConsumo(Integer.parseInt(nconsumo));}
         produto.setChecked(ncheck);
-        dao.edit(produto);
+        dao.edit(produto, pos);
         Toast.makeText(this, "Produto Editado", Toast.LENGTH_SHORT).show();
         startActivity((new Intent(this,Despensa.class)));
 

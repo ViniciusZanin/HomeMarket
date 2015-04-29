@@ -149,11 +149,7 @@ public class MenuPrincipal extends ActionBarActivity {
                     fragment = new MercadoDetailFragment();
                     break;
                 case 8:
-<<<<<<< HEAD
-                    initMercados();
-=======
                     fragment = new MercadoListFragment();
->>>>>>> origin/master
                     break;
                 case 9:
                     fragment = new VariacaoPrecoFragment();
