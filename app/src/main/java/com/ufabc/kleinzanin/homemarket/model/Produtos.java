@@ -8,7 +8,7 @@ public class Produtos {
     private String nome;
     private int quantidade;
     private String preço;
-    private int imagem;
+    private String imagem;
     private int consumo;
     private boolean checked;
     private String unidade;
@@ -58,9 +58,9 @@ public class Produtos {
         this.consumo = consumo;
     }
 
-    public int getImagem() { return imagem;}
+    public String getImagem() { return imagem;}
 
-    public void setImagem(int imagem) { this.imagem = imagem;}
+    public void setImagem(String imagem) { this.imagem = imagem;}
 
     public int getID() {
         return ID;
