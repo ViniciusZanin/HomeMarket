@@ -10,10 +10,6 @@
         android:id="@+id/produto_nome"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/produto_quantidade"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_below="@id/produto_nome"/>
+        android:textStyle="bold"
+        android:textSize="15dp"/>
 </RelativeLayout>
