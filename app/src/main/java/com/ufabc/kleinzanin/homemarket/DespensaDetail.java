@@ -42,7 +42,6 @@ public class DespensaDetail extends ActionBarActivity {
     }
 
     public void addListenerOnSpinnerItemSelection() {
-        //units = (Spinner) findViewById(R.id.insert_unit);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.unitis_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
