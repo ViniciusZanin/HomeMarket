@@ -30,12 +30,7 @@ public class ProdutoDetail extends ActionBarActivity {
         ProdutosDao dao = ProdutosDao.newInstance(this);
         produtos = dao.list();
         int pos = getIntent().getExtras().getInt("produtoPosition");
-<<<<<<< HEAD
-        Log.e(LOGTAG, String.valueOf(pos));
         Produtos produto = produtos.get(pos);
-=======
-        Produtos produto = produtos.get(pos-1);
->>>>>>> 0ef35b0db5eecec3464a0d6a358143aa8b365157
         detail.showProdutos(produto);
     }
 
@@ -67,7 +62,7 @@ public class ProdutoDetail extends ActionBarActivity {
         if(id == R.id.action_produto_remove){
             ProdutosDao dao = ProdutosDao.newInstance(this);
             int pos = getIntent().getExtras().getInt("produtoPosition");
-            dao.remove(pos);
+            dao.remove(pos+1);
             Intent intent = new Intent(this, Produto.class);
             startActivity(intent);
         }
