@@ -222,4 +222,5 @@
     <string name="hello_world">Hello world!</string>
     <string name="prod_add">Adicionar</string>
     <string name="prodcancel">Cancelar</string>
+    <string name="prod_remo">Remover</string>
 </resources>
