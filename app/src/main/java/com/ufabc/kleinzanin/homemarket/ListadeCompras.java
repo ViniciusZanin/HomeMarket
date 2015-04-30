@@ -36,8 +36,8 @@ public class ListadeCompras extends ActionBarActivity {
                 }
             }
         }
-        listprod = ((TextView )findViewById(R.id.list_listacompra));
-        listprod.setText("Manga x 800");
+ //       listprod = ((TextView )findViewById(R.id.list_listacompra));
+  //      listprod.setText("Manga x 800");
         pr = ((TextView )findViewById(R.id.preço_lista));
         pr.setText("R$3,99");
     }
