@@ -21,10 +21,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText android:id="@+id/insert_ingrediente"
+        <TextView android:id="@+id/insert_ingrediente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/Receita_igr"/>
+            android:text="@string/Receita_igr"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
+        <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ingredientes_list"/>

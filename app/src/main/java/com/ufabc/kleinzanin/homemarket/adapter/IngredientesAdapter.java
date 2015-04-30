@@ -64,16 +64,15 @@ public class IngredientesAdapter extends BaseAdapter{
         TextView nome = null;
         TextView quantidade = null;
         TextView unidade = null;
-        Button remove;
+        int ReceitaID = 0;
         if(convertView == null){
             convertView = inflater.inflate(R.layout.despensa_list_item,null);
         }
         nome = (TextView )convertView.findViewById(R.id.ingrediente_name);
         quantidade = (TextView ) convertView.findViewById(R.id.ingrediente_quant);
         unidade = (TextView )convertView.findViewById(R.id.ingrediente_uni);
-        remove = (Button )convertView.findViewById(R.id.ing_remove_button);
         nome.setText(ingrediente.getNome());
-        quantidade.setText(ingrediente.getQuantidade());
+        quantidade.setText(String.valueOf(ingrediente.getQuantidade()));
         unidade.setText(ingrediente.getUnidade());
         return convertView;
     }

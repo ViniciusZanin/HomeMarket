@@ -47,8 +47,6 @@ public class ReceitasEdit extends ActionBarActivity {
         add = (Button ) findViewById(R.id.Add_button);
         nome.setText(receita.getReceita());
         modprep.setText(receita.getModopreparo());
-        ingredientes.setText(receita.getIngredientes());
-        ((EditText) findViewById(R.id.insert_ingrediente)).setText(receita.getIngredientes());
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +97,6 @@ public class ReceitasEdit extends ActionBarActivity {
         String nmodepreparo = ((EditText)findViewById(R.id.Mod_prepedit)).getText().toString();
 
         receita.setModopreparo(nmodepreparo);
-        receita.setIngredientes(ingrediente);
         receita.setReceita(nnome);
 
         dao.edit(receita);
