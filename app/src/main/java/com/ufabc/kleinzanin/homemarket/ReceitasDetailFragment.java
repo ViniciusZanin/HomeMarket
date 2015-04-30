@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ufabc.kleinzanin.homemarket.adapter.IngredientesAdapter;
+import com.ufabc.kleinzanin.homemarket.adapter.IngredientesTempAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 
 import java.util.ArrayList;
@@ -21,10 +23,10 @@ import java.util.List;
 
 public class ReceitasDetailFragment extends Fragment {
 
-    private TextView ingredientes;
+    private ListView ingredientes;
     private TextView modprep;
     private Button realizada;
-    private Context context;
+    private TextView nome;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,15 +34,22 @@ public class ReceitasDetailFragment extends Fragment {
     }
 
     private void init() {
-        ingredientes = (TextView) getView().findViewById(R.id.ingredientes_list);
+        ingredientes = (ListView ) getView().findViewById(R.id.ingredientes_list);
         modprep = (TextView) getView().findViewById(R.id.Mod_prep);
+        nome = (TextView )getView().findViewById(R.id.ingrediente_name);
     }
 
     public void showReceitas(Receitas receitas) {
         init();
         final ReceitasDetailFragment self = this;
-        ingredientes.setText((receitas.getIngredientes()));
         modprep.setText(receitas.getModopreparo());
+<<<<<<< HEAD
+        ingredientes.setAdapter(new IngredientesAdapter(getActivity(), receitas.getID()));
+        nome.setText(receitas.getReceita());
+
+=======
+        ingredientes.setAdapter(new IngredientesAdapter(getActivity(),receitas.getID()));
+>>>>>>> 68e623b0c8519f81298511f45fcbf4d40729cbde
 
     }
 }

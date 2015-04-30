@@ -48,10 +48,12 @@ public class ProdutosDao extends SQLiteOpenHelper {
         String queryStr1 = context.getString(R.string.create_table_produtos_query);
         String queryStr2 = context.getString(R.string.create_table_mercados_query);
         String queryStr3 = context.getString(R.string.create_table_receitas_query);
+        String queryStr4 = context.getString(R.string.create_table_ingredientes_query);
         try {
             db.execSQL(queryStr1);
             db.execSQL(queryStr2);
             db.execSQL(queryStr3);
+            db.execSQL(queryStr4);
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to create database", e);
         }
@@ -85,11 +87,11 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
             statement.bindString(1, p.getNome());
             statement.bindString(2, p.getUnidade());
-            statement.bindLong(3, p.getQuantidade());
-            statement.bindLong(4, p.getConsumo());
+            statement.bindDouble(3, p.getQuantidade());
+            statement.bindDouble(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);
-            statement.bindString(6, p.getPreço());
-           //statement.bindBlob(7, p.getImagem()); RESOLVER IMAGEM COMO BYTE ARRAY OU SALVAR NA MEMORIA INTERNA.
+            statement.bindDouble(6, p.getPreço());
+           statement.bindString(7, p.getImagem());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to add products in the database", e);
@@ -107,13 +109,32 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
             statement.bindString(1, p.getNome());
             statement.bindString(2, p.getUnidade());
-            statement.bindLong(3, p.getQuantidade());
-            statement.bindLong(4, p.getConsumo());
+            statement.bindDouble(3, p.getQuantidade());
+            statement.bindDouble(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);
-            statement.bindString(6, p.getPreço());
-            //statement.bindBlob(7, p.getImagem()); RESOLVER IMAGEM COMO BYTE ARRAY OU SALVAR NA MEMORIA INTERNA.
+            statement.bindDouble(6, p.getPreço());
+            statement.bindString(7, p.getImagem());
 
-            statement.bindLong(7, position); //ID of the product to change.
+            statement.bindLong(8, p.getID()); //ID of the product to change.
+
+            statement.execute();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to edit products in the database", e);
+            status = false;
+        }
+
+        return status;
+    }
+    public boolean editprodquant(Produtos p, int position){
+        String queryStr = context.getString(R.string.edit_produto_quant_query);
+        boolean status = true;
+
+        try {
+            SQLiteStatement statement = db.compileStatement(queryStr);
+
+            statement.bindDouble(1, p.getQuantidade());
+
+            statement.bindLong(2, p.getID()); //ID of the product to change.
 
             statement.execute();
         } catch (SQLiteException e) {
@@ -127,11 +148,15 @@ public class ProdutosDao extends SQLiteOpenHelper {
     public boolean remove(int position) {
         String queryStr = context.getString(R.string.remove_produtos_query);
         boolean status = true;
+        ArrayList<Produtos>produtos;
+        dao = ProdutosDao.newInstance(context);
+        produtos = dao.list();
+        Produtos produto = produtos.get(position);
 
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
-            statement.bindLong(1,position);
+            statement.bindLong(1,produto.getID());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to remove products in the database", e);
@@ -175,11 +200,11 @@ public class ProdutosDao extends SQLiteOpenHelper {
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
-                produto.setQuantidade(cursor.getInt(3));
-                produto.setConsumo(cursor.getInt(4));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
                 produto.setChecked((cursor.getInt(5) == 0 ? false : true));
-                produto.setPreço(cursor.getString(6));
-                //produto.setImagem(cursor.getBlob(7));
+                produto.setPreço(cursor.getDouble(6));
+                produto.setImagem(cursor.getString(7));
                 cursor.close();
             }
         } catch (SQLiteException e) {
@@ -202,11 +227,97 @@ public class ProdutosDao extends SQLiteOpenHelper {
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
-                produto.setQuantidade(cursor.getInt(3));
-                produto.setConsumo(cursor.getInt(4));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
                 produto.setChecked((cursor.getInt(5) == 0 ? false:true));
-                produto.setPreço(cursor.getString(6));
-                //produto.setImagem(cursor.getBlob(7));
+                produto.setPreço(cursor.getDouble(6));
+                produto.setImagem(cursor.getString(7));
+                produtos.add(produto);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to list produtos from the database", e);
+        }
+
+        return produtos;
+    }
+
+    public ArrayList<Produtos> despensa() {
+        ArrayList<Produtos> produtos = new ArrayList<>();
+        String queryStr = context.getString(R.string.list_despensa_query);
+
+        try {
+            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                Produtos produto = new Produtos();
+                produto.setID(cursor.getInt(0));
+                produto.setNome(cursor.getString(1));
+                produto.setUnidade(cursor.getString(2));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
+                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setPreço(cursor.getDouble(6));
+                produto.setImagem(cursor.getString(7));
+                produtos.add(produto);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to list produtos from the database", e);
+        }
+
+        return produtos;
+    }
+
+    public ArrayList<Produtos> despensa_prod() {
+        ArrayList<Produtos> produtos = new ArrayList<>();
+        String queryStr = context.getString(R.string.list_despensaprod_query);
+
+        try {
+            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                Produtos produto = new Produtos();
+                produto.setID(cursor.getInt(0));
+                produto.setNome(cursor.getString(1));
+                produto.setUnidade(cursor.getString(2));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
+                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setPreço(cursor.getDouble(6));
+                produto.setImagem(cursor.getString(7));
+                produtos.add(produto);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to list produtos from the database", e);
+        }
+
+        return produtos;
+    }
+    public ArrayList<Produtos> despensa_porcentagem() {
+        ArrayList<Produtos> produtos = new ArrayList<>();
+        String queryStr = context.getString(R.string.get_product_checked_query);
+
+        try {
+            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                Produtos produto = new Produtos();
+                produto.setID(cursor.getInt(0));
+                produto.setNome(cursor.getString(1));
+                produto.setUnidade(cursor.getString(2));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
+                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setPreço(cursor.getDouble(6));
+                produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
                 cursor.moveToNext();
             }

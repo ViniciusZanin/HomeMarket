@@ -53,12 +53,12 @@
                 init();
                 Bitmap bitmap = BitmapFactory.decodeFile(produto.getImagem());
                 nome.setText(produto.getNome());
-                quantidade.setText(Integer.toString(produto.getQuantidade()));
-                preço.setText(produto.getPreço());
+                quantidade.setText(Double.toString(produto.getQuantidade()));
+                preço.setText(String.valueOf(produto.getPreço()));
                 produtoimage.setImageBitmap(bitmap);
                 produtoCheck.setChecked(produto.getChecked());
                 if(produto.getChecked() == true){
-                    consumo.setText(Integer.toString(produto.getConsumo()));
+                    consumo.setText(Double.toString(produto.getConsumo()));
                     consumo.setVisibility(View.VISIBLE);
                 }
             }

@@ -6,10 +6,10 @@ import android.media.Image;
 public class Produtos {
     private int ID;
     private String nome;
-    private int quantidade;
-    private String preço;
+    private double quantidade;
+    private double preço;
     private String imagem;
-    private int consumo;
+    private double consumo;
     private boolean checked;
     private String unidade;
 
@@ -29,19 +29,19 @@ public class Produtos {
         this.nome = nome;
     }
 
-    public int getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
 
-    public String getPreço() {
+    public double getPreço() {
         return preço;
     }
 
-    public void setPreço(String preço) {
+    public void setPreço(double preço) {
         this.preço = preço;
     }
 
@@ -50,11 +50,12 @@ public class Produtos {
     public void setChecked(boolean check){
         this.checked = check;
     }
-    public int getConsumo() {
+
+    public double getConsumo() {
         return consumo;
     }
 
-    public void setConsumo(int consumo) {
+    public void setConsumo(double consumo) {
         this.consumo = consumo;
     }
 

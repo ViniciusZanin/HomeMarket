@@ -31,8 +31,8 @@ public class ListadeCompras extends ActionBarActivity {
         for (int i = 0; i < dao.size(); i++) {
             if (dao.getItemAt(i).getChecked()) {
                 if (dao.getItemAt(i).getConsumo() < dao.getItemAt(i).getQuantidade()) {
-                    produtos = produtos + "/n" + Integer.toString(dao.getItemAt(i).getConsumo() - dao.getItemAt(i).getQuantidade()) + "x " + dao.getItemAt(i).getNome();
-                    preço = preço + (Double.parseDouble(dao.getItemAt(i).getPreço()))*(dao.getItemAt(i).getConsumo() - dao.getItemAt(i).getQuantidade());
+                    produtos = produtos + "/n" + Double.toString(dao.getItemAt(i).getConsumo() - dao.getItemAt(i).getQuantidade()) + "x " + dao.getItemAt(i).getNome();
+                //    preço = preço + (Double.parseDouble(dao.getItemAt(i).getPreço()))*(dao.getItemAt(i).getConsumo() - dao.getItemAt(i).getQuantidade());
                 }
             }
         }

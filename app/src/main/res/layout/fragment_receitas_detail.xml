@@ -7,11 +7,17 @@
     tools:context="com.ufabc.kleinzanin.homemarket.ReceitasDetailFragment"
     android:orientation="vertical">
 
-    <TextView android:text="@string/Ingredientes" android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:id="@+id/ingrediente_name"
+        android:layout_gravity="center_horizontal"/>
+    <TextView android:text="@string/Ingredientes" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
         android:layout_gravity="center_horizontal" />
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ingredientes_list"/>
@@ -20,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ModPrep"
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:layout_gravity="center_horizontal" />
 
     <TextView
