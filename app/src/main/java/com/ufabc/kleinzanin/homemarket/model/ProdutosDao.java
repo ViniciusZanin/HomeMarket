@@ -123,6 +123,25 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
         return status;
     }
+    public boolean editprodquant(Produtos p, int position){
+        String queryStr = context.getString(R.string.edit_produto_quant_query);
+        boolean status = true;
+
+        try {
+            SQLiteStatement statement = db.compileStatement(queryStr);
+
+            statement.bindLong(1, p.getQuantidade());
+
+            statement.bindLong(2, p.getID()); //ID of the product to change.
+
+            statement.execute();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to edit products in the database", e);
+            status = false;
+        }
+
+        return status;
+    }
 
     public boolean remove(int position) {
         String queryStr = context.getString(R.string.remove_produtos_query);
@@ -225,6 +244,35 @@ public class ProdutosDao extends SQLiteOpenHelper {
     public ArrayList<Produtos> despensa() {
         ArrayList<Produtos> produtos = new ArrayList<>();
         String queryStr = context.getString(R.string.list_despensa_query);
+
+        try {
+            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                Produtos produto = new Produtos();
+                produto.setID(cursor.getInt(0));
+                produto.setNome(cursor.getString(1));
+                produto.setUnidade(cursor.getString(2));
+                produto.setQuantidade(cursor.getInt(3));
+                produto.setConsumo(cursor.getInt(4));
+                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setPreço(cursor.getString(6));
+                produto.setImagem(cursor.getString(7));
+                produtos.add(produto);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to list produtos from the database", e);
+        }
+
+        return produtos;
+    }
+
+    public ArrayList<Produtos> despensa_prod() {
+        ArrayList<Produtos> produtos = new ArrayList<>();
+        String queryStr = context.getString(R.string.list_despensaprod_query);
 
         try {
             Cursor cursor = db.rawQuery(queryStr, new String[]{});
