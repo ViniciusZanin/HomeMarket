@@ -47,6 +47,10 @@
          SELECT * FROM produtos WHERE _id =
     </string>
 
+    <string name="get_product_checked_query">
+        SELECT * FROM produtos WHERE monthly = 1;
+    </string>
+
     <!-- RECEITAS -->
         <string name="create_table_receitas_query">
          CREATE TABLE receitas (
@@ -197,8 +201,9 @@
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     unity TEXT NOT NULL,
+    receita_id INTEGER NOT NULL,
     quantidade REAL NOT NULL,
-    receita_id INTEGER )
+    FOREIGN KEY (receita_id) REFERENCES receitas(_id) )
     </string>
     <string name="insert_ingredientes_query">INSERT INTO ingredientes (title, unity, quantidade, receita_id) VALUES(?,?,?,?)</string>
     <string name="remove_ingredientes_query">DELETE FROM ingredientes WHERE _id = ?</string>
