@@ -8,7 +8,6 @@ import java.util.List;
 public class Receitas {
     private int ID;
     private String receita;
-    private String ingredientes;
     private String modopreparo;
 
     public String getReceita() {
@@ -19,13 +18,6 @@ public class Receitas {
         this.receita = receita;
     }
 
-    public String getIngredientes() {
-        return ingredientes;
-    }
-
-    public void setIngredientes(String ingredientes) {
-        this.ingredientes = ingredientes;
-    }
 
     public String getModopreparo() {
         return modopreparo;

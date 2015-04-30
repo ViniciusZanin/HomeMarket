@@ -82,7 +82,7 @@ public class IngredientesDAO extends SQLiteOpenHelper{
 
             statement.bindString(1, i.getNome());
             statement.bindString(2, i.getUnidade());
-            statement.bindLong(3, i.getQuantidade());
+            statement.bindDouble(3, i.getQuantidade());
             statement.bindLong(4, i.getReceitaID());
             statement.execute();
         } catch (SQLiteException e) {

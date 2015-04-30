@@ -65,10 +65,10 @@
         SELECT * FROM receitas;
     </string>
      <string name="insert_receitas_query">
-         INSERT INTO receitas (title, ingredientes, mododefazer) VALUES(?,?,?)
+         INSERT INTO receitas (title, mododefazer) VALUES(?,?)
     </string>
      <string name="edit_receitas_query">
-         UPDATE receitas SET title = ?, ingredientes = ?, mododefazer = ? WHERE _id = ?
+         UPDATE receitas SET title = ?, mododefazer = ? WHERE _id = ?
     </string>
      <string name="remove_receitas_query">
          DELETE FROM receitas WHERE _id = ?
@@ -197,14 +197,22 @@
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     unity TEXT NOT NULL,
+<<<<<<< HEAD
+    quantidade INTEGER NOT NULL,
+    receita_id INTEGER NOT NULL,
+=======
     quantidade REAL NOT NULL,
     receita_id INTEGER,
+>>>>>>> cd411121b337f2a0b42737b0df91ca4e57809859
     FOREIGN KEY (receita_id) REFERENCES receitas(_id) )
     </string>
     <string name="insert_ingredientes_query">INSERT INTO ingredientes (title, unity, quantidade, receita_id) VALUES(?,?,?,?)</string>
     <string name="remove_ingredientes_query">DELETE FROM ingredientes WHERE _id = ?</string>
     <string name="count_ingredientes_query" > SELECT COUNT(*) AS count FROM ingredientes;</string>
     <string name="list_ingredientes_query" > SELECT * FROM ingredientes;</string>
+    <string name="ing_add">Adicionar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="Ingr_add">Adicionar Ingredientes</string>
 
     <!-- SpinnerInsertArray -->
     <string-array name="unitis_array">

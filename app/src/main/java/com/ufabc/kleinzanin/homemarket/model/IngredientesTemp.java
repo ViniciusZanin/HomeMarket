@@ -3,12 +3,11 @@ package com.ufabc.kleinzanin.homemarket.model;
 /**
  * Created by Felippe on 29/04/2015.
  */
-public class Ingredientes {
+public class IngredientesTemp {
     private int ID;
     private String nome;
     private double quantidade;
     private String unidade;
-    private int receitaID;
 
     public String getUnidade() {
         return unidade;
@@ -42,7 +41,4 @@ public class Ingredientes {
         this.ID = ID;
     }
 
-    public int getReceitaID(){return receitaID;}
-
-    public void setReceitaID(int receitaID){this.receitaID = receitaID;}
 }

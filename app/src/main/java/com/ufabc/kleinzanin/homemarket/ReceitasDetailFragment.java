@@ -32,14 +32,12 @@ public class ReceitasDetailFragment extends Fragment {
     }
 
     private void init() {
-        ingredientes = (TextView) getView().findViewById(R.id.ingredientes_list);
         modprep = (TextView) getView().findViewById(R.id.Mod_prep);
     }
 
     public void showReceitas(Receitas receitas) {
         init();
         final ReceitasDetailFragment self = this;
-        ingredientes.setText((receitas.getIngredientes()));
         modprep.setText(receitas.getModopreparo());
 
     }

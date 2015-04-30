@@ -34,7 +34,6 @@ public class ReceitasDAO extends SQLiteOpenHelper {
 
     private void init(){
         receitas = new ArrayList<>();
-        //loadTestData();
     }
 
     public static ReceitasDAO newInstance(Context c) {
@@ -50,10 +49,12 @@ public class ReceitasDAO extends SQLiteOpenHelper {
         String queryStr1 = context.getString(R.string.create_table_produtos_query);
         String queryStr2 = context.getString(R.string.create_table_mercados_query);
         String queryStr3 = context.getString(R.string.create_table_receitas_query);
+        String queryStr4 = context.getString(R.string.create_table_ingredientes_query);
         try {
             db.execSQL(queryStr1);
             db.execSQL(queryStr2);
             db.execSQL(queryStr3);
+            db.execSQL(queryStr4);
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to create database", e);
         }
@@ -72,29 +73,8 @@ public class ReceitasDAO extends SQLiteOpenHelper {
         }
     }
 
-   /* private void loadTestData() {
-        Receitas r;
-
-        r = new Receitas();
-        String ingredientes = "Leite" + "\n" + "Ovo" + "\n" + "Farinha" + "\n";
-
-        r.setReceita("Teste 1");
-        r.setIngredientes(ingredientes);
-        r.setModopreparo("Bata as claras em neve\n" +
-                "Reserve\n" +
-                "Bata bem as gemas com a margarina e o açúcar\n" +
-                "Acrescente o leite e farinha aos poucos sem parar de bater\n" +
-                "Por último agregue as claras em neve e o fermento\n" +
-                "Coloque em forma grande de furo central untada e enfarinhada\n" +
-                "Asse em forno médio, pré - aquecido, por aproximadamente 40 minutos\n" +
-                "Quando espetar um palito e sair limpo estará assado \n ");
-
-        receitas.add(r);
-
-    }*/
-
     //Receitas database order
-    //title TEXT NOT NULL, ingredientes TEXT NOT NULL, mododefazer TEXT NOT NULL
+    //title TEXT NOT NULL, mododefazer TEXT NOT NULL
     public boolean add(Receitas receita){
         String queryStr = context.getString(R.string.insert_receitas_query);
         boolean status = true;
@@ -102,8 +82,7 @@ public class ReceitasDAO extends SQLiteOpenHelper {
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
             statement.bindString(1, receita.getReceita());
-            statement.bindString(2, receita.getIngredientes());
-            statement.bindString(3, receita.getModopreparo());
+            statement.bindString(2, receita.getModopreparo());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to add receita in the database", e);
@@ -120,9 +99,8 @@ public class ReceitasDAO extends SQLiteOpenHelper {
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
             statement.bindString(1, receita.getReceita());
-            statement.bindString(2, receita.getIngredientes());
-            statement.bindString(3, receita.getModopreparo());
-            statement.bindLong(4, receita.getID());
+            statement.bindString(2, receita.getModopreparo());
+            statement.bindLong(3, receita.getID());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to edit receita in the database", e);
@@ -182,8 +160,7 @@ public class ReceitasDAO extends SQLiteOpenHelper {
             cursor.moveToFirst();
             r.setID(cursor.getInt(0));
             r.setReceita(cursor.getString(1));
-            r.setIngredientes(cursor.getString(2));
-            r.setModopreparo(cursor.getString(3));
+            r.setModopreparo(cursor.getString(2));
             cursor.close();
 
         } catch (SQLiteException e) {
@@ -205,8 +182,7 @@ public class ReceitasDAO extends SQLiteOpenHelper {
                 Receitas r = new Receitas();
                 r.setID(cursor.getInt(0));
                 r.setReceita(cursor.getString(1));
-                r.setIngredientes(cursor.getString(2));
-                r.setModopreparo(cursor.getString(3));
+                r.setModopreparo(cursor.getString(2));
                 receitas.add(r);
                 cursor.moveToNext();
             }
