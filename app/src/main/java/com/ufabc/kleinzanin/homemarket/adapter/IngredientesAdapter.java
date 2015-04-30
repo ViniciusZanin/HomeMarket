@@ -23,11 +23,11 @@ public class IngredientesAdapter extends BaseAdapter{
     LayoutInflater inflater;
     ArrayList<Ingredientes> ingredientes;
 
-    public  IngredientesAdapter(Context c){
+    public  IngredientesAdapter(Context c, int ReceitaID){
         this.context = c;
         this.dao = IngredientesDAO.newInstance(c);
         inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        ingredientes = dao.list();
+        ingredientes = dao.receita_igredientes(ReceitaID);
     }
 
     public boolean remove(int position){
@@ -65,7 +65,7 @@ public class IngredientesAdapter extends BaseAdapter{
         TextView unidade = null;
         int ReceitaID = 0;
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.produto_list_item,null);
+            convertView = inflater.inflate(R.layout.ingredientes_receita_list_item,null);
         }
         nome = (TextView )convertView.findViewById(R.id.ingrediente_name);
         quantidade = (TextView ) convertView.findViewById(R.id.ingrediente_quant);

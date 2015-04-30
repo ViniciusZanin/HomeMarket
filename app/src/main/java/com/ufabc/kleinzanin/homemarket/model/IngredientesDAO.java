@@ -177,6 +177,33 @@ public class IngredientesDAO extends SQLiteOpenHelper{
         return ingredientes;
     }
 
+    public ArrayList<Ingredientes> receita_igredientes(int ReceitaID) {
+        ArrayList<Ingredientes> ingredientes = new ArrayList<>();
+        String queryStr = context.getString(R.string.list_receta_ingredientes_query+ReceitaID);
+
+
+        try {
+            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                Ingredientes ingrediente = new Ingredientes();
+                ingrediente.setID(cursor.getInt(0));
+                ingrediente.setNome(cursor.getString(1));
+                ingrediente.setUnidade(cursor.getString(2));
+                ingrediente.setQuantidade(cursor.getInt(3));
+                ingrediente.setReceitaID(cursor.getInt(4));
+                ingredientes.add(ingrediente);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to list ingredientes from the database", e);
+        }
+
+        return ingredientes;
+    }
+
 
 
 }
