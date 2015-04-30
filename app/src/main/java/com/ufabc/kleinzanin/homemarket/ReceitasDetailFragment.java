@@ -26,7 +26,7 @@ public class ReceitasDetailFragment extends Fragment {
     private ListView ingredientes;
     private TextView modprep;
     private Button realizada;
-    private Context context;
+    private TextView nome;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,13 +36,20 @@ public class ReceitasDetailFragment extends Fragment {
     private void init() {
         ingredientes = (ListView ) getView().findViewById(R.id.ingredientes_list);
         modprep = (TextView) getView().findViewById(R.id.Mod_prep);
+        nome = (TextView )getView().findViewById(R.id.ingrediente_name);
     }
 
     public void showReceitas(Receitas receitas) {
         init();
         final ReceitasDetailFragment self = this;
         modprep.setText(receitas.getModopreparo());
+<<<<<<< HEAD
+        ingredientes.setAdapter(new IngredientesAdapter(getActivity(), receitas.getID()));
+        nome.setText(receitas.getReceita());
+
+=======
         ingredientes.setAdapter(new IngredientesAdapter(getActivity(),receitas.getID()));
+>>>>>>> 68e623b0c8519f81298511f45fcbf4d40729cbde
 
     }
 }

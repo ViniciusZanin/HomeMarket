@@ -209,7 +209,9 @@
     <string name="remove_ingredientes_query">DELETE FROM ingredientes WHERE _id = ?</string>
     <string name="count_ingredientes_query" > SELECT COUNT(*) AS count FROM ingredientes;</string>
     <string name="list_ingredientes_query" > SELECT * FROM ingredientes;</string>
-    <string name="list_receta_ingredientes_query" >SELECT * FROM produtos WHERE receita_id =  </string>
+    <string name="list_receta_ingredientes_query" >SELECT * FROM ingredientes WHERE receita_id = </string>
+    <string name="drop_table_ingredientes_query">DROP TABLE IF EXISTS ingredientes;</string>
+    <string name="get_ingredientes_query">SELECT * FROM ingredientes WHERE _id = ? </string>
     <string name="ing_add">Adicionar</string>
     <string name="cancel">Cancelar</string>
     <string name="Ingr_add">Adicionar Ingredientes</string>
