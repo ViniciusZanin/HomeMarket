@@ -21,35 +21,37 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText android:id="@+id/insert_ingrediente"
-            android:layout_width="180dp"
+        <TextView android:id="@+id/insert_ingrediente"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/Receita_igr"/>
+            android:text="@string/Receita_igr"
+            android:textSize="20dp"/>
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/Add_button"
             android:layout_marginRight="0dp"
-            android:layout_marginLeft="0dp"/>
+            android:layout_marginLeft="0dp"
+            android:background="@android:drawable/ic_menu_add" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
+        <ListView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:id="@+id/ingredientes_list"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/ModPrep"/>
+        android:hint="@string/ModPrep"
+        android:textSize="20dp"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:id="@+id/Mod_prepedit"
         android:hint="@string/ModPrep_edit"/>
 

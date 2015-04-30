@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by Felippe on 29/04/2015.
  */
-public class IngredientesDAO extends SQLiteOpenHelper{
+public class IngredientesDAO extends SQLiteOpenHelper {
     private static IngredientesDAO dao;
     private List<Ingredientes> ingredientes;
     private Context context;
@@ -32,13 +32,12 @@ public class IngredientesDAO extends SQLiteOpenHelper{
         this.db = getWritableDatabase();
     }
 
-
-
     public static IngredientesDAO newInstance(Context c) {
         if (dao == null) {
             dao = new IngredientesDAO(c);
             dao.init();
         }
+
         return dao;
     }
 
@@ -62,7 +61,7 @@ public class IngredientesDAO extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO: here we must implement a proper way to migrate the schema, version by version
         // currently, it only recreates the database
-        String queryStr = context.getString(R.string.drop_table_produtos_query);
+        String queryStr = context.getString(R.string.drop_table_ingredientes_query);
 
         try {
             db.execSQL(queryStr);
@@ -71,7 +70,9 @@ public class IngredientesDAO extends SQLiteOpenHelper{
         }
     }
 
-    private void init() {ingredientes = new ArrayList<>();}
+    private void init() {
+        ingredientes = new ArrayList<>();
+    }
 
     public boolean add(Ingredientes i) {
         String queryStr = context.getString(R.string.insert_ingredientes_query);
@@ -86,7 +87,7 @@ public class IngredientesDAO extends SQLiteOpenHelper{
             statement.bindLong(4, i.getReceitaID());
             statement.execute();
         } catch (SQLiteException e) {
-            Log.e(LOGTAG, "Failed to add products in the database", e);
+            Log.e(LOGTAG, "Failed to add ingredientes in the database", e);
             status = false;
         }
 
@@ -96,15 +97,42 @@ public class IngredientesDAO extends SQLiteOpenHelper{
     public boolean remove(int position) {
         String queryStr = context.getString(R.string.remove_ingredientes_query);
         boolean status = true;
+        ArrayList<Ingredientes>ingredientes;
+        dao = IngredientesDAO.newInstance(context);
+        ingredientes = dao.list();
+        Ingredientes ingrediente = ingredientes.get(position);
 
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
-            statement.bindLong(1,position);
+            statement.bindLong(1,ingrediente.getID());
             statement.execute();
         } catch (SQLiteException e) {
-            Log.e(LOGTAG, "Failed to remove products in the database", e);
+            Log.e(LOGTAG, "Failed to remove ingredientes in the database", e);
             status = false;
+        }
+
+        return status;
+    }
+
+    public boolean removeReceitaIngs(int ReceitaID) {
+        String queryStr = context.getString(R.string.remove_ingredientes_query);
+        boolean status = true;
+        ArrayList<Ingredientes>ingredientes;
+        dao = IngredientesDAO.newInstance(context);
+        ingredientes = dao.receita_igredientes(ReceitaID);
+        for(int i = 0; i<ingredientes.size(); i++) {
+            Ingredientes ingrediente = ingredientes.get(i);
+
+            try {
+                SQLiteStatement statement = db.compileStatement(queryStr);
+
+                statement.bindLong(1, ingrediente.getID());
+                statement.execute();
+            } catch (SQLiteException e) {
+                Log.e(LOGTAG, "Failed to remove ingredientes in the database", e);
+                status = false;
+            }
         }
 
         return status;
@@ -128,7 +156,7 @@ public class IngredientesDAO extends SQLiteOpenHelper{
     }
 
     public Ingredientes getItemAt(int position) {
-        String queryStr = context.getString(R.string.get_product_query);
+        String queryStr = context.getString(R.string.get_ingredientes_query);
         Ingredientes ingrediente = new Ingredientes();
 
 
@@ -145,7 +173,7 @@ public class IngredientesDAO extends SQLiteOpenHelper{
                 cursor.close();
             }
         } catch (SQLiteException e) {
-            Log.e(LOGTAG, "Failed to get product in the database", e);
+            Log.e(LOGTAG, "Failed to get ingrediente in the database", e);
         }
 
         return ingrediente;
@@ -179,7 +207,7 @@ public class IngredientesDAO extends SQLiteOpenHelper{
 
     public ArrayList<Ingredientes> receita_igredientes(int ReceitaID) {
         ArrayList<Ingredientes> ingredientes = new ArrayList<>();
-        String queryStr = context.getString(R.string.list_receta_ingredientes_query+ReceitaID);
+        String queryStr = "SELECT * FROM ingredientes WHERE receita_id = "+ReceitaID;
 
 
         try {

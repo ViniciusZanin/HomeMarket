@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ufabc.kleinzanin.homemarket.model.IngredientesDAO;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
@@ -32,7 +33,6 @@ public class ReceitasDetails extends ActionBarActivity {
         receitas = dao.list();
         int pos = getIntent().getExtras().getInt("receitaPosition");
         Receitas receita = receitas.get(pos);
-
         detail.showReceitas(receita);
 
     }
@@ -58,8 +58,13 @@ public class ReceitasDetails extends ActionBarActivity {
         }
 
         else if(id == R.id.receita_remove){
+            ArrayList<Receitas> receitas;
             ReceitasDAO dao = ReceitasDAO.newInstance(this);
+            receitas = dao.list();
             int pos = getIntent().getExtras().getInt("receitaPosition");
+            Receitas receita = receitas.get(pos);
+            IngredientesDAO dao_ing = IngredientesDAO.newInstance(this);
+            dao_ing.removeReceitaIngs(receita.getID());
             dao.remove(pos);
             Intent intent = new Intent(this, ReceitasMain.class);
             startActivity(intent);

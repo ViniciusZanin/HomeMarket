@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.ufabc.kleinzanin.homemarket.R;
@@ -54,16 +53,14 @@ public class IngredientesAdapter extends BaseAdapter{
     }
 
     @Override
-    public long getItemId(int position) { return ingredientes.get(position).getID();
-    }
+    public long getItemId(int position) { return ingredientes.get(position).getID();}
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Ingredientes ingrediente = ingredientes.get(position);
-        TextView nome = null;
-        TextView quantidade = null;
-        TextView unidade = null;
-        int ReceitaID = 0;
+        TextView nome;
+        TextView quantidade;
+        TextView unidade;
         if(convertView == null){
             convertView = inflater.inflate(R.layout.ingredientes_receita_list_item,null);
         }
