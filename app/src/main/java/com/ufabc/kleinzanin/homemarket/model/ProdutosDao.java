@@ -85,10 +85,10 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
             statement.bindString(1, p.getNome());
             statement.bindString(2, p.getUnidade());
-            statement.bindLong(3, p.getQuantidade());
-            statement.bindLong(4, p.getConsumo());
+            statement.bindDouble(3, p.getQuantidade());
+            statement.bindDouble(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);
-            statement.bindString(6, p.getPreço());
+            statement.bindDouble(6, p.getPreço());
            statement.bindString(7, p.getImagem());
             statement.execute();
         } catch (SQLiteException e) {
@@ -107,10 +107,10 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
             statement.bindString(1, p.getNome());
             statement.bindString(2, p.getUnidade());
-            statement.bindLong(3, p.getQuantidade());
-            statement.bindLong(4, p.getConsumo());
+            statement.bindDouble(3, p.getQuantidade());
+            statement.bindDouble(4, p.getConsumo());
             statement.bindLong(5, (p.getChecked()) ? 1:0);
-            statement.bindString(6, p.getPreço());
+            statement.bindDouble(6, p.getPreço());
             statement.bindString(7, p.getImagem());
 
             statement.bindLong(8, p.getID()); //ID of the product to change.
@@ -130,7 +130,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
-            statement.bindLong(1, p.getQuantidade());
+            statement.bindDouble(1, p.getQuantidade());
 
             statement.bindLong(2, p.getID()); //ID of the product to change.
 
@@ -198,11 +198,11 @@ public class ProdutosDao extends SQLiteOpenHelper {
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
-                produto.setQuantidade(cursor.getInt(3));
-                produto.setConsumo(cursor.getInt(4));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
                 produto.setChecked((cursor.getInt(5) == 0 ? false : true));
-                produto.setPreço(cursor.getString(6));
-                //produto.setImagem(cursor.getBlob(7));
+                produto.setPreço(cursor.getDouble(6));
+                produto.setImagem(cursor.getString(7));
                 cursor.close();
             }
         } catch (SQLiteException e) {
@@ -225,10 +225,10 @@ public class ProdutosDao extends SQLiteOpenHelper {
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
-                produto.setQuantidade(cursor.getInt(3));
-                produto.setConsumo(cursor.getInt(4));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
                 produto.setChecked((cursor.getInt(5) == 0 ? false:true));
-                produto.setPreço(cursor.getString(6));
+                produto.setPreço(cursor.getDouble(6));
                 produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
                 cursor.moveToNext();
@@ -254,10 +254,10 @@ public class ProdutosDao extends SQLiteOpenHelper {
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
-                produto.setQuantidade(cursor.getInt(3));
-                produto.setConsumo(cursor.getInt(4));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
                 produto.setChecked((cursor.getInt(5) == 0 ? false:true));
-                produto.setPreço(cursor.getString(6));
+                produto.setPreço(cursor.getDouble(6));
                 produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
                 cursor.moveToNext();
@@ -283,10 +283,10 @@ public class ProdutosDao extends SQLiteOpenHelper {
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
-                produto.setQuantidade(cursor.getInt(3));
-                produto.setConsumo(cursor.getInt(4));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
                 produto.setChecked((cursor.getInt(5) == 0 ? false:true));
-                produto.setPreço(cursor.getString(6));
+                produto.setPreço(cursor.getDouble(6));
                 produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
                 cursor.moveToNext();

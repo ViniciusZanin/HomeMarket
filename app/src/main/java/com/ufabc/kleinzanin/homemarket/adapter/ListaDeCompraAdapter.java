@@ -68,10 +68,10 @@ public class ListaDeCompraAdapter extends BaseAdapter {
         quantidade = (TextView ) convertView.findViewById(R.id.produto_quantidade);
         nome.setText(produto.getNome());
         if(produto.getChecked() == true){
-            quantidade.setText(Integer.toString(produto.getQuantidade()) + "/" +
-                    Integer.toString(produto.getConsumo()));}
+            quantidade.setText(Double.toString(produto.getQuantidade()) + "/" +
+                    Double.toString(produto.getConsumo()));}
         else{
-            quantidade.setText(Integer.toString(produto.getQuantidade()));
+            quantidade.setText(Double.toString(produto.getQuantidade()));
 
         }
         return convertView;

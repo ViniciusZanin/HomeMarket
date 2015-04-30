@@ -203,15 +203,15 @@ public class ProdutoEdit extends ActionBarActivity {
         produtoimage = (ImageView ) findViewById(R.id.edit_produto_imagem);
         produtoCheck = (CheckBox) findViewById(R.id.edit_produto_check);
         nome.setText(produto.getNome());
-        quantidade.setText(Integer.toString(produto.getQuantidade()));
-        preço.setText(produto.getPreço());
+        quantidade.setText(Double.toString(produto.getQuantidade()));
+        preço.setText(String.valueOf(produto.getPreço()));
         image_uri = produto.getImagem();
         Bitmap bitmap = BitmapFactory.decodeFile(image_uri);
         produtoimage.setImageBitmap(bitmap);
         produtoCheck.setChecked(produto.getChecked());
         if(produtoCheck.isChecked()){
             consumo.setVisibility(View.VISIBLE);
-            consumo.setText(Integer.toString(produto.getConsumo()));
+            consumo.setText(Double.toString(produto.getConsumo()));
         }
         int selectionPosition= adapter.getPosition(produto.getUnidade());
         units.setSelection(selectionPosition);
@@ -248,14 +248,14 @@ public class ProdutoEdit extends ActionBarActivity {
         }
         if(error == false) {
             produto.setNome(nnome);
-            produto.setQuantidade(Integer.parseInt(nquantidade));
-            produto.setPreço(npreço);
+            produto.setQuantidade(Double.parseDouble(nquantidade));
+            produto.setPreço(Double.parseDouble(npreço));
             produto.setUnidade(unidade);
             if (image_uri != null) {
                 produto.setImagem(image_uri);
             }
             if (ncheck) {
-                produto.setConsumo(Integer.parseInt(nconsumo));
+                produto.setConsumo(Double.parseDouble(nconsumo));
             }
             produto.setChecked(ncheck);
             dao.edit(produto, produto.getID());

@@ -11,9 +11,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ufabc.kleinzanin.homemarket.adapter.DespensaAdapter;
 import com.ufabc.kleinzanin.homemarket.adapter.DespensaAdapterAdd;
@@ -28,6 +31,7 @@ import java.util.List;
 
 public class DespensaDetail extends ActionBarActivity {
     private ListView listView;
+    private Spinner units;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,14 @@ public class DespensaDetail extends ActionBarActivity {
         setContentView(R.layout.activity_despensa_detail);
         setupProdutoList();
 
+    }
+
+    public void addListenerOnSpinnerItemSelection() {
+        //units = (Spinner) findViewById(R.id.insert_unit);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.unitis_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        units.setAdapter(adapter);
     }
 
     private void setupProdutoList(){
@@ -55,20 +67,95 @@ public class DespensaDetail extends ActionBarActivity {
                 builder.setPositiveButton(R.string.prod_add, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        Boolean error = false;
                         Dialog f = (Dialog ) dialog;
+                        units = (Spinner)f.findViewById(R.id.spinner_dialog);
 
+                        String unidade = String.valueOf(units.getSelectedItem());
                         EditText quantidade = (EditText)f.findViewById(R.id.produto_quantidade);
-                        int quant = Integer.parseInt(quantidade.getText().toString());
+                        double quant = Double.parseDouble(quantidade.getText().toString());
+                        if(quant != 0 || String.valueOf(quant) != null) {
+                            if (unidade.equalsIgnoreCase("kilogramas") || unidade.equalsIgnoreCase("gramas")) {
+                                if (produto.getUnidade().equalsIgnoreCase("litros") || produto.getUnidade().equalsIgnoreCase("mililitros") ||
+                                        produto.getUnidade().equalsIgnoreCase("unidades")) {
+                                    error = true;
+                                    Toast.makeText(DespensaDetail.this, "Unidade errada", Toast.LENGTH_LONG).show();
+                                }
+                                if (!error) {
+                                    if (produto.getUnidade().equalsIgnoreCase(unidade)) {
+                                        produto.setQuantidade(quant + produto.getQuantidade());
+                                        dao.edit(produto, produto.getID());
+                                        startActivity(new Intent(DespensaDetail.this, Despensa.class));
 
-                        if(quant != 0 || String.valueOf(quant) != null){
-                            produto.setQuantidade(quant+produto.getQuantidade());
-                            dao.edit(produto,produto.getID());
-                            startActivity(new Intent(DespensaDetail.this,Despensa.class));
+                                    } else if (produto.getUnidade().equalsIgnoreCase("gramas") && unidade.equalsIgnoreCase("kilogramas")) {
+                                        produto.setQuantidade((quant*1000) + produto.getQuantidade());
+                                        dao.edit(produto, produto.getID());
+                                        startActivity(new Intent(DespensaDetail.this, Despensa.class));
+                                    } else{
+                                        produto.setQuantidade((quant/1000) + produto.getQuantidade());
+                                        dao.edit(produto, produto.getID());
+                                        startActivity(new Intent(DespensaDetail.this, Despensa.class));
+
+                                    }
+                                }
+                            }
+                            if (unidade.equalsIgnoreCase("litros") || unidade.equalsIgnoreCase("mililitros")) {
+                                if (produto.getUnidade().equalsIgnoreCase("kilogramas") || produto.getUnidade().equalsIgnoreCase("gramas") ||
+                                        produto.getUnidade().equalsIgnoreCase("unidades")) {
+                                    error = true;
+                                    Toast.makeText(DespensaDetail.this, "Unidade errada", Toast.LENGTH_LONG).show();
+                                }
+                                if (!error) {
+                                    if (produto.getUnidade().equalsIgnoreCase(unidade)) {
+                                        produto.setQuantidade(quant + produto.getQuantidade());
+                                        dao.edit(produto, produto.getID());
+                                        startActivity(new Intent(DespensaDetail.this, Despensa.class));
+
+                                    } else if (produto.getUnidade().equalsIgnoreCase("Mililitros") && unidade.equalsIgnoreCase("litros")) {
+                                        produto.setQuantidade((quant*1000) + produto.getQuantidade());
+                                        dao.edit(produto, produto.getID());
+                                        startActivity(new Intent(DespensaDetail.this, Despensa.class));
+                                    } else{
+                                        produto.setQuantidade((quant/1000) + produto.getQuantidade());
+                                        dao.edit(produto, produto.getID());
+                                        startActivity(new Intent(DespensaDetail.this, Despensa.class));
+
+                                    }
+                                }
+                            }
+                            if (unidade.equalsIgnoreCase("unidades")) {
+                                if (produto.getUnidade().equalsIgnoreCase("kilogramas") || produto.getUnidade().equalsIgnoreCase("gramas") ||
+                                        produto.getUnidade().equalsIgnoreCase("litros") || produto.getUnidade().equalsIgnoreCase("mililitros")) {
+                                    error = true;
+                                    Toast.makeText(DespensaDetail.this, "Unidade errada", Toast.LENGTH_LONG).show();
+                                }
+                                if (!error) {
+                                    if (produto.getUnidade().equalsIgnoreCase(unidade)) {
+                                        produto.setQuantidade(quant + produto.getQuantidade());
+                                        dao.edit(produto, produto.getID());
+                                        startActivity(new Intent(DespensaDetail.this, Despensa.class));
+
+                                    }
+                                }
+                            }
                         }
                     }
                 });
                 builder.setNegativeButton(R.string.prodcancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                units= (Spinner) promptsView.findViewById(R.id.spinner_dialog);
+                addListenerOnSpinnerItemSelection();
+                units.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
                     }
                 });
                 final AlertDialog alertDialog = builder.create();

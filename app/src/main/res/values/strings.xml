@@ -10,10 +10,10 @@
             _id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             unity TEXT NOT NULL,
-            quantNow INTEGER NOT NULL,
-            quantMonth INTEGER,
+            quantNow REAL NOT NULL,
+            quantMonth REAL,
             monthly INTEGER NOT NULL,
-            value TEXT NOT NULL,
+            value REAL NOT NULL,
             image TEXT)
     </string>
      <string name="drop_table_produtos_query">
@@ -197,7 +197,7 @@
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     unity TEXT NOT NULL,
-    quantidade INTEGER NOT NULL,
+    quantidade REAL NOT NULL,
     receita_id INTEGER,
     FOREIGN KEY (receita_id) REFERENCES receitas(_id) )
     </string>
