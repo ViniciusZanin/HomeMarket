@@ -1,7 +1,6 @@
 package com.ufabc.kleinzanin.homemarket.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +65,7 @@ public class IngredientesAdapter extends BaseAdapter{
         TextView unidade = null;
         int ReceitaID = 0;
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.despensa_list_item,null);
+            convertView = inflater.inflate(R.layout.produto_list_item,null);
         }
         nome = (TextView )convertView.findViewById(R.id.ingrediente_name);
         quantidade = (TextView ) convertView.findViewById(R.id.ingrediente_quant);

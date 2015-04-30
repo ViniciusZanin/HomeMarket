@@ -49,15 +49,15 @@
                 init();
 
                 nome.setText(produto.getNome());
-                quantidade.setText(Integer.toString(produto.getQuantidade())+" " + produto.getUnidade());
-                preço.setText(produto.getPreço());
+                quantidade.setText(Double.toString(produto.getQuantidade())+" " + produto.getUnidade());
+                preço.setText(Double.toString(produto.getPreço()));
                 if(produto.getImagem() != null) {
                     Bitmap bitmap = BitmapFactory.decodeFile(produto.getImagem());
                     produtoimage.setImageBitmap(bitmap);
                 }
                 produtoCheck.setChecked(produto.getChecked());
                 if(produto.getChecked()){
-                    consumo.setText(Integer.toString(produto.getConsumo())+" " + produto.getUnidade());
+                    consumo.setText(Double.toString(produto.getConsumo())+" " + produto.getUnidade());
                 }
             }
 

@@ -10,10 +10,10 @@
             _id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             unity TEXT NOT NULL,
-            quantNow INTEGER NOT NULL,
-            quantMonth INTEGER,
+            quantNow REAL NOT NULL,
+            quantMonth REAL,
             monthly INTEGER NOT NULL,
-            value TEXT NOT NULL,
+            value REAL NOT NULL,
             image TEXT)
     </string>
      <string name="drop_table_produtos_query">
@@ -24,6 +24,15 @@
     </string>
     <string name="list_produtos_query" >
         SELECT * FROM produtos;
+    </string>
+        <string name="list_despensa_query" >
+        SELECT * FROM produtos WHERE quantNow > 0;
+    </string>
+     <string name="list_despensaprod_query" >
+        SELECT * FROM produtos WHERE quantNow = 0;
+    </string>
+    <string name="edit_produto_quant_query">
+      UPDATE produtos SET quantNow = ? WHERE _id = ?
     </string>
      <string name="insert_produtos_query">
          INSERT INTO produtos (title, unity, quantNow, quantMonth, monthly, value, image) VALUES(?,?,?,?,?,?,?)
@@ -188,8 +197,13 @@
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     unity TEXT NOT NULL,
+<<<<<<< HEAD
     quantidade INTEGER NOT NULL,
     receita_id INTEGER NOT NULL,
+=======
+    quantidade REAL NOT NULL,
+    receita_id INTEGER,
+>>>>>>> cd411121b337f2a0b42737b0df91ca4e57809859
     FOREIGN KEY (receita_id) REFERENCES receitas(_id) )
     </string>
     <string name="insert_ingredientes_query">INSERT INTO ingredientes (title, unity, quantidade, receita_id) VALUES(?,?,?,?)</string>
@@ -208,4 +222,9 @@
         <item>Mililitros</item>
         <item>Unidades</item>
     </string-array>
+    <string name="title_activity_despensa_detail">DespensaDetail</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="prod_add">Adicionar</string>
+    <string name="prodcancel">Cancelar</string>
 </resources>

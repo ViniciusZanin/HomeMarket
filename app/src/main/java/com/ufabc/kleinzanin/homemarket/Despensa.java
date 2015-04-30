@@ -1,18 +1,30 @@
 package com.ufabc.kleinzanin.homemarket;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
+import com.ufabc.kleinzanin.homemarket.adapter.DespensaAdapter;
 import com.ufabc.kleinzanin.homemarket.adapter.ProdutoAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Despensa extends ActionBarActivity {
@@ -20,6 +32,7 @@ public class Despensa extends ActionBarActivity {
     private ListView listView;
     private Button add;
     private Button remove;
+    private Spinner spinner;
 
     private DespensaDetailFragment detailFragment;
     private DespensaListFragment listFragment;
@@ -45,30 +58,10 @@ public class Despensa extends ActionBarActivity {
     }
 
     private void setupProdutoList(){
-        listView = (ListView )findViewById(R.id.list_produto);
+        listView = (ListView )findViewById(R.id.list_despensa);
         final Despensa self = this;
-        listView.setAdapter(new ProdutoAdapter(this));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (detailFragment == null) { // small screen
-                    Intent intent = null;
-                    Produtos p = new Produtos();
-
-                    intent = new Intent(parent.getContext(), ProdutoDetail.class);
-                    intent.putExtra("produtoPosition", ((int)(position)));
-                    startActivity(intent);
-                } else { // large screen
-                    Produtos produto = dao.getItemAt(position);
-
-                    detailFragment.showProdutos(produto);
-                }
-            }
-        });
-
+        listView.setAdapter(new DespensaAdapter(this));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,8 +81,8 @@ public class Despensa extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if(id == R.id.action_produto_add){
-            startActivity(new Intent(this,ProdutoInsert.class));
+        if(id == R.id.action_despensa_add){
+            startActivity(new Intent(this,DespensaDetail.class));
         }
 
         return super.onOptionsItemSelected(item);

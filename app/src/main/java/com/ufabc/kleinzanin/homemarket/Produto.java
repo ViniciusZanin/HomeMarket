@@ -38,7 +38,7 @@ public class Produto extends ActionBarActivity {
         listFragment = (ProdutoListFragment)getFragmentManager().findFragmentById(R.id.fragment_list);
         detailFragment = (ProdutoDetailFragment) getFragmentManager().findFragmentById(R.id.fragment_detail);
         if(listFragment != null){
-            listView = (ListView )listFragment.getView().findViewById(R.id.list_despensa);
+            listView = (ListView )listFragment.getView().findViewById(R.id.list_produto);
         }
 
 

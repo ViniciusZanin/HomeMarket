@@ -11,16 +11,22 @@ import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
+import java.util.ArrayList;
+
 /**
- * Created by Vinicius on 17/04/2015.
+ * Created by Vinicius on 29/04/2015.
  */
-public class ListaDeCompraAdapter extends BaseAdapter {
+public class DespensaAdapterAdd extends BaseAdapter {
     private ProdutosDao dao;
     private Context context;
+    LayoutInflater inflater;
+    ArrayList<Produtos> produtos;
 
-    public  ListaDeCompraAdapter(Context c){
+    public  DespensaAdapterAdd(Context c){
         this.context = c;
         this.dao = ProdutosDao.newInstance(c);
+        inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        produtos = dao.despensa_prod();
     }
 
     public boolean remove(int position){
@@ -36,42 +42,40 @@ public class ListaDeCompraAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
-    public Produtos getItemAt(int position) { return dao.getItemAt(position);}
+    public Produtos getItemAt(int position) { return produtos.get(position);}
+
 
     @Override
     public int getCount() {
-        return dao.size();
+        return produtos.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return dao.getItemAt(position);
+        return getItemAt(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return produtos.get(position).getID();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Produtos produto = null;
+        Produtos produto = produtos.get(position);
         TextView nome = null;
         TextView quantidade = null;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(
-                Context.LAYOUT_INFLATER_SERVICE);
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.produto_list_item,null);
+            convertView = inflater.inflate(R.layout.despensa_add_list_item,null);
         }
-        produto = dao.getItemAt(position);
         nome = (TextView )convertView.findViewById(R.id.produto_nome);
         quantidade = (TextView ) convertView.findViewById(R.id.produto_quantidade);
         nome.setText(produto.getNome());
         if(produto.getChecked() == true){
             quantidade.setText(Double.toString(produto.getQuantidade()) + "/" +
-                    Double.toString(produto.getConsumo()));}
+                    Double.toString(produto.getConsumo()) + " " + produto.getUnidade());}
         else{
-            quantidade.setText(Double.toString(produto.getQuantidade()));
+            quantidade.setText(Double.toString(produto.getQuantidade()) + " " + produto.getUnidade());
 
         }
         return convertView;

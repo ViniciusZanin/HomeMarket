@@ -205,8 +205,7 @@ public class ProdutoInsert extends ActionBarActivity {
             error = true;
         }
         if(quantidade.equalsIgnoreCase("")){
-            ((EditText) findViewById(R.id.insert_produto_quantidade)).setError("Campo Obrigatorio");
-            error = true;
+            quantidade = "0";
         }
         if(preço.equalsIgnoreCase("")){
             ((EditText) findViewById(R.id.insert_produto_preço)).setError("Campo Obrigatorio");
@@ -219,10 +218,10 @@ public class ProdutoInsert extends ActionBarActivity {
         Produtos produto = new Produtos();
         if(error == false){
         produto.setNome(nome);
-        produto.setQuantidade(Integer.parseInt(quantidade));
-        produto.setPreço(preço);
+        produto.setQuantidade(Double.parseDouble(quantidade));
+        produto.setPreço(Double.parseDouble(preço));
         if(check){
-            produto.setConsumo(Integer.parseInt(consumo));}
+            produto.setConsumo(Double.parseDouble(consumo));}
         produto.setChecked(check);
         produto.setUnidade(unidade);
         produto.setImagem(image_uri);

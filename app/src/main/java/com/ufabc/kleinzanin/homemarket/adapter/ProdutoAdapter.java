@@ -68,16 +68,16 @@ public class ProdutoAdapter extends BaseAdapter {
         TextView preço = null;
         CheckBox checked = null;;
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.despensa_list_item,null);
+            convertView = inflater.inflate(R.layout.produto_list_item,null);
         }
         nome = (TextView )convertView.findViewById(R.id.produto_nome);
         quantidade = (TextView ) convertView.findViewById(R.id.produto_quantidade);
         nome.setText(produto.getNome());
         if(produto.getChecked() == true){
-        quantidade.setText(Integer.toString(produto.getQuantidade()) + "/" +
-                Integer.toString(produto.getConsumo()) + " " + produto.getUnidade());}
+        quantidade.setText(Double.toString(produto.getQuantidade()) + "/" +
+                Double.toString(produto.getConsumo()) + " " + produto.getUnidade());}
         else{
-            quantidade.setText(Integer.toString(produto.getQuantidade()));
+            quantidade.setText(Double.toString(produto.getQuantidade()));
 
     }
         return convertView;

@@ -87,6 +87,7 @@ public class ProdutoEdit extends ActionBarActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         int id = item.getItemId();
                         if(id == R.id.one){
+
                             Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
                             if(fileUri != null){
@@ -120,6 +121,19 @@ public class ProdutoEdit extends ActionBarActivity {
 
         if(requestCode == PICK_IMAGE_CODE) {
             if (resultCode == RESULT_OK && null != data) {
+                ArrayList<Produtos> produtos;
+                ProdutosDao dao = ProdutosDao.newInstance(this);
+                produtos = dao.list();
+                int pos = getIntent().getExtras().getInt("produtoPosition");
+                Produtos produto = produtos.get(pos);
+                if(produto.getImagem() != null) {
+                    File image = new File(produto.getImagem());
+                    if(image.exists()) {
+                        image.delete();
+                        produto.setImagem(null);
+                        Log.e(LOGTAG,String.valueOf(image) + "deletada");
+                    }
+                }
                 Toast.makeText(this, getString(R.string.photo_capture_success),
                         Toast.LENGTH_SHORT).show();
                 fileUri = data.getData();
@@ -136,6 +150,19 @@ public class ProdutoEdit extends ActionBarActivity {
             }
         }else if (requestCode == CAPTURE_IMAGE_REQCODE) {
             if (resultCode == RESULT_OK) {
+                ArrayList<Produtos> produtos;
+                ProdutosDao dao = ProdutosDao.newInstance(this);
+                produtos = dao.list();
+                int pos = getIntent().getExtras().getInt("produtoPosition");
+                Produtos produto = produtos.get(pos);
+                if(produto.getImagem() != null) {
+                    File image = new File(produto.getImagem());
+                    if(image.exists()) {
+                        image.delete();
+                        produto.setImagem(null);
+                        Log.e(LOGTAG,String.valueOf(image) + "deletada");
+                    }
+                }
                 Toast.makeText(this, getString(R.string.photo_capture_success),
                         Toast.LENGTH_SHORT).show();
 
@@ -176,15 +203,15 @@ public class ProdutoEdit extends ActionBarActivity {
         produtoimage = (ImageView ) findViewById(R.id.edit_produto_imagem);
         produtoCheck = (CheckBox) findViewById(R.id.edit_produto_check);
         nome.setText(produto.getNome());
-        quantidade.setText(Integer.toString(produto.getQuantidade()));
-        preço.setText(produto.getPreço());
+        quantidade.setText(Double.toString(produto.getQuantidade()));
+        preço.setText(String.valueOf(produto.getPreço()));
         image_uri = produto.getImagem();
         Bitmap bitmap = BitmapFactory.decodeFile(image_uri);
         produtoimage.setImageBitmap(bitmap);
         produtoCheck.setChecked(produto.getChecked());
         if(produtoCheck.isChecked()){
             consumo.setVisibility(View.VISIBLE);
-            consumo.setText(Integer.toString(produto.getConsumo()));
+            consumo.setText(Double.toString(produto.getConsumo()));
         }
         int selectionPosition= adapter.getPosition(produto.getUnidade());
         units.setSelection(selectionPosition);
@@ -209,8 +236,7 @@ public class ProdutoEdit extends ActionBarActivity {
             error = true;
         }
         if(nquantidade.equalsIgnoreCase("")){
-            ((EditText) findViewById(R.id.edit_produto_quantidade)).setError("Campo Obrigatorio");
-            error = true;
+            nquantidade = "0";
         }
         if(npreço.equalsIgnoreCase("")){
             ((EditText) findViewById(R.id.edit_produto_preço)).setError("Campo Obrigatorio");
@@ -222,14 +248,14 @@ public class ProdutoEdit extends ActionBarActivity {
         }
         if(error == false) {
             produto.setNome(nnome);
-            produto.setQuantidade(Integer.parseInt(nquantidade));
-            produto.setPreço(npreço);
+            produto.setQuantidade(Double.parseDouble(nquantidade));
+            produto.setPreço(Double.parseDouble(npreço));
             produto.setUnidade(unidade);
             if (image_uri != null) {
                 produto.setImagem(image_uri);
             }
             if (ncheck) {
-                produto.setConsumo(Integer.parseInt(nconsumo));
+                produto.setConsumo(Double.parseDouble(nconsumo));
             }
             produto.setChecked(ncheck);
             dao.edit(produto, produto.getID());
