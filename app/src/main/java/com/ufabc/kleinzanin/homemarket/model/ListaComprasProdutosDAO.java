@@ -140,7 +140,7 @@ public class ListaComprasProdutosDAO extends SQLiteOpenHelper{
         int count = -1;
 
         try {
-            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+            Cursor cursor = db.rawQuery(queryStr, null);
 
             cursor.moveToFirst();
             count = cursor.getInt(0);

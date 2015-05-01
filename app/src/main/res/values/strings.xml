@@ -213,25 +213,39 @@
     quantidade REAL NOT NULL,
     receita_id INTEGER NOT NULL )
     </string>
-    <string name="insert_ingredientes_query">INSERT INTO ingredientes (title, unity, quantidade, receita_id) VALUES(?,?,?,?)</string>
-    <string name="remove_ingredientes_query">DELETE FROM ingredientes WHERE _id = ?</string>
-    <string name="count_ingredientes_query" > SELECT COUNT(*) AS count FROM ingredientes;</string>
-    <string name="list_ingredientes_query" > SELECT * FROM ingredientes;</string>
-    <string name="list_receta_ingredientes_query" >SELECT * FROM ingredientes WHERE receita_id = </string>
-    <string name="drop_table_ingredientes_query">DROP TABLE IF EXISTS ingredientes;</string>
-    <string name="get_ingredientes_query">SELECT * FROM ingredientes WHERE _id = ? </string>
+    <string name="insert_ingredientes_query">
+        INSERT INTO ingredientes (title, unity, quantidade, receita_id) VALUES(?,?,?,?)
+    </string>
+    <string name="remove_ingredientes_query">
+        DELETE FROM ingredientes WHERE _id = ?
+    </string>
+    <string name="count_ingredientes_query">
+        SELECT COUNT(*) AS count FROM ingredientes;
+    </string>
+    <string name="list_ingredientes_query">
+        SELECT * FROM ingredientes;
+    </string>
+    <string name="list_receta_ingredientes_query">
+        SELECT * FROM ingredientes WHERE receita_id =
+    </string>
+    <string name="drop_table_ingredientes_query">
+        DROP TABLE IF EXISTS ingredientes;
+    </string>
+    <string name="get_ingredientes_query">
+        SELECT * FROM ingredientes WHERE _id = ?
+    </string>
     <string name="ing_add">Adicionar</string>
     <string name="cancel">Cancelar</string>
     <string name="Ingr_add">Adicionar Ingredientes</string>
 
     <!-- DB Lista de Compras !-->
-        <string name="create_table_listacompras_query">
+    <string name="create_table_listacompras_query">
     CREATE TABLE listacompras (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     data TEXT NOT NULL,
     value REAL NOT NULL)
     </string>
-            <string name="create_table_listacompras_produtos_query">
+    <string name="create_table_listacompras_produtos_query">
     CREATE TABLE listacompras_produtos (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
@@ -240,26 +254,58 @@
     lista_id INTEGER NOT NULL,
     unidade TEXT NOT NULL)
     </string>
-    <string name="insert_listacompras_query">INSERT INTO listacompras (data, value) VALUES(?,?)</string>
-    <string name="select_listacompras_first_query">SELECT * FROM listacompras WHERE _id = 1;</string>
-    <string name="get_listacompras_max_query">SELECT * FROM listacompras ORDER BY _id DESC LIMIT 1;</string>
-    <string name="remove_listacompras_query">DELETE FROM listacompras WHERE _id = ?</string>
-    <string name="count_listacompras_query">SELECT COUNT(*) AS count FROM listacompras</string>
-    <string name="list_listacompras_query">SELECT * FROM listacompras</string>
-    <string name="drop_table_listacompras_query">DROP TABLE IF EXISTS listacompras</string>
-    <string name="get_listacompras_query">SELECT * FROM listacompras WHERE _id = ? </string>
-    <string name="insert_listacompras_produtos_query">INSERT INTO listacompras_produtos(name, quantidade, value, lista_id, unidade) VALUES(?,?,?,?,?)</string>
-    <string name="remove_listacompras_produtos_query">DELETE FROM listacompras_produtos WHERE _id = ?</string>
-    <string name="count_listacompras_produtos_query">SELECT COUNT (*) AS count FROM listacompras_produtos</string>
-    <string name="list_listacompras_produtos_query">SELECT * FROM listacompras_produtos</string>
-    <string name="dropb_table_listacompras_produtos_query">DROP TABLE IF EXISTS listacompras_produtos</string>
-    <string name="get_listacompras_produtos_query">SELECT * FROM listacompras_produtos WHERE _id = ?</string>
-    <string name="get_listacompras_produtos_max_query">SELECT * FROM listacompras_produtos WHERE MAX(lista_id);</string>
-    <string name="edit_listacompras_produtos_quant_query">UPDATE listacompras_produtos SET quantidade = ? , value = ? WHERE _id = ?</string>
-    <string name="edit_listacompras_preco_query">UPDATE listacompras SET data = ?, value = ? WHERE _id = ?</string>
+    <string name="insert_listacompras_query">
+        INSERT INTO listacompras (data, value) VALUES(?,?)
+    </string>
+    <string name="select_listacompras_first_query">
+        SELECT * FROM listacompras WHERE _id = 1
+    </string>
+    <string name="get_listacompras_max_query">
+        SELECT * FROM listacompras ORDER BY _id DESC LIMIT 1
+    </string>
+    <string name="remove_listacompras_query">
+        DELETE FROM listacompras WHERE _id = ?
+    </string>
+    <string name="count_listacompras_query">
+        SELECT COUNT(*) AS count FROM listacompras
+    </string>
+    <string name="list_listacompras_query">
+        SELECT * FROM listacompras
+    </string>
+    <string name="drop_table_listacompras_query">
+        DROP TABLE IF EXISTS listacompras
+    </string>
+    <string name="get_listacompras_query">
+        SELECT * FROM listacompras WHERE _id = ?
+    </string>
 
-
-
+    <string name="insert_listacompras_produtos_query">
+        INSERT INTO listacompras_produtos(name, quantidade, value, lista_id, unidade) VALUES(?,?,?,?,?)
+    </string>
+    <string name="remove_listacompras_produtos_query">
+        DELETE FROM listacompras_produtos WHERE _id = ?
+    </string>
+    <string name="count_listacompras_produtos_query">
+        SELECT COUNT (*) AS count FROM listacompras_produtos
+    </string>
+    <string name="list_listacompras_produtos_query">
+        SELECT * FROM listacompras_produtos
+    </string>
+    <string name="dropb_table_listacompras_produtos_query">
+        DROP TABLE IF EXISTS listacompras_produtos
+    </string>
+    <string name="get_listacompras_produtos_query">
+        SELECT * FROM listacompras_produtos WHERE _id = ?
+    </string>
+    <string name="get_listacompras_produtos_max_query">
+        SELECT * FROM listacompras_produtos WHERE MAX(lista_id);
+    </string>
+    <string name="edit_listacompras_produtos_quant_query">
+        UPDATE listacompras_produtos SET quantidade = ? , value = ? WHERE _id = ?
+    </string>
+    <string name="edit_listacompras_preco_query">
+        UPDATE listacompras SET data = ?, value = ? WHERE _id = ?
+    </string>
 
 
     <!-- SpinnerInsertArray -->
@@ -270,20 +316,14 @@
         <item>Mililitros</item>
         <item>Unidades</item>
     </string-array>
-    <string name="title_activity_despensa_detail">DespensaDetail</string>
 
+    <string name="title_activity_despensa_detail">Detalhes da Despensa</string>
     <string name="hello_world">Hello world!</string>
     <string name="prod_add">Adicionar</string>
     <string name="prodcancel">Cancelar</string>
     <string name="prod_remo">Remover</string>
-<<<<<<< HEAD
-
-
-
-
-=======
-    <string name="title_activity_receitas_disponiveis">ReceitasDisponiveis</string>
+    <string name="title_activity_receitas_disponiveis">Receitas Disponiveis</string>
     <string name="title_activity_mercado_maps">Mapa de Mercados</string>
     <string name="title_activity_configuracao">Configuracao</string>
->>>>>>> 8cfe4ae0b5f81410940dac1b66435de161fe8927
+    <string name="invalid_address">Endereço Inválido.</string>
 </resources>

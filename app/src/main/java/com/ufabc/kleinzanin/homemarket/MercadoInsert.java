@@ -5,7 +5,9 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -21,7 +23,7 @@ import java.util.Locale;
 
 
 public class MercadoInsert extends ActionBarActivity {
-
+    private EditText editText;
     private static final String LOGTAG = MercadoInsert.class.getSimpleName();
     private MercadoDAO dao = MercadoDAO.newInstance(this);
 
@@ -31,29 +33,58 @@ public class MercadoInsert extends ActionBarActivity {
         setContentView(R.layout.activity_mercado_insert);
     }
 
-    private void insert() {
+    private void insert(){
+
+            boolean nameok = false, emailok = false, phoneok = false, posok = false;
             String nome = ((EditText)findViewById(R.id.insert_name)).getText().toString();
             String email = ((EditText)findViewById(R.id.insert_email)).getText().toString();
             String telefone = ((EditText)findViewById(R.id.insert_telefone)).getText().toString();
             String endereco = ((EditText)findViewById(R.id.insert_endereco)).getText().toString();
 
             Mercados mercado = new Mercados();
-
-            mercado.setNome(nome);
-            mercado.setEmail(email);
-            mercado.setTelefone(telefone);
-            mercado.setEndereco(endereco);
-            LatLng latLng = Coordinates(endereco);
-            if (!latLng.equals(null)) {
-                mercado.setPosition(latLng);
+            if (nome.length() > 0) {
+                mercado.setNome(nome);
+                nameok = true;
+            } else {
+                editText = (EditText) findViewById(R.id.insert_name);
+                editText.setError("Nome invalido.");
+            }
+            if(isValidEmail(email)) {
+                mercado.setEmail(email);
+                emailok = true;
+            }else{
+                editText = (EditText) findViewById(R.id.insert_email);
+                editText.setError("Email invalido");
+            }
+            if(isValidPhone(telefone)) {
+                mercado.setTelefone(telefone);
+                phoneok = true;
+            }else{
+                editText = (EditText) findViewById(R.id.insert_telefone);
+                editText.setError("Telefone invalido");
             }
 
-            dao.add(mercado);
+            mercado.setEndereco(endereco);
+            LatLng latLng = Coordinates(endereco);
+            if (latLng == null) {
+                editText = (EditText) findViewById(R.id.insert_endereco);
+                editText.setError("Endereco invalido");
+                editText.setHint("Tente: Rua xxx, 1234, Sao Paulo, SP");
 
-            Toast.makeText(this, getString(R.string.insert_status_ok), Toast.LENGTH_SHORT).show();
-            startActivity((new Intent(this, MercadoMain.class)));
+            }else {
+                mercado.setPosition(latLng);
+                posok = true;
+            }
 
-    }
+            if((nameok) && (phoneok) && (emailok) && (posok)) {
+                dao.add(mercado);
+                Toast.makeText(this, getString(R.string.insert_status_ok), Toast.LENGTH_SHORT).show();
+                startActivity((new Intent(this, MercadoMain.class)));
+            }
+        }
+
+
+
 
 
     @Override
@@ -101,4 +132,10 @@ public class MercadoInsert extends ActionBarActivity {
         return position;
     }
 
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+    public final static boolean isValidPhone(CharSequence target) {
+        return !TextUtils.isEmpty(target) && Patterns.PHONE.matcher(target).matches();
+    }
 }
