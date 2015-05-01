@@ -43,13 +43,7 @@ public class ReceitasDetailFragment extends Fragment {
         init();
         final ReceitasDetailFragment self = this;
         modprep.setText(receitas.getModopreparo());
-<<<<<<< HEAD
         ingredientes.setAdapter(new IngredientesAdapter(getActivity(), receitas.getID()));
         nome.setText(receitas.getReceita());
-
-=======
-        ingredientes.setAdapter(new IngredientesAdapter(getActivity(),receitas.getID()));
->>>>>>> 68e623b0c8519f81298511f45fcbf4d40729cbde
-
     }
 }

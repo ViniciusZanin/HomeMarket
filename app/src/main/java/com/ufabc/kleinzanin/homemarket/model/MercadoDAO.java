@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.ufabc.kleinzanin.homemarket.R;
 
 import java.util.ArrayList;
@@ -103,6 +104,8 @@ public class MercadoDAO extends SQLiteOpenHelper {
             statement.bindString(2, mercado.getEmail());
             statement.bindString(3, mercado.getTelefone());
             statement.bindString(4, mercado.getEndereco());
+            statement.bindString(5, String.valueOf(mercado.getPosition().latitude));
+            statement.bindString(6, String.valueOf(mercado.getPosition().longitude));
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to add mercado in the database", e);
@@ -122,6 +125,9 @@ public class MercadoDAO extends SQLiteOpenHelper {
             statement.bindString(2, mercado.getEmail());
             statement.bindString(3, mercado.getTelefone());
             statement.bindString(4, mercado.getEndereco());
+            statement.bindString(5, String.valueOf(mercado.getPosition().latitude));
+            statement.bindString(6, String.valueOf(mercado.getPosition().longitude));
+            statement.bindLong(7,mercado.getID());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to edit mercado in the database", e);
@@ -170,15 +176,14 @@ public class MercadoDAO extends SQLiteOpenHelper {
         Mercados mercado = new Mercados();
 
         try {
-            SQLiteStatement statement = db.compileStatement(queryStr);
-            statement.bindLong(1, position);
-
-            Cursor cursor = db.rawQuery(statement.simpleQueryForString(), new String[]{});
+            Cursor cursor = db.rawQuery(queryStr + position, null);
             cursor.moveToFirst();
-            mercado.setNome(cursor.getString(0));
-            mercado.setEmail(cursor.getString(1));
-            mercado.setTelefone(cursor.getString(2));
-            mercado.setEndereco(cursor.getString(3));
+            mercado.setID(cursor.getInt(0));
+            mercado.setNome(cursor.getString(1));
+            mercado.setEmail(cursor.getString(2));
+            mercado.setTelefone(cursor.getString(3));
+            mercado.setEndereco(cursor.getString(4));
+            mercado.setPosition(new LatLng(Double.parseDouble(cursor.getString(5)),Double.parseDouble(cursor.getString(6))));
             cursor.close();
 
         } catch (SQLiteException e) {
@@ -198,10 +203,12 @@ public class MercadoDAO extends SQLiteOpenHelper {
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
                 Mercados mercado = new Mercados();
-                mercado.setNome(cursor.getString(0));
-                mercado.setEmail(cursor.getString(1));
-                mercado.setTelefone(cursor.getString(2));
-                mercado.setEndereco(cursor.getString(3));
+                mercado.setID(cursor.getInt(0));
+                mercado.setNome(cursor.getString(1));
+                mercado.setEmail(cursor.getString(2));
+                mercado.setTelefone(cursor.getString(3));
+                mercado.setEndereco(cursor.getString(4));
+                mercado.setPosition(new LatLng(Double.parseDouble(cursor.getString(5)), Double.parseDouble(cursor.getString(6))));
                 mercados.add(mercado);
                 cursor.moveToNext();
             }

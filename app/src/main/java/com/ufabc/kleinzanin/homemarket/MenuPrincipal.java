@@ -72,7 +72,7 @@ public class MenuPrincipal extends ActionBarActivity {
 
 
     private void initProdutos() {
-        startActivity((new Intent(this,Produto.class)));
+        startActivity((new Intent(this, Produto.class)));
     }
 
     private void initReceitas() {
@@ -89,6 +89,10 @@ public class MenuPrincipal extends ActionBarActivity {
 
     private void initCompras() {
         startActivity((new Intent(this,ListadeCompras.class)));
+    }
+
+    private void initMaps() {
+        startActivity((new Intent(this,MercadoMaps.class)));
     }
 
     @Override
@@ -146,10 +150,10 @@ public class MenuPrincipal extends ActionBarActivity {
                     initCompras();
                     break;
                 case 7:
-                    fragment = new MercadoDetailFragment();
+                    initMaps();
                     break;
                 case 8:
-                    fragment = new MercadoListFragment();
+                    initMercados();
                     break;
                 case 9:
                     fragment = new VariacaoPrecoFragment();

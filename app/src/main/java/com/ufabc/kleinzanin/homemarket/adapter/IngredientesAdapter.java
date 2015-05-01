@@ -62,7 +62,7 @@ public class IngredientesAdapter extends BaseAdapter{
         TextView quantidade;
         TextView unidade;
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.ingredientes_receita_list_item,null);
+            convertView = inflater.inflate(R.layout.ingredientes_receita_list_item_old,null);
         }
         nome = (TextView )convertView.findViewById(R.id.ingrediente_name);
         quantidade = (TextView ) convertView.findViewById(R.id.ingrediente_quant);

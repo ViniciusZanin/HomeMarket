@@ -11,16 +11,22 @@ import com.ufabc.kleinzanin.homemarket.R;
 import com.ufabc.kleinzanin.homemarket.model.MercadoDAO;
 import com.ufabc.kleinzanin.homemarket.model.Mercados;
 
+import java.util.ArrayList;
+
 /**
  * Created by Felippe on 17/04/2015.
  */
 public class MercadoAdapter extends BaseAdapter {
     private MercadoDAO dao;
     private Context context;
+    LayoutInflater inflater;
+    ArrayList<Mercados> mercados;
 
     public MercadoAdapter(Context c){
         this.context = c;
         this.dao = MercadoDAO.newInstance(c);
+        inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mercados = dao.list();
     }
 
     public boolean remove(int position){
@@ -36,32 +42,30 @@ public class MercadoAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
-    public Mercados getItemAt(int position) { return dao.getItemAt(position);}
+    public Mercados getItemAt(int position) { return mercados.get(position);}
 
     @Override
     public int getCount() {
-        return dao.size();
+        return mercados.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return getItemAt(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
         return 0;
     }
 
     @Override
+    public long getItemId(int position) {
+        return mercados.get(position).getID();
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Mercados mercado = null;
+        Mercados mercado =  mercados.get(position);
         TextView nome = null;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(convertView == null){
             convertView = inflater.inflate(R.layout.mercado_list_item, null);
         }
-        mercado = dao.getItemAt(position);
         nome = (TextView ) convertView.findViewById(R.id.mercado_name);
         nome.setText(mercado.getNome());
 
