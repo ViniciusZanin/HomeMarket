@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ufabc.kleinzanin.homemarket.model.ListaCompras;
+import com.ufabc.kleinzanin.homemarket.model.ListaComprasDAO;
+import com.ufabc.kleinzanin.homemarket.model.ListaComprasProdutos;
+import com.ufabc.kleinzanin.homemarket.model.ListaComprasProdutosDAO;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
@@ -22,6 +26,7 @@ public class HomeFragment extends Fragment {
     private TextView statusCompraAtual, vStatusCompraAtual;
     private TextView statusUltimaCompra, vStatusUltimaCompra;
     ProdutosDao dao;
+    ListaComprasDAO dao2;
 
 
 	public HomeFragment(){}
@@ -38,6 +43,7 @@ public class HomeFragment extends Fragment {
         vStatusCompraAtual = (TextView)rootView.findViewById(R.id.valor_compra_atual);
         statusUltimaCompra = (TextView)rootView.findViewById(R.id.ultima_compra);
         vStatusUltimaCompra = (TextView)rootView.findViewById(R.id.valor_ultima_compra);
+
         getData();
         return rootView;
     }
@@ -62,7 +68,8 @@ public class HomeFragment extends Fragment {
 
         String date;
         Calendar c = Calendar.getInstance();
-        date = String.valueOf(c.get(Calendar.DAY_OF_MONTH) + "/" + c.get(Calendar.MONTH)+1 + "/" + c.get(Calendar.YEAR));
+        int month = c.get(Calendar.MONTH) + 1;
+        date = String.valueOf(c.get(Calendar.DAY_OF_MONTH) + "/" + month + "/" + c.get(Calendar.YEAR));
         statusDespensa.setText("Status da Despensa em " + date);
         vStatusDespensa.setText(String.valueOf(porct)+"%");
 
@@ -115,5 +122,7 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
     }
 }

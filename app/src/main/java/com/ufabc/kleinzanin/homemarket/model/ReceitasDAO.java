@@ -45,16 +45,21 @@ public class ReceitasDAO extends SQLiteOpenHelper {
 
     }
 
+    @Override
     public void onCreate(SQLiteDatabase db) {
         String queryStr1 = context.getString(R.string.create_table_produtos_query);
         String queryStr2 = context.getString(R.string.create_table_mercados_query);
         String queryStr3 = context.getString(R.string.create_table_receitas_query);
         String queryStr4 = context.getString(R.string.create_table_ingredientes_query);
+        String queryStr5 = context.getString(R.string.create_table_listacompras_query);
+        String queryStr6 = context.getString(R.string.create_table_listacompras_produtos_query);
         try {
             db.execSQL(queryStr1);
             db.execSQL(queryStr2);
             db.execSQL(queryStr3);
             db.execSQL(queryStr4);
+            db.execSQL(queryStr5);
+            db.execSQL(queryStr6);
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to create database", e);
         }

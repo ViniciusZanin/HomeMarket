@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <TableRow>
         <TextView android:id="@+id/produto_nome"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="#ff000000"
+            android:layout_column="1"
+            android:layout_marginRight="20dp" />
+
         <TextView android:id="@+id/produto_quantidade"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="#ff000000"
+            android:layout_column="2"
+            android:layout_marginRight="20dp" />
+
         <TextView android:id="@+id/produto_preço"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:textColor="#ff000000"
+            android:layout_column="3"/>
 
-</LinearLayout>
+    </TableRow>
+
+
+
+
+</TableLayout>

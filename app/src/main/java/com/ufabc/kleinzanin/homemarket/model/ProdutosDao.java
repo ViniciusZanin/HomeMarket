@@ -49,11 +49,15 @@ public class ProdutosDao extends SQLiteOpenHelper {
         String queryStr2 = context.getString(R.string.create_table_mercados_query);
         String queryStr3 = context.getString(R.string.create_table_receitas_query);
         String queryStr4 = context.getString(R.string.create_table_ingredientes_query);
+        String queryStr5 = context.getString(R.string.create_table_listacompras_query);
+        String queryStr6 = context.getString(R.string.create_table_listacompras_produtos_query);
         try {
             db.execSQL(queryStr1);
             db.execSQL(queryStr2);
             db.execSQL(queryStr3);
             db.execSQL(queryStr4);
+            db.execSQL(queryStr5);
+            db.execSQL(queryStr6);
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to create database", e);
         }
@@ -303,6 +307,35 @@ public class ProdutosDao extends SQLiteOpenHelper {
     public ArrayList<Produtos> despensa_porcentagem() {
         ArrayList<Produtos> produtos = new ArrayList<>();
         String queryStr = context.getString(R.string.get_product_checked_query);
+
+        try {
+            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                Produtos produto = new Produtos();
+                produto.setID(cursor.getInt(0));
+                produto.setNome(cursor.getString(1));
+                produto.setUnidade(cursor.getString(2));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
+                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setPreço(cursor.getDouble(6));
+                produto.setImagem(cursor.getString(7));
+                produtos.add(produto);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to list produtos from the database", e);
+        }
+
+        return produtos;
+    }
+
+    public ArrayList<Produtos> lista_compras_prod_missing() {
+        ArrayList<Produtos> produtos = new ArrayList<>();
+        String queryStr = context.getString(R.string.get_product_missing);
 
         try {
             Cursor cursor = db.rawQuery(queryStr, new String[]{});
