@@ -24,4 +24,15 @@
         android:clickable="true"
         android:textSize="25dp"
         android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurar Backup"
+        android:id="@+id/restore_backup"
+        android:clickable="true"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"/>
+
+
 </LinearLayout>
