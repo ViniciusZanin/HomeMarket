@@ -78,7 +78,8 @@
         </activity>
         <activity
             android:name=".ProdutoDetailFragment"
-            android:label="Detail" />
+            android:label="Detail"
+            android:parentActivityName=".Produto" />
         <activity
             android:name=".ProdutoDetail"
             android:parentActivityName=".Produto" >
@@ -138,6 +139,14 @@
         <activity
             android:name=".Configuracao"
             android:label="@string/title_activity_configuracao" >
+        </activity>
+        <activity
+            android:name=".ListadeComprasInsert"
+            android:label="@string/title_activity_listade_compras_insert"
+            android:parentActivityName=".ListadeCompras" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.ListadeCompras" />
         </activity>
     </application>
 

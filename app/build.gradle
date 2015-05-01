@@ -5,7 +5,7 @@ android {
         KleinZanin {
             keyAlias 'KZ'
             keyPassword 'kleinzanin'
-            storeFile file('C:/Users/Felippe/HomeMarket/KleinZanin.jks')
+            storeFile file('C:/Users/Vinicius/Documents/GitHub/HomeMarket/KleinZanin.jks')
             storePassword 'kleinzanin'
         }
     }

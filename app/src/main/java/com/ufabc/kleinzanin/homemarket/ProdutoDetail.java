@@ -7,6 +7,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ufabc.kleinzanin.homemarket.model.ListaCompras;
+import com.ufabc.kleinzanin.homemarket.model.ListaComprasDAO;
+import com.ufabc.kleinzanin.homemarket.model.ListaComprasProdutos;
+import com.ufabc.kleinzanin.homemarket.model.ListaComprasProdutosDAO;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
@@ -61,10 +65,23 @@ public class ProdutoDetail extends ActionBarActivity {
             intent.putExtra("produtoPosition", pos);
             startActivity(intent);
         }
-        if(id == R.id.action_produto_remove){
+        if(id == R.id.action_produto_remove) {
             ProdutosDao dao = ProdutosDao.newInstance(this);
+            ListaComprasDAO dao2 = ListaComprasDAO.newInstance(this);
+            ListaComprasProdutosDAO dao3 = ListaComprasProdutosDAO.newInstance(this);
+            ListaCompras listaCompras = dao2.getMaxID();
+            ArrayList<ListaComprasProdutos> listaComprasProdutoses = dao3.listIDrecipe(listaCompras.getID());
             int pos = getIntent().getExtras().getInt("produtoPosition");
-            dao.remove(pos+1);
+            ArrayList<Produtos> produtos;
+            produtos = dao.list();
+            Produtos produto = produtos.get(pos);
+            for (int i = 0; i < listaComprasProdutoses.size(); i++) {
+                ListaComprasProdutos lprod = listaComprasProdutoses.get(i);
+                if (produto.getNome().equalsIgnoreCase(lprod.getNome())) {
+                    dao3.remove(lprod.getID());
+                }
+            }
+            dao.remove(pos);
             Intent intent = new Intent(this, Produto.class);
             startActivity(intent);
         }

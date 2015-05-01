@@ -1,10 +1,16 @@
 package com.ufabc.kleinzanin.homemarket;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,6 +20,8 @@ import com.ufabc.kleinzanin.homemarket.model.ListaCompras;
 import com.ufabc.kleinzanin.homemarket.model.ListaComprasDAO;
 import com.ufabc.kleinzanin.homemarket.model.ListaComprasProdutos;
 import com.ufabc.kleinzanin.homemarket.model.ListaComprasProdutosDAO;
+import com.ufabc.kleinzanin.homemarket.model.MercadoDAO;
+import com.ufabc.kleinzanin.homemarket.model.Mercados;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
@@ -30,8 +38,11 @@ public class ListadeCompras extends ActionBarActivity {
     private ListView listprod;
     private TextView pr;
     private Button enviar;
+    private Button comprada;
     String produtos = "";
     double preço = 0;
+    Boolean okmail = false;
+    String selectm = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +56,9 @@ public class ListadeCompras extends ActionBarActivity {
         this.dao = ProdutosDao.newInstance(this);
         this.dao2 = ListaComprasDAO.newInstance(this);
         this.dao3 = ListaComprasProdutosDAO.newInstance(this);
-        ListadeCompras self = this;
+        final ListadeCompras self = this;
         ListaCompras listaCompras = dao2.getMaxID();
-        String date;
+        final String date;
         Calendar c = Calendar.getInstance();
         int month = c.get(Calendar.MONTH) + 1;
         date = String.valueOf(c.get(Calendar.DAY_OF_MONTH) + "/" + month + "/" + c.get(Calendar.YEAR));
@@ -77,7 +88,7 @@ public class ListadeCompras extends ActionBarActivity {
             }
         }
 
-        ArrayList<ListaComprasProdutos> listaComprasProdutoses = dao3.listIDrecipe(listaCompras.getID());
+        final ArrayList<ListaComprasProdutos> listaComprasProdutoses = dao3.listIDrecipe(listaCompras.getID());
 
 
         for(int i = 0; i < produtos.size(); i++){
@@ -114,22 +125,97 @@ public class ListadeCompras extends ActionBarActivity {
         for(int i = 0; i < listaComprasProdutoses.size(); i ++){
             ListaComprasProdutos liprod = listaComprasProdutoses.get(i);
             preço = preço + (liprod.getPreco());
+        }
+        if(listaCompras.getPreco() != preço) {
             listaCompras.setPreco(preço);
             listaCompras.setData(date);
             dao2.editpreco(listaCompras);
+            Intent intent = getIntent();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            finish();
+            startActivity(intent);
         }
-
-        listprod = (ListView )findViewById(R.id.list_listacompra);
-        listprod.setAdapter(new ListaDeCompraAdapter(this,listaCompras.getID()));
+        ArrayList<ListaComprasProdutos> verify = dao3.listIDrecipe(listaCompras.getID());
+        if(verify.size() > 0) {
+            listprod = (ListView) findViewById(R.id.list_listacompra);
+            listprod.setAdapter(new ListaDeCompraAdapter(getApplicationContext(), listaCompras.getID()));
+        }
 
         DecimalFormat fmt = new DecimalFormat("0.00");
         String srt = fmt.format(listaCompras.getPreco());
         pr = (TextView )findViewById(R.id.preço_lista);
         pr.setText("R$" + srt);
 
+        enviar = (Button )findViewById(R.id.button_send_lista);
+        final ListaCompras finalListaCompras = listaCompras;
+        enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MercadoDAO dao4 = MercadoDAO.newInstance(getApplicationContext());
+                final ArrayList<Mercados> mercados = dao4.list();
+                final String[] mercado = new String[mercados.size()];
+                for (int i = 0; i < mercados.size(); i++) {
+                    Mercados m = mercados.get(i);
+                    mercado[i] = m.getNome();
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListadeCompras.this);
+                builder.setTitle("Escolha o mercado");
+                builder.setItems(mercado, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for (int i = 0; i < mercados.size(); i++) {
+                            Mercados m = mercados.get(i);
+                            if (mercado[which].equalsIgnoreCase(m.getNome())) {
+                                selectm = m.getEmail();
+                            }
 
+                        }
+                        String mail = "";
+                        for (int i = 0; i < listaComprasProdutoses.size(); i++) {
+                            ListaComprasProdutos prod = listaComprasProdutoses.get(i);
+                            mail = mail + prod.getNome() + " " + prod.getQuantidade() + " " + prod.getUnidade() + " \n";
+                        }
+                        Intent sendIntent = new Intent();
+                        Intent chooserIntent = Intent.createChooser(sendIntent, "Selecionar programa de email");
+                        sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{selectm});
+                        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Lista de compra, data:" + finalListaCompras.getData());
+                        sendIntent.putExtra(Intent.EXTRA_TEXT,mail);
+                        sendIntent.setType("message/rfc822");
+                        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+                            startActivity(chooserIntent);
+                        }
+                    }
+                });
+                builder.create();
+                builder.show();
+                }
+        });
+        comprada = (Button )findViewById(R.id.list_comprada);
+        comprada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Produtos> produtosc = dao.list();
+                ListaCompras listaComprasc = dao2.getMaxID();
+                ArrayList<ListaComprasProdutos> lprodutosc = dao3.listIDrecipe(listaComprasc.getID());
+                for(int i = 0; i < produtosc.size() ; i ++){
+                    Produtos prc = produtosc.get(i);
+                    for (int j = 0; j < lprodutosc.size(); j ++){
+                        ListaComprasProdutos prcl = lprodutosc.get(j);
+                        if(prcl.getNome().equalsIgnoreCase(prc.getNome())){
+                            prc.setQuantidade(prc.getQuantidade()+prcl.getQuantidade());
+                            dao.editprodquant(prc,prc.getID());
+                        }
+                    }
+                }
+                listaComprasc.setData(date);
+                ListaCompras newLista = new ListaCompras();
+                newLista.setData(date);
+                newLista.setPreco(0);
+                dao2.add(newLista);
+                startActivity(new Intent(getApplicationContext(),MenuPrincipal.class));
 
-
+            }
+        });
     }
 
 
@@ -150,6 +236,9 @@ public class ListadeCompras extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if(id == R.id.action_add){
+            startActivity(new Intent(this,ListadeComprasInsert.class));
         }
 
         return super.onOptionsItemSelected(item);

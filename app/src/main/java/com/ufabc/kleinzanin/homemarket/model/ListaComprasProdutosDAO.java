@@ -117,15 +117,11 @@ public class ListaComprasProdutosDAO extends SQLiteOpenHelper{
     public boolean remove(int position) {
         String queryStr = context.getString(R.string.remove_listacompras_produtos_query);
         boolean status = true;
-        ArrayList<ListaComprasProdutos>listaCompras;
-        dao = ListaComprasProdutosDAO.newInstance(context);
-        listaCompras = dao.list();
-        ListaComprasProdutos listaCompra = listaCompras.get(position);
 
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
-            statement.bindLong(1,listaCompra.getID());
+            statement.bindLong(1,position);
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to remove Lista in the database", e);

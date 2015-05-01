@@ -68,24 +68,29 @@ public class ListaDeCompraAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ListaComprasProdutos produto = produtos.get(position);
-        TextView nome = null;
-        TextView quantidade = null;
-        TextView preco = null;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(
-                Context.LAYOUT_INFLATER_SERVICE);
-        if(convertView == null){
-            convertView = inflater.inflate(R.layout.lista_compras_item,null);
-        }
+        if (position < produtos.size()) {
+            ListaComprasProdutos produto = produtos.get(position);
+            TextView nome = null;
+            TextView quantidade = null;
+            TextView preco = null;
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(
+                    Context.LAYOUT_INFLATER_SERVICE);
+            if (convertView == null) {
+                convertView = inflater.inflate(R.layout.lista_compras_item, null);
+            }
 
-        nome = (TextView )convertView.findViewById(R.id.produto_nome);
-        quantidade = (TextView ) convertView.findViewById(R.id.produto_quantidade);
-        preco = (TextView) convertView.findViewById(R.id.produto_preço);
-       nome.setText(produto.getNome());
-        DecimalFormat fmt = new DecimalFormat("0.00");
-        String str = fmt.format(produto.getPreco());
-        quantidade.setText(String.valueOf(produto.getQuantidade()) + " " + produto.getUnidade());
-        preco.setText("R$" + str);
-        return convertView;
+            nome = (TextView) convertView.findViewById(R.id.produto_nome);
+            quantidade = (TextView) convertView.findViewById(R.id.produto_quantidade);
+            preco = (TextView) convertView.findViewById(R.id.produto_preço);
+            nome.setText(produto.getNome());
+            DecimalFormat fmt = new DecimalFormat("0.00");
+            String str = fmt.format(produto.getPreco());
+            quantidade.setText(String.valueOf(produto.getQuantidade()) + " " + produto.getUnidade());
+            preco.setText("R$" + str);
+            return convertView;
+        }
+        return convertView = inflater.inflate(R.layout.lista_compras_item, null);
     }
+
 }
+

@@ -333,7 +333,6 @@ public class ProdutosDao extends SQLiteOpenHelper {
         return produtos;
     }
 
-<<<<<<< HEAD
     public ArrayList<Produtos> lista_compras_prod_missing() {
         ArrayList<Produtos> produtos = new ArrayList<>();
         String queryStr = context.getString(R.string.get_product_missing);
@@ -342,14 +341,14 @@ public class ProdutosDao extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(queryStr, new String[]{});
 
             cursor.moveToFirst();
-            while(!cursor.isAfterLast()) {
+            while (!cursor.isAfterLast()) {
                 Produtos produto = new Produtos();
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
                 produto.setQuantidade(cursor.getDouble(3));
                 produto.setConsumo(cursor.getDouble(4));
-                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setChecked((cursor.getInt(5) == 0 ? false : true));
                 produto.setPreço(cursor.getDouble(6));
                 produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
@@ -361,12 +360,41 @@ public class ProdutosDao extends SQLiteOpenHelper {
         }
 
         return produtos;
-=======
+    }
     public void dropTable(){
         String queryStr = context.getString(R.string.drop_table_produtos_query);
         db.execSQL(queryStr);
->>>>>>> 8cfe4ae0b5f81410940dac1b66435de161fe8927
     }
+
+    public ArrayList<Produtos> lista_compras_insert() {
+        ArrayList<Produtos> produtos = new ArrayList<>();
+        String queryStr = context.getString(R.string.get_product_unchecked_query);
+
+        try {
+            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Produtos produto = new Produtos();
+                produto.setID(cursor.getInt(0));
+                produto.setNome(cursor.getString(1));
+                produto.setUnidade(cursor.getString(2));
+                produto.setQuantidade(cursor.getDouble(3));
+                produto.setConsumo(cursor.getDouble(4));
+                produto.setChecked((cursor.getInt(5) == 0 ? false : true));
+                produto.setPreço(cursor.getDouble(6));
+                produto.setImagem(cursor.getString(7));
+                produtos.add(produto);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to list produtos from the database", e);
+        }
+
+        return produtos;
+    }
+
 
 
 }

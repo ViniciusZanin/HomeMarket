@@ -55,6 +55,10 @@
         SELECT * FROM produtos WHERE monthly = 1 AND quantMonth > quantNow;
     </string>
 
+    <string name="get_product_unchecked_query">
+        SELECT * FROM produtos WHERE monthly = 0;
+    </string>
+
 
     <!-- RECEITAS -->
         <string name="create_table_receitas_query">
@@ -276,14 +280,13 @@
     <string name="prod_add">Adicionar</string>
     <string name="prodcancel">Cancelar</string>
     <string name="prod_remo">Remover</string>
-<<<<<<< HEAD
 
 
 
 
-=======
+
     <string name="title_activity_receitas_disponiveis">ReceitasDisponiveis</string>
     <string name="title_activity_mercado_maps">Mapa de Mercados</string>
     <string name="title_activity_configuracao">Configuracao</string>
->>>>>>> 8cfe4ae0b5f81410940dac1b66435de161fe8927
+    <string name="title_activity_listade_compras_insert">ListadeComprasInsert</string>
 </resources>
