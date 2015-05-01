@@ -158,10 +158,23 @@ public class HomeFragment extends Fragment {
 
 
         statusCompraAtual.setText("Preço da Lista de Compra Atual");
-        vStatusCompraAtual.setText("R$"+pr); //TODO:Implements method to get lista de compra value
+        vStatusCompraAtual.setText("R$"+pr);
+
+        String pu = "0";
+        Log.e(LOGTAG,String.valueOf(listaCompras.getID()));
+        if(listaCompras.getID() > 1) {
+            ArrayList<ListaCompras> listaComprault = dao2.list();
+            for (int i = 0; i < listaComprault.size(); i++) {
+                ListaCompras listacomprasultima = listaComprault.get(i);
+                if ((listaCompras.getID() - 1) == listacomprasultima.getID()) {
+                    pu = fmt.format(listacomprasultima.getPreco());
+
+                }
+            }
+        }
 
         statusUltimaCompra.setText("Gasto na Ultima Compra");
-        vStatusUltimaCompra.setText("R$100,30"); //TODO:Implements method to get LAST lista de compra value
+        vStatusUltimaCompra.setText("R$" + pu);
 
         statusDespensa.setOnClickListener(new View.OnClickListener() {
             @Override

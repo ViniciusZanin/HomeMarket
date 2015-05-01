@@ -53,8 +53,8 @@ public class ListadeCompras extends ActionBarActivity {
 
 
     private void init() {
-        this.dao = ProdutosDao.newInstance(this);
-        this.dao2 = ListaComprasDAO.newInstance(this);
+        dao = ProdutosDao.newInstance(this);
+        dao2 = ListaComprasDAO.newInstance(this);
         this.dao3 = ListaComprasProdutosDAO.newInstance(this);
         final ListadeCompras self = this;
         ListaCompras listaCompras = dao2.getMaxID();
@@ -212,6 +212,7 @@ public class ListadeCompras extends ActionBarActivity {
                 newLista.setData(date);
                 newLista.setPreco(0);
                 dao2.add(newLista);
+                finish();
                 startActivity(new Intent(getApplicationContext(),MenuPrincipal.class));
 
             }

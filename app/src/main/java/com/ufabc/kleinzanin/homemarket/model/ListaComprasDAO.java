@@ -132,7 +132,7 @@ public class ListaComprasDAO extends SQLiteOpenHelper{
         return count;
     }
     public ListaCompras getItemAt(int position) {
-        String queryStr = context.getString(R.string.get_listacompras_query);
+        String queryStr = "SELECT * FROM listacompras WHERE = ";
         ListaCompras listaCompras = new ListaCompras();
 
 
