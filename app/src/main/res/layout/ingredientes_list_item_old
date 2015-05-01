@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     android:background="?android:attr/activatedBackgroundIndicator">
-
         <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -29,6 +28,4 @@
         android:layout_height="wrap_content"
         android:id="@+id/ingrediente_uni"
         android:textSize="12dp"/>
-
-
 </LinearLayout>

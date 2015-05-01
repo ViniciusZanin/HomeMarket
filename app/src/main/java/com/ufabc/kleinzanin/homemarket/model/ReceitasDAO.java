@@ -136,7 +136,7 @@ public class ReceitasDAO extends SQLiteOpenHelper {
         int count = -1;
 
         try {
-            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+            Cursor cursor = db.rawQuery(queryStr, null);
 
             cursor.moveToFirst();
             count = cursor.getInt(0);
@@ -153,10 +153,7 @@ public class ReceitasDAO extends SQLiteOpenHelper {
         Receitas r = new Receitas();
 
         try {
-            SQLiteStatement statement = db.compileStatement(queryStr);
-            statement.bindLong(1, position);
-
-            Cursor cursor = db.rawQuery(statement.simpleQueryForString(), new String[]{});
+            Cursor cursor = db.rawQuery(queryStr + position, null);
             cursor.moveToFirst();
             r.setID(cursor.getInt(0));
             r.setReceita(cursor.getString(1));

@@ -72,7 +72,7 @@ public class MenuPrincipal extends ActionBarActivity {
 
 
     private void initProdutos() {
-        startActivity((new Intent(this,Produto.class)));
+        startActivity((new Intent(this, Produto.class)));
     }
 
     private void initReceitas() {
@@ -91,7 +91,14 @@ public class MenuPrincipal extends ActionBarActivity {
         startActivity((new Intent(this,ListadeCompras.class)));
     }
 
+<<<<<<< HEAD
     private void initReceitasDisponiveis(){startActivity(new Intent(this, ReceitasDisponiveis.class));}
+=======
+    private void initMaps() {
+        startActivity((new Intent(this,MercadoMaps.class)));
+    }
+
+>>>>>>> f2bc50f2b8db7d1a474b43432d398f43be9ca8c3
     @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             // toggle nav drawer on selecting action bar app icon/title
@@ -147,10 +154,10 @@ public class MenuPrincipal extends ActionBarActivity {
                     initCompras();
                     break;
                 case 7:
-                    fragment = new MercadoDetailFragment();
+                    initMaps();
                     break;
                 case 8:
-                    fragment = new MercadoListFragment();
+                    initMercados();
                     break;
                 case 9:
                     fragment = new VariacaoPrecoFragment();

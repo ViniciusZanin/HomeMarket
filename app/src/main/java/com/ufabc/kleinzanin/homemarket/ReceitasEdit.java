@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ufabc.kleinzanin.homemarket.adapter.IngredientesTempAdapter;
@@ -89,7 +88,7 @@ public class ReceitasEdit extends ActionBarActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ReceitasEdit.this);
                 LayoutInflater inflater = ReceitasEdit.this.getLayoutInflater();
-                View promptsView = inflater.inflate(R.layout.dialog_ingrediente_insert, null);
+                View promptsView = inflater.inflate(R.layout.dialog_ingrediente_insert_old, null);
                 builder.setView(promptsView);
                 builder.setPositiveButton(R.string.ing_add, new DialogInterface.OnClickListener() {
                     @Override

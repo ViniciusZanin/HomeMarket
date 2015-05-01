@@ -9,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ufabc.kleinzanin.homemarket.R;
-import com.ufabc.kleinzanin.homemarket.model.Ingredientes;
 import com.ufabc.kleinzanin.homemarket.model.IngredientesTemp;
 import com.ufabc.kleinzanin.homemarket.model.IngredientesTempDAO;
 
@@ -67,7 +66,7 @@ public class IngredientesTempAdapter extends BaseAdapter {
         ImageButton remove;
         LayoutInflater inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null){
-            convertView = inflater.inflate(R.layout.ingredientes_list_item, null);
+            convertView = inflater.inflate(R.layout.ingredientes_list_item_old, null);
         }
         ingrediente = dao.getItemAt(position);
         nome = (TextView )convertView.findViewById(R.id.ingrediente_name);

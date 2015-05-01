@@ -55,10 +55,10 @@ public class MercadoMain extends ActionBarActivity {
                     Intent intent = null;
 
                     intent = new Intent(parent.getContext(), MercadoDetails.class);
-                    intent.putExtra("mercadoPosition", position);
+                    intent.putExtra("mercadoPosition", (int)id);
                     startActivity(intent);
                 } else { // large screen
-                    Mercados mercado = dao.getItemAt(position);
+                    Mercados mercado = dao.getItemAt((int)id);
 
                     detailFragment.showMercado(mercado);
                 }

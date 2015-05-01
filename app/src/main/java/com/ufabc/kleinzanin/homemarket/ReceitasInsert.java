@@ -14,24 +14,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ufabc.kleinzanin.homemarket.adapter.IngredientesAdapter;
 import com.ufabc.kleinzanin.homemarket.adapter.IngredientesTempAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Ingredientes;
 import com.ufabc.kleinzanin.homemarket.model.IngredientesDAO;
 import com.ufabc.kleinzanin.homemarket.model.IngredientesTemp;
 import com.ufabc.kleinzanin.homemarket.model.IngredientesTempDAO;
-import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -73,7 +68,7 @@ public class ReceitasInsert extends ActionBarActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ReceitasInsert.this);
                 LayoutInflater inflater = ReceitasInsert.this.getLayoutInflater();
-                View promptsView = inflater.inflate(R.layout.dialog_ingrediente_insert, null);
+                View promptsView = inflater.inflate(R.layout.dialog_ingrediente_insert_old, null);
                 builder.setView(promptsView);
                 builder.setPositiveButton(R.string.ing_add, new DialogInterface.OnClickListener() {
                             @Override
