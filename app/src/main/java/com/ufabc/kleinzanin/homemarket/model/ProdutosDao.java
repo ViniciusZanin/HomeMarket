@@ -329,5 +329,10 @@ public class ProdutosDao extends SQLiteOpenHelper {
         return produtos;
     }
 
+    public void dropTable(){
+        String queryStr = context.getString(R.string.drop_table_produtos_query);
+        db.execSQL(queryStr);
+    }
+
 
 }

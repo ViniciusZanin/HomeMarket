@@ -233,6 +233,11 @@ public class IngredientesDAO extends SQLiteOpenHelper {
         return ingredientes;
     }
 
+    public void dropTable(){
+        String queryStr = context.getString(R.string.drop_table_ingredientes_query);
+        db.execSQL(queryStr);
+    }
+
 
 
 }

@@ -88,7 +88,7 @@ public class ReceitasEdit extends ActionBarActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ReceitasEdit.this);
                 LayoutInflater inflater = ReceitasEdit.this.getLayoutInflater();
-                View promptsView = inflater.inflate(R.layout.dialog_ingrediente_insert_old, null);
+                View promptsView = inflater.inflate(R.layout.dialog_ingrediente_insert, null);
                 builder.setView(promptsView);
                 builder.setPositiveButton(R.string.ing_add, new DialogInterface.OnClickListener() {
                     @Override

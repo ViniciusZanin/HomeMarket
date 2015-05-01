@@ -235,4 +235,5 @@
     <string name="prod_remo">Remover</string>
     <string name="title_activity_receitas_disponiveis">ReceitasDisponiveis</string>
     <string name="title_activity_mercado_maps">Mapa de Mercados</string>
+    <string name="title_activity_configuracao">Configuracao</string>
 </resources>

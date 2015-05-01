@@ -220,5 +220,10 @@ public class MercadoDAO extends SQLiteOpenHelper {
         return mercados;
     }
 
+    public void dropTable(){
+        String queryStr = context.getString(R.string.drop_table_mercados_query);
+        db.execSQL(queryStr);
+    }
+
 
 }

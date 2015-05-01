@@ -66,7 +66,7 @@ public class IngredientesTempAdapter extends BaseAdapter {
         ImageButton remove;
         LayoutInflater inflater = (LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null){
-            convertView = inflater.inflate(R.layout.ingredientes_list_item_old, null);
+            convertView = inflater.inflate(R.layout.ingredientes_list_item, null);
         }
         ingrediente = dao.getItemAt(position);
         nome = (TextView )convertView.findViewById(R.id.ingrediente_name);

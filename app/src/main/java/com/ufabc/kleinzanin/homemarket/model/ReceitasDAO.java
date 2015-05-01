@@ -278,4 +278,9 @@ public class ReceitasDAO extends SQLiteOpenHelper {
         return receitas;
     }
 
+    public void dropTable(){
+        String queryStr = context.getString(R.string.drop_table_receitas_query);
+        db.execSQL(queryStr);
+    }
+
 }
