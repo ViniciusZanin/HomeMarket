@@ -27,9 +27,8 @@ public class ProdutosDao extends SQLiteOpenHelper {
     private static final String LOGTAG = ProdutosDao.class.getSimpleName();
 
 
-
     public ProdutosDao(Context context) {
-        super(context,DB_NAME,null,DB_VERSION);
+        super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
         this.db = getWritableDatabase();
     }
@@ -93,9 +92,9 @@ public class ProdutosDao extends SQLiteOpenHelper {
             statement.bindString(2, p.getUnidade());
             statement.bindDouble(3, p.getQuantidade());
             statement.bindDouble(4, p.getConsumo());
-            statement.bindLong(5, (p.getChecked()) ? 1:0);
+            statement.bindLong(5, (p.getChecked()) ? 1 : 0);
             statement.bindDouble(6, p.getPreço());
-           statement.bindString(7, p.getImagem());
+            statement.bindString(7, p.getImagem());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to add products in the database", e);
@@ -104,7 +103,8 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
         return status;
     }
-    public boolean edit(Produtos p, int position){
+
+    public boolean edit(Produtos p, int position) {
         String queryStr = context.getString(R.string.edit_produtos_query);
         boolean status = true;
 
@@ -115,7 +115,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
             statement.bindString(2, p.getUnidade());
             statement.bindDouble(3, p.getQuantidade());
             statement.bindDouble(4, p.getConsumo());
-            statement.bindLong(5, (p.getChecked()) ? 1:0);
+            statement.bindLong(5, (p.getChecked()) ? 1 : 0);
             statement.bindDouble(6, p.getPreço());
             statement.bindString(7, p.getImagem());
 
@@ -129,7 +129,8 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
         return status;
     }
-    public boolean editprodquant(Produtos p, int position){
+
+    public boolean editprodquant(Produtos p, int position) {
         String queryStr = context.getString(R.string.edit_produto_quant_query);
         boolean status = true;
 
@@ -152,7 +153,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
     public boolean remove(int position) {
         String queryStr = context.getString(R.string.remove_produtos_query);
         boolean status = true;
-        ArrayList<Produtos>produtos;
+        ArrayList<Produtos> produtos;
         dao = ProdutosDao.newInstance(context);
         produtos = dao.list();
         Produtos produto = produtos.get(position);
@@ -160,7 +161,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
         try {
             SQLiteStatement statement = db.compileStatement(queryStr);
 
-            statement.bindLong(1,produto.getID());
+            statement.bindLong(1, produto.getID());
             statement.execute();
         } catch (SQLiteException e) {
             Log.e(LOGTAG, "Failed to remove products in the database", e);
@@ -198,7 +199,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
         try {
             Cursor cursor = db.rawQuery(queryStr + position, null);
-            if(cursor.getCount() > 0) {
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
 
                 produto.setID(cursor.getInt(0));
@@ -226,14 +227,14 @@ public class ProdutosDao extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(queryStr, new String[]{});
 
             cursor.moveToFirst();
-            while(!cursor.isAfterLast()) {
+            while (!cursor.isAfterLast()) {
                 Produtos produto = new Produtos();
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
                 produto.setQuantidade(cursor.getDouble(3));
                 produto.setConsumo(cursor.getDouble(4));
-                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setChecked((cursor.getInt(5) == 0 ? false : true));
                 produto.setPreço(cursor.getDouble(6));
                 produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
@@ -255,14 +256,14 @@ public class ProdutosDao extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(queryStr, new String[]{});
 
             cursor.moveToFirst();
-            while(!cursor.isAfterLast()) {
+            while (!cursor.isAfterLast()) {
                 Produtos produto = new Produtos();
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
                 produto.setQuantidade(cursor.getDouble(3));
                 produto.setConsumo(cursor.getDouble(4));
-                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setChecked((cursor.getInt(5) == 0 ? false : true));
                 produto.setPreço(cursor.getDouble(6));
                 produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
@@ -284,14 +285,14 @@ public class ProdutosDao extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(queryStr, new String[]{});
 
             cursor.moveToFirst();
-            while(!cursor.isAfterLast()) {
+            while (!cursor.isAfterLast()) {
                 Produtos produto = new Produtos();
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
                 produto.setQuantidade(cursor.getDouble(3));
                 produto.setConsumo(cursor.getDouble(4));
-                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setChecked((cursor.getInt(5) == 0 ? false : true));
                 produto.setPreço(cursor.getDouble(6));
                 produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
@@ -304,6 +305,7 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
         return produtos;
     }
+
     public ArrayList<Produtos> despensa_porcentagem() {
         ArrayList<Produtos> produtos = new ArrayList<>();
         String queryStr = context.getString(R.string.get_product_checked_query);
@@ -312,14 +314,14 @@ public class ProdutosDao extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(queryStr, new String[]{});
 
             cursor.moveToFirst();
-            while(!cursor.isAfterLast()) {
+            while (!cursor.isAfterLast()) {
                 Produtos produto = new Produtos();
                 produto.setID(cursor.getInt(0));
                 produto.setNome(cursor.getString(1));
                 produto.setUnidade(cursor.getString(2));
                 produto.setQuantidade(cursor.getDouble(3));
                 produto.setConsumo(cursor.getDouble(4));
-                produto.setChecked((cursor.getInt(5) == 0 ? false:true));
+                produto.setChecked((cursor.getInt(5) == 0 ? false : true));
                 produto.setPreço(cursor.getDouble(6));
                 produto.setImagem(cursor.getString(7));
                 produtos.add(produto);
@@ -333,6 +335,10 @@ public class ProdutosDao extends SQLiteOpenHelper {
         return produtos;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d5c6ba911e74da5af4a1ab54adcd2193aaf3893
     public ArrayList<Produtos> lista_compras_prod_missing() {
         ArrayList<Produtos> produtos = new ArrayList<>();
         String queryStr = context.getString(R.string.get_product_missing);
@@ -361,10 +367,19 @@ public class ProdutosDao extends SQLiteOpenHelper {
 
         return produtos;
     }
+<<<<<<< HEAD
     public void dropTable(){
         String queryStr = context.getString(R.string.drop_table_produtos_query);
         db.execSQL(queryStr);
+=======
+
+    public void dropTable() {
+        String queryStr = context.getString(R.string.drop_table_produtos_query);
+        db.execSQL(queryStr);
+
+>>>>>>> 1d5c6ba911e74da5af4a1ab54adcd2193aaf3893
     }
-
-
 }
+
+
+
