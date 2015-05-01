@@ -9,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ufabc.kleinzanin.homemarket.R;
-import com.ufabc.kleinzanin.homemarket.model.Ingredientes;
 import com.ufabc.kleinzanin.homemarket.model.IngredientesTemp;
 import com.ufabc.kleinzanin.homemarket.model.IngredientesTempDAO;
 

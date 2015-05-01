@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ufabc.kleinzanin.homemarket.adapter.IngredientesTempAdapter;
@@ -59,6 +58,7 @@ public class ReceitasEdit extends ActionBarActivity {
         IngredientesDAO dao_ing = IngredientesDAO.newInstance(this);
         IngredientesTempDAO dao_temp = IngredientesTempDAO.newInstance();
         ingredientes = dao_ing.receita_igredientes(receita.getID());
+        dao_temp.removeAll();
         for(int i = 0; i<ingredientes.size(); i++) {
             Ingredientes ingrediente = ingredientes.get(i);
             IngredientesTemp ingredientesTemp = new IngredientesTemp();
@@ -101,7 +101,7 @@ public class ReceitasEdit extends ActionBarActivity {
                         quantidade = (EditText )f.findViewById(R.id.ingrediente_quant_edit);
                         IngredientesTemp ingrediente = new IngredientesTemp();
                         ingrediente.setNome(name.getText().toString());
-                        ingrediente.setQuantidade(Integer.parseInt(quantidade.getText().toString()));
+                        ingrediente.setQuantidade(Double.parseDouble(quantidade.getText().toString()));
                         ingrediente.setUnidade(String.valueOf(unit.getSelectedItem()));
                         adapter.add(ingrediente);
 
@@ -143,6 +143,7 @@ public class ReceitasEdit extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_receitas_edit, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

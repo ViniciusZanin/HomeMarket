@@ -1,19 +1,28 @@
 package com.ufabc.kleinzanin.homemarket;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.ufabc.kleinzanin.homemarket.model.MercadoDAO;
 import com.ufabc.kleinzanin.homemarket.model.Mercados;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 public class MercadoInsert extends ActionBarActivity {
 
+    private static final String LOGTAG = MercadoInsert.class.getSimpleName();
     private MercadoDAO dao = MercadoDAO.newInstance(this);
 
     @Override
@@ -34,6 +43,11 @@ public class MercadoInsert extends ActionBarActivity {
             mercado.setEmail(email);
             mercado.setTelefone(telefone);
             mercado.setEndereco(endereco);
+            LatLng latLng = Coordinates(endereco);
+            if (!latLng.equals(null)) {
+                mercado.setPosition(latLng);
+            }
+
             dao.add(mercado);
 
             Toast.makeText(this, getString(R.string.insert_status_ok), Toast.LENGTH_SHORT).show();
@@ -66,4 +80,25 @@ public class MercadoInsert extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public LatLng Coordinates(String endereco){
+        Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+        LatLng position = null;
+        List<Address> addresses;
+        try {
+            addresses = geocoder.getFromLocationName(endereco, 1);
+            if(addresses.size() > 0) {
+                double latitude= addresses.get(0).getLatitude();
+                double longitude= addresses.get(0).getLongitude();
+                position = new LatLng(latitude,longitude);
+            } else {
+                Log.e(LOGTAG, "Address not found.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return position;
+    }
+
 }

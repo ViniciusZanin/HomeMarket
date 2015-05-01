@@ -64,7 +64,7 @@ public class ProdutoDetail extends ActionBarActivity {
         if(id == R.id.action_produto_remove){
             ProdutosDao dao = ProdutosDao.newInstance(this);
             int pos = getIntent().getExtras().getInt("produtoPosition");
-            dao.remove(pos);
+            dao.remove(pos+1);
             Intent intent = new Intent(this, Produto.class);
             startActivity(intent);
         }

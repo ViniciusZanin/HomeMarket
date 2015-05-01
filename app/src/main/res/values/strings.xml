@@ -83,7 +83,7 @@
          DELETE FROM receitas WHERE _id = ?
     </string>
     <string name="get_receitas_query">
-         SELECT * FROM receitas WHERE _id = ?
+         SELECT * FROM receitas WHERE _id =
     </string>
 
     <!-- MERCADOS -->
@@ -93,7 +93,9 @@
             nome TEXT NOT NULL,
             email TEXT NOT NULL,
             telefone TEXT NOT NULL,
-            receitas TEXT NOT NULL
+            endereco TEXT NOT NULL,
+            latitude TEXT NOT NULL,
+            longitude TEXT NOT NULL
             )
     </string>
      <string name="drop_table_mercados_query">
@@ -106,16 +108,16 @@
         SELECT * FROM mercados;
     </string>
      <string name="insert_mercados_query">
-         INSERT INTO mercados (nome, email, telefone, receitas) VALUES(?,?,?,?)
+         INSERT INTO mercados (nome, email, telefone, endereco, latitude, longitude) VALUES(?,?,?,?,?,?)
     </string>
      <string name="edit_mercados_query">
-         UPDATE mercados SET (nome, email, telefone, receitas) VALUES(?,?,?,?) WHERE _id = ?
+         UPDATE mercados SET nome = ?, email = ?, telefone = ?, endereco = ?, latitude = ?, longitude = ? WHERE _id = ?
     </string>
      <string name="remove_mercados_query">
          DELETE FROM mercados WHERE _id = ?
     </string>
     <string name="get_mercados_query">
-         SELECT * FROM mercados WHERE _id = ?
+         SELECT * FROM mercados WHERE _id =
     </string>
 
     <string name="title_activity_receitas">Receitas</string>
@@ -149,7 +151,7 @@
     <string name="MercadoEnderecoItem">Endereço do Mercado</string>
     <string name="MercadoTelefoneItem">Telefone do Mercado</string>
     <string name="MercadoEmailItem">Email do supermercado</string>
-    <string name="title_activity_mercado_insert">Inserir Receitas</string>
+    <string name="title_activity_mercado_insert">Inserir Mercados</string>
     <string name="MercadoNome">Nome</string>
     <string name="MercadoEmail">E-mail:</string>
     <string name="MercadoTelefone">Telefone</string>
@@ -163,12 +165,10 @@
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item >Home</item>
+        <item >Produtos</item>
         <item >Despensa</item>
-        <item >Editar Despensa</item>
         <item >Receitas</item>
-        <item >Receitas possiveis</item>
-        <item >Visualizar todas</item>
-        <item >Compras</item>
+        <item >Receitas Disponiveis</item>
         <item >Lista de Compras</item>
         <item >Localizar Mercados</item>
         <item >Mercados Cadastrados</item>
@@ -184,6 +184,10 @@
         <item>@drawable/ic_receitas</item>
         <item>@drawable/ic_compras</item>
         <item>@drawable/ic_config</item>
+        <item>@drawable/ic_produtos</item>
+        <item>@drawable/ic_findmercado</item>
+        <item>@drawable/ic_mercados</item>
+        <item>@drawable/ic_preco</item>
     </array>
 
     <!-- Content Description -->
@@ -206,9 +210,8 @@
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     unity TEXT NOT NULL,
-    receita_id INTEGER NOT NULL,
     quantidade REAL NOT NULL,
-    FOREIGN KEY (receita_id) REFERENCES receitas(_id) )
+    receita_id INTEGER NOT NULL )
     </string>
     <string name="insert_ingredientes_query">INSERT INTO ingredientes (title, unity, quantidade, receita_id) VALUES(?,?,?,?)</string>
     <string name="remove_ingredientes_query">DELETE FROM ingredientes WHERE _id = ?</string>
@@ -273,8 +276,14 @@
     <string name="prod_add">Adicionar</string>
     <string name="prodcancel">Cancelar</string>
     <string name="prod_remo">Remover</string>
+<<<<<<< HEAD
 
 
 
 
+=======
+    <string name="title_activity_receitas_disponiveis">ReceitasDisponiveis</string>
+    <string name="title_activity_mercado_maps">Mapa de Mercados</string>
+    <string name="title_activity_configuracao">Configuracao</string>
+>>>>>>> 8cfe4ae0b5f81410940dac1b66435de161fe8927
 </resources>

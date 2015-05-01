@@ -32,8 +32,9 @@ public class ReceitasDetails extends ActionBarActivity {
         ReceitasDAO dao = ReceitasDAO.newInstance(this);
         receitas = dao.list();
         int pos = getIntent().getExtras().getInt("receitaPosition");
+        int buttonDisp = getIntent().getExtras().getInt("dispButton");
         Receitas receita = receitas.get(pos);
-        detail.showReceitas(receita);
+        detail.showReceitas(receita, buttonDisp);
 
     }
 

@@ -56,7 +56,7 @@ public class ReceitasMain extends ActionBarActivity {
                 } else {
                     Receitas receitas = dao.getItemAt(position);
 
-                    detailFragment.showReceitas(receitas);
+                    detailFragment.showReceitas(receitas, 0);
                 }
             }
         });

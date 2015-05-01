@@ -7,18 +7,12 @@
     android:padding="10dp"
     android:background="?android:attr/activatedBackgroundIndicator">
 
-        <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/ingrediente_button_remove"
-            android:background="@android:drawable/ic_notification_clear_all" />
-
-        <TextView
-            android:id="@+id/ingrediente_name"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
-            android:textSize="17dp"/>
+    <TextView
+        android:id="@+id/ingrediente_name"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:textSize="17dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +23,4 @@
         android:layout_height="wrap_content"
         android:id="@+id/ingrediente_uni"
         android:textSize="12dp"/>
-
-
 </LinearLayout>

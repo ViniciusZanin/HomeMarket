@@ -211,7 +211,12 @@ public class IngredientesDAO extends SQLiteOpenHelper {
 
     public ArrayList<Ingredientes> receita_igredientes(int ReceitaID) {
         ArrayList<Ingredientes> ingredientes = new ArrayList<>();
+<<<<<<< HEAD
         String queryStr = "SELECT * FROM ingredientes WHERE receita_id = "+ReceitaID;
+=======
+
+        String queryStr = "SELECT * FROM ingredientes WHERE receita_id = " + ReceitaID;
+>>>>>>> 8cfe4ae0b5f81410940dac1b66435de161fe8927
 
 
         try {
@@ -234,6 +239,11 @@ public class IngredientesDAO extends SQLiteOpenHelper {
         }
 
         return ingredientes;
+    }
+
+    public void dropTable(){
+        String queryStr = context.getString(R.string.drop_table_ingredientes_query);
+        db.execSQL(queryStr);
     }
 
 
