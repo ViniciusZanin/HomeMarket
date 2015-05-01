@@ -161,11 +161,9 @@
     <string-array name="nav_drawer_items">
         <item >Home</item>
         <item >Produtos</item>
-        <item >Editar Despensa</item>
+        <item >Despensa</item>
         <item >Receitas</item>
-        <item >Receitas possiveis</item>
-        <item >Visualizar todas</item>
-        <item >Compras</item>
+        <item >Receitas Disponiveis</item>
         <item >Lista de Compras</item>
         <item >Localizar Mercados</item>
         <item >Mercados Cadastrados</item>
@@ -181,6 +179,10 @@
         <item>@drawable/ic_receitas</item>
         <item>@drawable/ic_compras</item>
         <item>@drawable/ic_config</item>
+        <item>@drawable/ic_produtos</item>
+        <item>@drawable/ic_findmercado</item>
+        <item>@drawable/ic_mercados</item>
+        <item>@drawable/ic_preco</item>
     </array>
 
     <!-- Content Description -->
@@ -231,9 +233,6 @@
     <string name="prod_add">Adicionar</string>
     <string name="prodcancel">Cancelar</string>
     <string name="prod_remo">Remover</string>
-<<<<<<< HEAD
     <string name="title_activity_receitas_disponiveis">ReceitasDisponiveis</string>
-=======
     <string name="title_activity_mercado_maps">Mapa de Mercados</string>
->>>>>>> f2bc50f2b8db7d1a474b43432d398f43be9ca8c3
 </resources>

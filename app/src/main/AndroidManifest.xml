@@ -130,16 +130,13 @@
             android:label="Adicionar produto a despensa" >
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".ReceitasDisponiveis"
             android:label="@string/title_activity_receitas_disponiveis" >
-=======
             android:name=".MercadoMaps"
             android:label="@string/title_activity_mercado_maps" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ufabc.kleinzanin.homemarket.MercadoMain" />
->>>>>>> f2bc50f2b8db7d1a474b43432d398f43be9ca8c3
         </activity>
     </application>
 

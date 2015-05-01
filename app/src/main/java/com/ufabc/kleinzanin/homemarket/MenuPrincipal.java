@@ -91,14 +91,11 @@ public class MenuPrincipal extends ActionBarActivity {
         startActivity((new Intent(this,ListadeCompras.class)));
     }
 
-<<<<<<< HEAD
     private void initReceitasDisponiveis(){startActivity(new Intent(this, ReceitasDisponiveis.class));}
-=======
+
     private void initMaps() {
         startActivity((new Intent(this,MercadoMaps.class)));
     }
-
->>>>>>> f2bc50f2b8db7d1a474b43432d398f43be9ca8c3
     @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             // toggle nav drawer on selecting action bar app icon/title
@@ -151,18 +148,15 @@ public class MenuPrincipal extends ActionBarActivity {
                     initCompras();
                     break;
                 case 6:
-                    initCompras();
-                    break;
-                case 7:
                     initMaps();
                     break;
-                case 8:
+                case 7:
                     initMercados();
                     break;
-                case 9:
-                    fragment = new VariacaoPrecoFragment();
+                case 8:
+                    fragment = new VariacaoPrecoFragment();;
                     break;
-                case 10:
+                case 9:
                     fragment = new ConfigFragment();
                     break;
                 default:
@@ -227,25 +221,23 @@ public class MenuPrincipal extends ActionBarActivity {
             // Home
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
             // Produto
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-            // Editar Produto
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[2],11));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(5, -1)));
+            // Despensa
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[2],navMenuIcons.getResourceId(1, -1)));
             // Receitas
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(2, -1)));
-            // Receitas Possiveis
+            // Receitas Disponiveis
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], 11));
-            // Compras
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(3, -1)));
             // Lista de Compras
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], 11));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(3, -1)));
             // Localizar Mercados
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], 11));
-            // Merc. Cadastrados
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[9], 11));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+            // Mercados Cadastrados
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
             // Variação de Preços
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[10], 11));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
             // Config
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[11], navMenuIcons.getResourceId(4, -1)));
+            navDrawerItems.add(new NavDrawerItem(navMenuTitles[9], navMenuIcons.getResourceId(4, -1)));
 
             // Recycle the typed array
             navMenuIcons.recycle();

@@ -96,7 +96,7 @@ public class MercadoMaps extends ActionBarActivity implements OnMapReadyCallback
             mercado = markets.get(i);
             markerOptions.position(mercado.getPosition());
             markerOptions.title(mercado.getNome());
-            markerOptions.snippet("Telefone: " +mercado.getTelefone()+"\n Endereço: "+mercado.getEndereco());
+            markerOptions.snippet("Telefone: " +mercado.getTelefone()+"\n Endereco: "+mercado.getEndereco());
             googleMaps.addMarker(markerOptions);
             i++;
         }
