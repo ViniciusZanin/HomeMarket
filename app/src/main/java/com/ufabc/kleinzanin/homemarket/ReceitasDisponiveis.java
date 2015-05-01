@@ -9,41 +9,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.ufabc.kleinzanin.homemarket.adapter.ReceitasAdapter;
+import com.ufabc.kleinzanin.homemarket.adapter.ReceitasDisponivelAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
 
-public class ReceitasMain extends ActionBarActivity {
-    private ReceitasDAO dao;
-    private ListView listView;
+public class ReceitasDisponiveis extends ActionBarActivity {
 
-    private ReceitasListFragment listFragment;
+    private ListView listView;
     private ReceitasDetailFragment detailFragment;
+    ReceitasDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receitas);
-        init();
-        setupReceitasList();
-    }
-
-    private void init() {
-        this.dao = ReceitasDAO.newInstance(this);
-
-        listFragment = (ReceitasListFragment )getFragmentManager().findFragmentById(R.id.receitalist_fragment);
-        detailFragment = (ReceitasDetailFragment )getFragmentManager().findFragmentById(R.id.receita_fragmentdetails);
-        if(listFragment != null){
-            listView = (ListView )listFragment.getView().findViewById(R.id.receitas_list);
-        }
-    }
-
-    private void setupReceitasList(){
-        listView = (ListView )findViewById(R.id.receitas_list);
-        final ReceitasMain self = this;
-        listView.setAdapter(new ReceitasAdapter(this));
-
+        setContentView(R.layout.activity_receitas_disponiveis);
+        listView = (ListView )findViewById(R.id.receitadisp_list);
+        listView.setAdapter(new ReceitasDisponivelAdapter(this));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -52,11 +34,12 @@ public class ReceitasMain extends ActionBarActivity {
 
                     intent = new Intent(parent.getContext(), ReceitasDetails.class);
                     intent.putExtra("receitaPosition", position);
+                    intent.putExtra("dispButton", 1);
                     startActivity(intent);
                 } else {
                     Receitas receitas = dao.getItemAt(position);
 
-                    detailFragment.showReceitas(receitas, 0);
+                    detailFragment.showReceitas(receitas, 1);
                 }
             }
         });
@@ -66,7 +49,7 @@ public class ReceitasMain extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_receitas, menu);
+        getMenuInflater().inflate(R.menu.menu_receitas_disponiveis, menu);
         return true;
     }
 
@@ -79,12 +62,6 @@ public class ReceitasMain extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
-        }
-        else if(id == R.id.receita_add){
-            startActivity((new Intent(this, ReceitasInsert.class)));
-        }
-        else if(id == R.id.receita_search){
             return true;
         }
 

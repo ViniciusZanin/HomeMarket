@@ -194,4 +194,91 @@ public class ReceitasDAO extends SQLiteOpenHelper {
         return receitas;
     }
 
+    public ArrayList<Receitas> receitas_disp(){
+        ArrayList<Receitas> receitas = new ArrayList<>();
+        String queryStr = context.getString(R.string.list_receitas_query);
+
+        try {
+            Cursor cursor = db.rawQuery(queryStr, new String[]{});
+
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                boolean disp=false;
+                Receitas r = new Receitas();
+                r.setID(cursor.getInt(0));
+                r.setReceita(cursor.getString(1));
+                r.setModopreparo(cursor.getString(2));
+
+                ArrayList<Produtos> produtos;
+                ProdutosDao dao_prod = ProdutosDao.newInstance(context);
+                produtos = dao_prod.despensa();
+                ArrayList<Ingredientes> ingredientes;
+                IngredientesDAO dao_ing = IngredientesDAO.newInstance(context);
+                ingredientes = dao_ing.receita_igredientes(cursor.getInt(0));
+
+                for(int i = 0; i<ingredientes.size(); i++){
+                    Ingredientes ingrediente = ingredientes.get(i);
+                    String ing_uni = ingrediente.getUnidade();
+                    double ing_quant = ingrediente.getQuantidade();
+                    for (int j = 0; j<produtos.size(); j++){
+                        Produtos produto = produtos.get(j);
+                        if (ingrediente.getNome().equalsIgnoreCase(produto.getNome())) {
+                            if (ing_uni.equalsIgnoreCase(produto.getUnidade())) {
+                                if (ing_quant <= produto.getQuantidade()) {
+                                    disp = true;
+                                } else {
+                                    disp = false;
+                                    break;
+                                }
+                            } else if (ing_uni.equalsIgnoreCase("gramas") && produto.getUnidade().equalsIgnoreCase("kilogramas")) {
+                                if (ing_quant / 1000 <= produto.getQuantidade()) {
+                                    disp = true;
+                                } else {
+                                    disp = false;
+                                    break;
+                                }
+                            } else if (ing_uni.equalsIgnoreCase("kilogramas") && produto.getUnidade().equalsIgnoreCase("gramas")) {
+                                if (ing_quant * 1000 <= produto.getQuantidade()) {
+                                    disp = true;
+                                } else {
+                                    disp = false;
+                                    break;
+                                }
+                            } else if (ing_uni.equalsIgnoreCase("mililitos") && produto.getUnidade().equalsIgnoreCase("litros")) {
+                                if (ing_quant / 1000 <= produto.getQuantidade()) {
+                                    disp = true;
+                                } else {
+                                    disp = false;
+                                    break;
+                                }
+                            } else if (ing_uni.equalsIgnoreCase("litros") && produto.getUnidade().equalsIgnoreCase("mililitros")) {
+                                if (ing_quant * 1000 <= produto.getQuantidade()) {
+                                    disp = true;
+                                } else {
+                                    disp = false;
+                                    break;
+                                }
+                            } else {
+                                disp = false;
+                                break;
+                            }
+                        }
+                    }
+                    if(!disp){
+                        break;
+                    }
+                }
+
+                if(disp){
+                    receitas.add(r);
+                }
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(LOGTAG, "Failed to list receitas from the database", e);
+        }
+        return receitas;
+    }
+
 }

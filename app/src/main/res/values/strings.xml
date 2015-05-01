@@ -201,9 +201,8 @@
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     unity TEXT NOT NULL,
-    receita_id INTEGER NOT NULL,
     quantidade REAL NOT NULL,
-    FOREIGN KEY (receita_id) REFERENCES receitas(_id) )
+    receita_id INTEGER NOT NULL )
     </string>
     <string name="insert_ingredientes_query">INSERT INTO ingredientes (title, unity, quantidade, receita_id) VALUES(?,?,?,?)</string>
     <string name="remove_ingredientes_query">DELETE FROM ingredientes WHERE _id = ?</string>
@@ -230,4 +229,5 @@
     <string name="prod_add">Adicionar</string>
     <string name="prodcancel">Cancelar</string>
     <string name="prod_remo">Remover</string>
+    <string name="title_activity_receitas_disponiveis">ReceitasDisponiveis</string>
 </resources>

@@ -56,6 +56,7 @@ public class ReceitasInsert extends ActionBarActivity {
 
     private void init() {
         dao_temp = IngredientesTempDAO.newInstance();
+        dao_temp.removeAll();
         listView = (ListView )findViewById(R.id.ingredientes_list);
         listView.setAdapter(new IngredientesTempAdapter(this));
         final IngredientesTempAdapter adapter = (IngredientesTempAdapter ) listView.getAdapter();

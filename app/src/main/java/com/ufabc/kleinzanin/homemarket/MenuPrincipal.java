@@ -91,6 +91,7 @@ public class MenuPrincipal extends ActionBarActivity {
         startActivity((new Intent(this,ListadeCompras.class)));
     }
 
+    private void initReceitasDisponiveis(){startActivity(new Intent(this, ReceitasDisponiveis.class));}
     @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             // toggle nav drawer on selecting action bar app icon/title
@@ -137,7 +138,7 @@ public class MenuPrincipal extends ActionBarActivity {
                     initReceitas();
                     break;
                 case 4:
-                    fragment = new ReceitasDetailFragment();
+                    initReceitasDisponiveis();
                     break;
                 case 5:
                     initCompras();

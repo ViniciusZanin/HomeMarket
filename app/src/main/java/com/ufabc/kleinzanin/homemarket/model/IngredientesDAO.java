@@ -207,11 +207,7 @@ public class IngredientesDAO extends SQLiteOpenHelper {
 
     public ArrayList<Ingredientes> receita_igredientes(int ReceitaID) {
         ArrayList<Ingredientes> ingredientes = new ArrayList<>();
-<<<<<<< HEAD
         String queryStr = "SELECT * FROM ingredientes WHERE receita_id = "+ReceitaID;
-=======
-        String queryStr = "SELECT * FROM ingredientes WHERE receita_id = " + ReceitaID;
->>>>>>> 68e623b0c8519f81298511f45fcbf4d40729cbde
 
 
         try {

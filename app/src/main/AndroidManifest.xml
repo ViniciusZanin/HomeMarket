@@ -115,6 +115,10 @@
             android:name=".DespensaDetail"
             android:label="Adicionar produto a despensa" >
         </activity>
+        <activity
+            android:name=".ReceitasDisponiveis"
+            android:label="@string/title_activity_receitas_disponiveis" >
+        </activity>
     </application>
 
 </manifest>
