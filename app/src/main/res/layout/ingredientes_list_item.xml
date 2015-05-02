@@ -10,23 +10,25 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:id="@+id/ingrediente_button_remove"
-            android:background="@android:drawable/ic_notification_clear_all" />
+            android:background="@android:drawable/ic_notification_clear_all"
+            android:layout_marginRight="7dp"/>
         <TextView
             android:id="@+id/ingrediente_name"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textStyle="bold"
-            android:textSize="17dp"/>
+            android:textSize="17dp"
+            android:layout_marginRight="7dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ingrediente_quant"
-        android:textSize="12dp"/>
+        android:textSize="12dp"
+        android:layout_marginRight="3dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ingrediente_uni"
-        android:textSize="12dp"/>
+        android:id="@+id/ingrediente_uni"/>
 
 
 </LinearLayout>

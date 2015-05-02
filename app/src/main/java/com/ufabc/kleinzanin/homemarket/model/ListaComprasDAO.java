@@ -132,7 +132,7 @@ public class ListaComprasDAO extends SQLiteOpenHelper{
         return count;
     }
     public ListaCompras getItemAt(int position) {
-        String queryStr = context.getString(R.string.get_listacompras_query);
+        String queryStr = "SELECT * FROM listacompras WHERE = ";
         ListaCompras listaCompras = new ListaCompras();
 
 
@@ -239,5 +239,10 @@ public class ListaComprasDAO extends SQLiteOpenHelper{
             status = false;
         }
         return status;
+    }
+
+    public void dropTable(){
+        String queryStr = context.getString(R.string.drop_table_listacompras_query);
+        db.execSQL(queryStr);
     }
 }

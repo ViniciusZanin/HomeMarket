@@ -54,7 +54,11 @@
         </activity>
         <activity
             android:name=".ReceitasEdit"
-            android:label="@string/title_activity_receitas_edit" >
+            android:label="@string/title_activity_receitas_edit"
+            android:parentActivityName=".ReceitasDetails">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.ReceitasDetails" />
         </activity>
         <activity
             android:name=".Produto"
@@ -68,27 +72,36 @@
             android:name=".ProdutoInsert"
             android:label="@string/title_activity_produto_insert"
             android:parentActivityName=".Produto" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.Produto" />
         </activity>
         <activity
             android:name=".MercadoMain"
-            android:label="@string/title_activity_mercado_main" >
+            android:label="@string/title_activity_mercado_main"
+            android:parentActivityName=".MenuPrincipal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
         </activity>
         <activity
             android:name=".ProdutoDetailFragment"
-            android:label="Detail" />
+            android:label="Detail"
+            android:parentActivityName=".Produto" />
         <activity
             android:name=".ProdutoDetail"
             android:parentActivityName=".Produto" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.Produto" />
         </activity>
         <activity
             android:name=".ProdutoEdit"
             android:label="@string/title_activity_produto_edit"
             android:parentActivityName=".ProdutoDetail" >
-            android:name=".ProdutoInsert"
-            android:label="@string/title_activity_produto_insert" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.Produto" />
         </activity>
         <activity
             android:name=".MercadoListFragment"
@@ -96,7 +109,11 @@
         </activity>
         <activity
             android:name=".MercadoDetails"
-            android:label="@string/title_activity_mercado_details" >
+            android:label="@string/title_activity_mercado_details"
+            android:parentActivityName=".MercadoMain">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MercadoMain" />
         </activity>
         <activity
             android:name=".MercadoDetailFragment"
@@ -104,45 +121,91 @@
         </activity>
         <activity
             android:name=".MercadoInsert"
-            android:label="@string/title_activity_mercado_insert" >
+            android:label="@string/title_activity_mercado_insert"
+            android:parentActivityName=".MercadoMain">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MercadoMain" />
         </activity>
         <activity
             android:name=".MercadoEdit"
-            android:label="@string/title_activity_mercado_edit" >
+            android:label="@string/title_activity_mercado_edit"
+            android:parentActivityName=".MercadoDetails">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MercadoDetails" />
         </activity>
         <activity
             android:name=".ListadeCompras"
-            android:label="@string/title_activity_listade_compras" >
+            android:label="@string/title_activity_listade_compras"
+            android:parentActivityName=".MenuPrincipal">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
         </activity>
         <activity
             android:name=".Despensa"
             android:label="Despensa"
-            android:parentActivityName=".MenuPrincipal" >
+            android:parentActivityName=".MenuPrincipal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
         </activity>
         <activity
             android:name=".DespensaDetail"
-            android:label="Adicionar produto a despensa" >
+            android:label="Adicionar produto a despensa"
+            android:parentActivityName=".Despensa">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
         </activity>
         <activity
             android:name=".ReceitasDisponiveis"
-            android:label="@string/title_activity_receitas_disponiveis" >
-            </activity>
+            android:label="@string/title_activity_receitas_disponiveis"
+            android:parentActivityName=".MenuPrincipal">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
+        </activity>
         <activity
             android:name=".MercadoMaps"
-            android:label="@string/title_activity_mercado_maps" >
+            android:label="@string/title_activity_mercado_maps"
+            android:parentActivityName=".MercadoMain">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ufabc.kleinzanin.homemarket.MercadoMain" />
         </activity>
         <activity
             android:name=".Configuracao"
-            android:label="@string/title_activity_configuracao" >
+            android:label="@string/title_activity_configuracao"
+            android:parentActivityName=".MenuPrincipal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
+        </activity>
+        <activity
+            android:name=".ListadeComprasInsert"
+            android:label="@string/title_activity_listade_compras_insert"
+            android:parentActivityName=".ListadeCompras" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.ListadeCompras" />
+        </activity>
+        <activity
+            android:name=".ListaComprasHistorico"
+            android:label="@string/title_activity_lista_compras_historico"
+            android:parentActivityName=".MenuPrincipal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.MenuPrincipal" />
+        </activity>
+        <activity
+            android:name=".ListaComprasHistoricoDetail"
+            android:label="@string/title_activity_lista_compras_historico_detail"
+            android:parentActivityName=".ListaComprasHistorico">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ufabc.kleinzanin.homemarket.ListaComprasHistoricoDetail" />
         </activity>
     </application>
 

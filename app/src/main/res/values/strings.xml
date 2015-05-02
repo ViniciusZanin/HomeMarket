@@ -55,6 +55,10 @@
         SELECT * FROM produtos WHERE monthly = 1 AND quantMonth > quantNow;
     </string>
 
+    <string name="get_product_unchecked_query">
+        SELECT * FROM produtos WHERE monthly = 0;
+    </string>
+
 
     <!-- RECEITAS -->
         <string name="create_table_receitas_query">
@@ -172,7 +176,7 @@
         <item >Lista de Compras</item>
         <item >Localizar Mercados</item>
         <item >Mercados Cadastrados</item>
-        <item >Variação de Preço</item>
+        <item >Historico de Lista de Compras</item>
         <item >Configurações</item>
     </string-array>
 
@@ -193,7 +197,7 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="fragment_config_title">Configurações do App</string>
-    <string name="title_activity_listade_compras">ListadeCompras</string>
+    <string name="title_activity_listade_compras">Lista de Compras</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -322,10 +326,24 @@
     <string name="prod_add">Adicionar</string>
     <string name="prodcancel">Cancelar</string>
     <string name="prod_remo">Remover</string>
+
+
+
+
+
+
+    <string name="title_activity_listade_compras_insert">ListadeComprasInsert</string>
+
     <string name="title_activity_receitas_disponiveis">Receitas Disponiveis</string>
     <string name="title_activity_mercado_maps">Mapa de Mercados</string>
     <string name="title_activity_configuracao">Configuracao</string>
     <string name="invalid_address">Endereço Inválido.</string>
+<<<<<<< HEAD
     <string name="search">Pesquisa</string>
     <string name="search_hint">Pesquisa</string>
+=======
+    <string name="title_activity_lista_compras_historico">Historico Lista de Compras</string>
+    <string name="title_activity_lista_compras_historico_detail">Lista Compras HistoricoDetail
+    </string>
+>>>>>>> origin/master
 </resources>

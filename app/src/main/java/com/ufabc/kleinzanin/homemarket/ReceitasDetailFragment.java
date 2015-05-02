@@ -49,7 +49,6 @@ public class ReceitasDetailFragment extends Fragment {
         init();
         final ReceitasDetailFragment self = this;
         modprep.setText(receitas.getModopreparo());
-        ingredientes.setAdapter(new IngredientesAdapter(getActivity(), receitas.getID()));
         nome.setText(receitas.getReceita());
         ingredientes.setAdapter(new IngredientesAdapter(getActivity(),receitas.getID()));
         int dipButton = dispButton;
