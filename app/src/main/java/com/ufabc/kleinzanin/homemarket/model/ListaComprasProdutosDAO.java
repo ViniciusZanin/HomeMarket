@@ -253,4 +253,9 @@ public class ListaComprasProdutosDAO extends SQLiteOpenHelper{
         return listaCompras;
     }
 
+    public void dropTable(){
+        String queryStr = context.getString(R.string.dropb_table_listacompras_produtos_query);
+        db.execSQL(queryStr);
+    }
+
 }

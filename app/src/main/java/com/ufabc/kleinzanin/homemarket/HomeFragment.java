@@ -208,14 +208,14 @@ public class HomeFragment extends Fragment {
         vStatusUltimaCompra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ListadeCompras.class);
+                Intent intent = new Intent(getActivity(), ListaComprasHistorico.class);
                 startActivity(intent);
             }
         });
         statusUltimaCompra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ListadeCompras.class);
+                Intent intent = new Intent(getActivity(), ListaComprasHistorico.class);
                 startActivity(intent);
             }
         });

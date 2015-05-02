@@ -240,4 +240,9 @@ public class ListaComprasDAO extends SQLiteOpenHelper{
         }
         return status;
     }
+
+    public void dropTable(){
+        String queryStr = context.getString(R.string.drop_table_listacompras_query);
+        db.execSQL(queryStr);
+    }
 }

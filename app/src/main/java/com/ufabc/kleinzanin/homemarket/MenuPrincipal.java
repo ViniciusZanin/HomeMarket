@@ -98,6 +98,11 @@ public class MenuPrincipal extends ActionBarActivity {
     }
 
     private void initConfig(){startActivity((new Intent(this, Configuracao.class)));}
+
+    private void iniListaHistorico(){
+        startActivity(new Intent(this, ListaComprasHistorico.class));
+    }
+
     @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             // toggle nav drawer on selecting action bar app icon/title
@@ -156,7 +161,7 @@ public class MenuPrincipal extends ActionBarActivity {
                     initMercados();
                     break;
                 case 8:
-                    fragment = new VariacaoPrecoFragment();;
+                    iniListaHistorico();
                     break;
                 case 9:
                     initConfig();

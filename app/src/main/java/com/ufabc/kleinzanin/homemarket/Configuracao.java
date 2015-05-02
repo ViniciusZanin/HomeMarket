@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.ufabc.kleinzanin.homemarket.model.Ingredientes;
 import com.ufabc.kleinzanin.homemarket.model.IngredientesDAO;
+import com.ufabc.kleinzanin.homemarket.model.ListaComprasDAO;
+import com.ufabc.kleinzanin.homemarket.model.ListaComprasProdutosDAO;
 import com.ufabc.kleinzanin.homemarket.model.MercadoDAO;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
@@ -74,7 +76,12 @@ public class Configuracao extends ActionBarActivity {
                         dao_merc.dropTable();
                         ReceitasDAO dao_rec = ReceitasDAO.newInstance(Configuracao.this);
                         dao_rec.dropTable();
+                        ListaComprasDAO dao_list_comp = ListaComprasDAO.newInstance(Configuracao.this);
+                        dao_list_comp.dropTable();
+                        ListaComprasProdutosDAO dao_list_comp_prod = ListaComprasProdutosDAO.newInstance(Configuracao.this);
+                        dao_list_comp_prod.dropTable();
                         startActivity(new Intent(Configuracao.this, MenuPrincipal.class));
+
 
                     }
                 })
