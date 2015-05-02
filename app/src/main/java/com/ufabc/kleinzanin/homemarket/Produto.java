@@ -1,5 +1,7 @@
 package com.ufabc.kleinzanin.homemarket;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,7 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.ufabc.kleinzanin.homemarket.adapter.ProdutoAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Produtos;
@@ -18,9 +22,6 @@ import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 public class Produto extends ActionBarActivity {
     private ProdutosDao dao;
     private ListView listView;
-    private Button add;
-    private Button remove;
-
     private ProdutoDetailFragment detailFragment;
     private ProdutoListFragment listFragment;
 
@@ -34,7 +35,6 @@ public class Produto extends ActionBarActivity {
 
     private void init(){
         this.dao = ProdutosDao.newInstance(this);
-
         listFragment = (ProdutoListFragment)getFragmentManager().findFragmentById(R.id.fragment_list);
         detailFragment = (ProdutoDetailFragment) getFragmentManager().findFragmentById(R.id.fragment_detail);
         if(listFragment != null){
@@ -90,7 +90,11 @@ public class Produto extends ActionBarActivity {
         if(id == R.id.action_produto_add){
             startActivity(new Intent(this,ProdutoInsert.class));
         }
+        if(id == R.id.produto_search){
+
+        }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

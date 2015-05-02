@@ -326,4 +326,6 @@
     <string name="title_activity_mercado_maps">Mapa de Mercados</string>
     <string name="title_activity_configuracao">Configuracao</string>
     <string name="invalid_address">Endereço Inválido.</string>
+    <string name="search">Pesquisa</string>
+    <string name="search_hint">Pesquisa</string>
 </resources>
