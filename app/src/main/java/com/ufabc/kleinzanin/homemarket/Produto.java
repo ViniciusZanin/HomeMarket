@@ -19,11 +19,14 @@ import com.ufabc.kleinzanin.homemarket.model.Produtos;
 import com.ufabc.kleinzanin.homemarket.model.ProdutosDao;
 
 
-public class Produto extends ActionBarActivity {
+public class Produto extends ActionBarActivity implements SearchView.OnQueryTextListener{
     private ProdutosDao dao;
     private ListView listView;
     private ProdutoDetailFragment detailFragment;
     private ProdutoListFragment listFragment;
+    private ProdutoAdapter adapter;
+    private SearchView searchView;
+    private SearchManager searchManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class Produto extends ActionBarActivity {
         listView = (ListView )findViewById(R.id.list_produto);
         final Produto self = this;
         listView.setAdapter(new ProdutoAdapter(this));
+        listView.setTextFilterEnabled(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -56,7 +60,7 @@ public class Produto extends ActionBarActivity {
                     Intent intent = null;
                     Produtos p = new Produtos();
                     intent = new Intent(parent.getContext(), ProdutoDetail.class);
-                    intent.putExtra("produtoPosition", ((int)(position)));
+                    intent.putExtra("produtoPosition", position);
                     startActivity(intent);
                 } else { // large screen
                     Produtos produto = dao.getItemAt(position);
@@ -73,6 +77,12 @@ public class Produto extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_produto, menu);
+
+        searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.produto_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(this);
+
         return true;
     }
 
@@ -97,4 +107,15 @@ public class Produto extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        //adapter.getFilter().filter(newText);
+        listView.setFilterText(newText);
+        return true;
+    }
 }

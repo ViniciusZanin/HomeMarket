@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,11 +20,12 @@ import java.util.ArrayList;
 /**
  * Created by Felippe on 16/04/2015.
  */
-public class ReceitasAdapter extends BaseAdapter {
+public class ReceitasAdapter extends BaseAdapter implements Filterable {
     private ReceitasDAO dao;
     private Context context;
     ArrayList<Receitas> receitas;
     LayoutInflater inflater;
+    private ReceitaFilter rf;
 
     public ReceitasAdapter(Context c){
         this.context = c;
@@ -74,4 +77,49 @@ public class ReceitasAdapter extends BaseAdapter {
         return convertView;
         }
 
+    public Filter getFilter() {
+        if (rf == null) {
+            rf = new ReceitaFilter();
+        }
+
+        return rf;
+    }
+
+    private class ReceitaFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults filterResults = new FilterResults();
+            if (constraint!=null && constraint.length()>0) {
+                ArrayList<Receitas> tempList = new ArrayList<>();
+
+                // search content in friend list
+                for (Receitas r : receitas) {
+                    if (r.getReceita().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        tempList.add(r);
+                    }
+                }
+
+                filterResults.count = tempList.size();
+                filterResults.values = tempList;
+            } else {
+                filterResults.count = receitas.size();
+                filterResults.values = receitas;
+            }
+
+            return filterResults;
+        }
+
+        /**
+         * Notify about filtered list to ui
+         * @param constraint text
+         * @param results filtered result
+         */
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            receitas = (ArrayList<Receitas>) results.values;
+            notifyDataSetChanged();
+        }
+    }
 }

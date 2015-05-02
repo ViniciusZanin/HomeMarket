@@ -11,6 +11,7 @@
     <item android:icon="@android:drawable/ic_menu_search"
         android:id="@+id/receita_search"
         android:title="Busca"
-        app:showAsAction = "always"/>
+        app:showAsAction = "always"
+        app:actionViewClass="android.widget.SearchView"/>
 
 </menu>

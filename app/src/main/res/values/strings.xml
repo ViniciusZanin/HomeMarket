@@ -338,12 +338,8 @@
     <string name="title_activity_mercado_maps">Mapa de Mercados</string>
     <string name="title_activity_configuracao">Configuracao</string>
     <string name="invalid_address">Endereço Inválido.</string>
-<<<<<<< HEAD
     <string name="search">Pesquisa</string>
     <string name="search_hint">Pesquisa</string>
-=======
     <string name="title_activity_lista_compras_historico">Historico Lista de Compras</string>
-    <string name="title_activity_lista_compras_historico_detail">Lista Compras HistoricoDetail
-    </string>
->>>>>>> origin/master
+    <string name="title_activity_lista_compras_historico_detail">Lista Compras Historico Detail</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.ufabc.kleinzanin.homemarket;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,16 +10,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.ufabc.kleinzanin.homemarket.adapter.ReceitasAdapter;
 import com.ufabc.kleinzanin.homemarket.model.Receitas;
 import com.ufabc.kleinzanin.homemarket.model.ReceitasDAO;
 
 
-public class ReceitasMain extends ActionBarActivity {
+public class ReceitasMain extends ActionBarActivity implements SearchView.OnQueryTextListener{
     private ReceitasDAO dao;
     private ListView listView;
-
+    private SearchView searchView;
+    private SearchManager searchManager;
     private ReceitasListFragment listFragment;
     private ReceitasDetailFragment detailFragment;
 
@@ -43,7 +47,7 @@ public class ReceitasMain extends ActionBarActivity {
         listView = (ListView )findViewById(R.id.receitas_list);
         final ReceitasMain self = this;
         listView.setAdapter(new ReceitasAdapter(this));
-
+        listView.setTextFilterEnabled(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -51,7 +55,7 @@ public class ReceitasMain extends ActionBarActivity {
                     Intent intent = null;
 
                     intent = new Intent(parent.getContext(), ReceitasDetails.class);
-                    intent.putExtra("receitaPosition", position);
+                    intent.putExtra("receitaPosition", (int)id-1);
                     startActivity(intent);
                 } else {
                     Receitas receitas = dao.getItemAt(position);
@@ -67,6 +71,12 @@ public class ReceitasMain extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_receitas, menu);
+
+        searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.receita_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(this);
+
         return true;
     }
 
@@ -89,5 +99,16 @@ public class ReceitasMain extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        listView.setFilterText(newText);
+        return true;
     }
 }

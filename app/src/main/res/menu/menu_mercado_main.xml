@@ -13,7 +13,8 @@
         android:id="@+id/mercado_search"
         android:title="Busca"
         app:showAsAction = "always"
-        android:orderInCategory="2"/>
+        android:orderInCategory="2"
+        app:actionViewClass="android.widget.SearchView"/>
     <item android:title="@string/receita"
         android:orderInCategory="0"/>
 </menu>

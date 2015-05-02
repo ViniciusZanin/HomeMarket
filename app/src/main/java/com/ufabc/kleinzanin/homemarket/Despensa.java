@@ -3,6 +3,8 @@ package com.ufabc.kleinzanin.homemarket;
 import android.app.AlertDialog;
 import android.app.Dialog;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.DialogFragment;
@@ -16,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Spinner;
 
 import com.ufabc.kleinzanin.homemarket.adapter.DespensaAdapter;
@@ -30,10 +33,8 @@ import java.util.List;
 public class Despensa extends ActionBarActivity {
     private ProdutosDao dao;
     private ListView listView;
-    private Button add;
-    private Button remove;
-    private Spinner spinner;
-
+    private SearchManager searchManager;
+    private SearchView searchView;
     private DespensaDetailFragment detailFragment;
     private DespensaListFragment listFragment;
 
@@ -67,6 +68,7 @@ public class Despensa extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_despensa, menu);
+        
         return true;
     }
 
@@ -87,4 +89,5 @@ public class Despensa extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
