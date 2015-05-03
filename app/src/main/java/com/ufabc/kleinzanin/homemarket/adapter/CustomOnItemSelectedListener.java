@@ -1,4 +1,4 @@
-package com.ufabc.kleinzanin.homemarket;
+package com.ufabc.kleinzanin.homemarket.adapter;
 
 /**
  * Created by Vinicius on 28/04/2015.
